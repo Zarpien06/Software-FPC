@@ -1,0 +1,452 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap');
+
+:root{
+    --color1: #040447; /* Azul oscuro */
+    --color2: #13226cfd; /* Azul claro */
+    --color3: #1F2937; /* Gris oscuro */
+    --fondo: #ced0d3; /* Gris claro */
+    --border: #D1D5DB; /* Gris medio */
+    --eliminar: #EF4444; /* Rojo */
+    --eliminar-texto: #FFFFFF; /* Blanco */
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--fondo);
+    transition: background-color 0.3s ease-in-out;
+}
+/* Estilo del Encabezado */
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #2E3B4E; /* Azul Profundo */
+    color: #FFFFFF; /* Blanco Puro */
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para dar profundidad */
+    border-bottom: 3px solid #4E5B6E; /* Azul Grisáceo */
+  
+}
+
+/* Title Styles */
+header h1 {
+    font-size: 2rem; /* Aumenté el tamaño */
+    font-weight: bold;
+    color: #FFFFFF; /* Blanco Puro */
+    text-transform: uppercase; /* Título en mayúsculas */
+    margin-bottom: 10px; /* Espacio entre el título y el logotipo */
+    cursor: pointer; /* Cambio de cursor al pasar el mouse */
+}
+
+/* Estilos para el contenedor de botones */
+.button-container {
+    background: #2E3B4E; /* Azul Marino */
+    padding: 15px 50px; /* Espaciado interno */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 5px;
+}
+
+/* Estilos del enlace de botones (igual que los enlaces de navegación) */
+.login-button {
+    color: #FFFFFF; /* Blanco Puro */
+    text-decoration: none; /* Sin subrayado */
+    font-size: 12px; /* Tamaño de fuente */
+    padding: 5px 10px; /* Espaciado interno reducido para evitar efecto botón */
+    position: relative; /* Necesario para posicionar la línea */
+    transition: color 0.3s ease;
+}
+
+/* Hover para efecto de interacción similar a la navegación */
+.login-button::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px; /* Altura de la línea */
+    width: 0%; /* Línea oculta inicialmente */
+    background-color: #4682B4; /* Color de la línea */
+    transition: width 0.3s ease; /* Suaviza el efecto de la línea */
+}
+  
+/* Mostrar la línea solo en el hover */
+.login-button:hover::after {
+    width: 100%; /* La línea se extiende completamente bajo el texto al pasar el cursor */
+    transition: width 0.3s ease;
+    transform: scale(1.10); /* Escala para darle un pequeño efecto adicional si se desea */
+}
+.faq-question {
+    cursor: pointer; /* Cambiar cursor a puntero */
+    color: #007BFF; /* Color azul para el texto */
+    text-decoration: underline; /* Subrayado para indicar que es un enlace */
+}
+
+.faq-answer {
+    display: none; /* Ocultamos inicialmente las respuestas */
+    margin-top: 5px; /* Espaciado después de la respuesta */
+}
+
+
+/* Navegacion */
+
+/* Estilos para la navegación */
+nav {
+    background: #13226cfd; /* Azul Marino */
+    padding: 15px 50px; /* Espaciado interno */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 5px;
+    list-style-type: none; /* Quita el punto inicial de los enlaces */
+    margin: 0; /* Quita el margen de los enlaces */
+    overflow-x: hidden; /* Evitar scroll horizontal */
+    overflow-y: auto; /* Evitar scroll vertical */
+}
+  
+/* Estilos de los enlaces de navegación */
+nav a {
+    color: #FFFFFF; /* Blanco Puro */
+    text-decoration: none; /* Sin subrayado */
+    font-size: 12px; /* Tamaño de fuente */
+    padding: 5px 10px; /* Espaciado interno reducido para evitar efecto botón */
+    position: relative; /* Necesario para posicionar la línea */
+    transition: color 0.3s ease;
+}
+  
+/* Estilo para el efecto hover de línea */
+nav a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px; /* Altura de la línea */
+    width: 0%; /* Línea oculta inicialmente */
+    background-color: #fff; /* Color de la línea */
+    transition: width 0.3s ease; /* Suaviza el efecto de la línea */
+}
+  
+/* Mostrar la línea solo en el hover */
+nav a:hover::after {
+    width: 100%; /* La línea se extiende completamente bajo el texto al pasar el cursor */
+    transition: width 0.3s ease;
+    transform: scale(1.10); /* Escala para darle un pequeño efecto adicional si se desea */
+}
+
+.container{
+    max-width: 1120px;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+img{
+    max-width: 100%;
+    transition: transform 0.3s ease-in-out;
+    border-radius: 100%;
+    object-fit: cover;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+img:hover{
+    background-color: var(--azul-Marino);
+    color: var(--blanco);
+    border-color: var(--azul-Marino);
+    transform: scale(1.10);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.banner{
+    margin: 50px 0;
+    text-align: center;
+    background-color: var(--color2);
+    padding: 20px;
+    border-radius: 10px;
+    color: #fff;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.banner:hover{
+    background-color: var(--color1);
+}
+
+.title{
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--color1);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.product-grid{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 1.5rem;
+    margin-bottom: 50px;
+}
+
+.product-grid__item{
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.product-grid__item:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.product-grid__imagen{
+    text-align: center;
+    padding: 10px;
+}
+
+.product-grid__info{
+    padding: 15px;
+    text-align: center;
+}
+
+.product-grid__name{
+    font-size: 16px;
+    color: var(--color3);
+    margin-bottom: 6px;
+    font-weight: 400;
+}
+
+.product-grid__price{
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color3);
+}
+
+.product-grid__btn{
+    margin-top: 20px;
+}
+
+.btn-default,
+.btn-border,
+.btn-primary,
+.btn-eliminar{
+    width: 100%;
+    height: 48px;
+    line-height: 48px;
+    outline: 0;
+    display: inline-block;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 0 20px;
+    text-decoration: none;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-align: center;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.btn-default{
+    background-color: var(--color2);
+    color: var(--color1);
+}
+
+.btn-default:hover{
+    background-color: var(--color1);
+    color: #fff;
+}
+
+.btn-border{
+    border: 2px solid var(--color1);
+    color: var(--color1);
+    background-color: transparent;
+}
+
+.btn-border:hover{
+    background-color: var(--color2);
+    border-color: var(--color2);
+}
+
+.btn-primary{
+    background-color: var(--color1);
+    color: #fff;
+}
+
+.btn-eliminar{
+    background-color: var(--eliminar);
+    color: var(--eliminar-texto);
+}
+
+.btn-eliminar:hover{
+    background-color: #D32F2F; /* Un tono más oscuro de rojo */
+}
+
+.modal{
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: var(--fondo);
+    width: 100%;
+    max-width: 350px;
+    height: 100vh;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all .35s ease-in;
+    z-index: 20000;
+}
+
+.modal::after{
+    position: fixed;
+    top: 0;
+    right: 350px;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .4);
+    z-index: 999;
+    opacity: 0;
+    content: '';
+    pointer-events: none;
+    transition: all .35s ease-in;
+}
+
+.modal.active{
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+}
+
+.modal.active::after{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal__container{
+    height: 100%;
+    padding: 30px;
+    position: relative;
+    z-index: 1000;
+}
+
+.modal__close{
+    position: absolute;
+    left: -50px;
+    top: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--color2);
+    color: var(--color1);
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.modal__close:hover{
+    background-color: var(--color1);
+    color: #fff;
+}
+
+.modal__info{
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+.modal__header{
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--border);
+}
+
+.modal__header h2{
+    font-size: 24px;
+    color: var(--color1);
+    font-weight: 600;
+}
+
+.modal__header h2 i{
+    margin-right: 10px;
+}
+
+.modal__body{
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: visible;
+    width: 100%;
+    flex-grow: 1;
+}
+
+.modal__item{
+    display: flex;
+    align-items: center;
+}
+
+.modal__item + .modal__item{
+    margin-top: 20px;
+}
+
+.modal__thumb{
+    width: 80px;
+}
+
+.modal__text-product{
+    width: calc(100% - 80px);
+    padding-left: 20px;
+}
+
+.modal__text-product p strong{
+    color: var(--color1);
+    margin-top: 6px;
+}
+
+.modal__footer{
+    padding-top: 30px;
+    margin-top: 30px;
+    border-top: 1px solid var(--border);
+}
+
+.modal__list-price ul li+li{
+    margin-top: 10px;
+}
+
+.modal__list-price ul li strong{
+    color: var(--color1);
+}
+
+.modal__total-cart{
+    font-size: 20px;
+    color: var(--color1);
+    margin: 20px 0;
+}
+
+.modal__btns{
+    padding-top: 30px;
+    border-top: 1px solid var(--border);
+}
+
+.modal__btns a+a{
+    margin-top: 15px;
+}
+
+@media (max-width: 820px){
+    .product-grid{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media (max-width: 600px){
+    .product-grid{
+        grid-template-columns: 1fr;
+    }
+}

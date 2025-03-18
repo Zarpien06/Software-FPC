@@ -1,0 +1,958 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+/* Estilo General del Cuerpo */
+body {
+    font-family: 'Poppins', sans-serif; /* Fuente moderna y limpia */
+    font-size: 16px;
+    line-height: 1.6;
+    color: #FFFFFF; /* Blanco puro para el texto */
+    background-color: #cacaca;
+}    
+
+/* Estilo del Encabezado */
+header {
+    background-color: #111111; /* Fondo negro */
+    padding: 20px;
+    text-align: center;
+    color: #F4F4F4; /* Gris Claro para el texto */
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: auto auto;
+}
+
+/* Secciones informativas */
+section {
+    background-color: #F4F4F4; /* Gris Claro para el fondo de las secciones */
+    padding: 100px;
+    margin: 60px auto;
+    max-width: 1100px;
+    border-radius: 8px;
+    color: #1B3A57; /* Texto en Azul Marino */
+}
+
+/* Botones secundarios */
+button.secondary {
+    background-color: #13226ca9; /* Azul Acero */
+    color: #FFFFFF; /* Blanco puro */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin: 10px;
+}
+
+/* Botones principales de acción */
+button.primary {
+    background-color: #13226ca9; /* Azul Eléctrico */
+    color: #FFFFFF; /* Blanco puro */
+    border: none;
+    padding: 12px 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+/* Iconos con borde metálico */
+.icon {
+    border: 2px solid #C0C0C0; /* Gris Plateado para bordes */
+    padding: 10px;
+    display: inline-block;
+    border-radius: 50%;
+    margin: 10px;
+}
+
+/* Contenedor principal del aviso de cookies */
+.cookie-container {
+    background-color: #1B3A57; /* Azul Marino */
+    color: #FFFFFF; /* Blanco Puro para el texto */
+    padding: 20px;
+    border: 2px solid #C0C0C0; /* Bordes plateados */
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Arial', sans-serif; /* Fuente limpia y legible */
+    max-width: 600px;
+    margin: 20px auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cookie-container p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.cookie-container a {
+    color: #13226c; /* Azul Eléctrico para destacar */
+    text-decoration: underline;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.cookie-container a:hover {
+    color: #13226ca9; /* Azul Acero al pasar el cursor */
+}
+
+.cookie-btn {
+    background-color: #13226ca9; /* Azul Acero */
+    color: #FFFFFF; /* Blanco Puro para el texto */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.cookie-btn:hover {
+    background-color: #13226ca9; /* Azul Eléctrico para resaltar al pasar el cursor */
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #13226cf0; /* Azul Profundo */
+    color: #FFFFFF; /* Blanco Puro */
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para dar profundidad */
+    border-bottom: 3px solid #ffffff; /* Azul Grisáceo */
+  
+}
+.menu-icon {
+    font-size: 50px; /* Aumentar el tamaño del ícono */
+    background-color:#13226ca9; 
+    cursor: pointer; /* Cambiar cursor a mano */
+}
+
+/* Title Styles */
+header h1 {
+    font-size: 2rem; /* Aumenté el tamaño */
+    font-weight: bold;
+    color: #FFFFFF; /* Blanco Puro */
+    text-transform: uppercase; /* Título en mayúsculas */
+    margin-bottom: 10px; /* Espacio entre el título y el logotipo */
+    cursor: pointer; /* Cambio de cursor al pasar el mouse */
+}
+
+/* Estilos para el contenedor de botones */
+.button-container {
+    background: #0c1a61; /* Azul Marino */
+    padding: 15px 50px; /* Espaciado interno */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 5px;
+    
+}
+
+/* Estilos del enlace de botones (igual que los enlaces de navegación) */
+.login-button {
+    color: #FFFFFF; /* Blanco Puro */
+    text-decoration: none; /* Sin subrayado */
+    font-size: 12px; /* Tamaño de fuente */
+    padding: 5px 10px; /* Espaciado interno reducido para evitar efecto botón */
+    position: relative; /* Necesario para posicionar la línea */
+    transition: color 0.3s ease;
+}
+
+/* Hover para efecto de interacción similar a la navegación */
+.login-button::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px; /* Altura de la línea */
+    width: 0%; /* Línea oculta inicialmente */
+    background-color: #ffffff; /* Color de la línea */
+    transition: width 0.3s ease; /* Suaviza el efecto de la línea */
+}
+  
+/* Mostrar la línea solo en el hover */
+.login-button:hover::after {
+    width: 100%; /* La línea se extiende completamente bajo el texto al pasar el cursor */
+    transition: width 0.3s ease;
+    transform: scale(1.10); /* Escala para darle un pequeño efecto adicional si se desea */
+}
+.faq-question {
+    cursor: pointer; /* Cambiar cursor a puntero */
+    color: #13226ca9; /* Color azul para el texto */
+    text-decoration: underline; /* Subrayado para indicar que es un enlace */
+}
+
+.faq-answer {
+    display: none; /* Ocultamos inicialmente las respuestas */
+    margin-top: 5px; /* Espaciado después de la respuesta */
+}
+
+
+/* Navegacion */
+
+/* Estilos para la navegación */
+nav {
+    background: #0b1a68dc; /* Azul Marino */
+    padding: 15px 50px; /* Espaciado interno */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 5px;
+    list-style-type: none; /* Quita el punto inicial de los enlaces */
+    margin: 0; /* Quita el margen de los enlaces */
+    overflow-x: hidden; /* Evitar scroll horizontal */
+    overflow-y: auto; /* Evitar scroll vertical */
+}
+  
+/* Estilos de los enlaces de navegación */
+nav a {
+    color: #FFFFFF; /* Blanco Puro */
+    text-decoration: none; /* Sin subrayado */
+    font-size: 12px; /* Tamaño de fuente */
+    padding: 5px 10px; /* Espaciado interno reducido para evitar efecto botón */
+    position: relative; /* Necesario para posicionar la línea */
+    transition: color 0.3s ease;
+}
+  
+/* Estilo para el efecto hover de línea */
+nav a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px; /* Altura de la línea */
+    width: 0%; /* Línea oculta inicialmente */
+    background-color: #FFFFFF; /* Color de la línea */
+    transition: width 0.3s ease; /* Suaviza el efecto de la línea */
+}
+  
+/* Mostrar la línea solo en el hover */
+nav a:hover::after {
+    width: 100%; /* La línea se extiende completamente bajo el texto al pasar el cursor */
+    transition: width 0.3s ease;
+    transform: scale(1.10); /* Escala para darle un pequeño efecto adicional si se desea */
+}
+/* Ícono de menú hamburguesa oculto por defecto */
+.menu-icon {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+
+.container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que las tarjetas se acomoden en múltiples filas si no caben */
+    gap: 16px; /* Espaciado entre tarjetas */
+    justify-content: center; /* Centra las tarjetas horizontalmente */
+    margin: 20px;
+}
+  
+/* Estilos de las tarjetas */
+.card {
+    display: flex;
+    flex-direction: row; /* Alineación horizontal del contenido */
+    background-color: #f9f9f98b;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 400px; /* Ancho de cada tarjeta */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Imagen de la tarjeta */
+.card-img {
+    width: 120px;
+    height: 120px;
+    background-color: #eaeaea;
+    flex-shrink: 0; /* Mantiene el tamaño fijo de la imagen */
+}
+
+/* Información de la tarjeta */
+.card-info {
+    padding: 16px;
+    flex: 1; /* Toma el resto del espacio disponible */
+}
+
+.text-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 0 8px;
+    color: #333;
+}
+
+.text-body {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Pie de la tarjeta */
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+    border-top: 1px solid #ddd;
+}
+
+.card-button {
+    cursor: pointer;
+}
+
+.card-button svg {
+    fill: #555;
+    width: 20px;
+    height: 20px;
+}
+
+/* Estilos del contenedor del carrusel */
+.carousel {
+    position: relative;
+    width: 100%; /* Ancho completo de la ventana */
+    height: 60vh; /* Reduce la altura al 60% de la ventana */
+    overflow: hidden; /* Oculta las imágenes fuera del área visible */
+    background: #000; /* Fondo negro para evitar parches vacíos */
+}
+  
+/* Estilo para las imágenes dentro del carrusel */
+.carousel-images {
+    display: flex; /* Coloca las imágenes una al lado de la otra */
+    width: 100%; /* Asegura que las imágenes ocupen el contenedor */
+    transition: transform 0.5s ease; /* Animación suave al cambiar de imagen */
+}
+  
+.carousel-images img {
+    min-width: 100%; /* Cada imagen ocupa el 100% del ancho del contenedor */
+    height: 100%; /* Ajusta la altura al contenedor */
+    object-fit: contain; /* Ajusta la imagen sin recortar (proporcionalmente) */
+    background-color: #000; /* Fondo para imágenes con espacios vacíos */
+}
+  
+/* Botones de navegación */
+.carousel-prev,
+.carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.carousel-prev {
+    left: 10px;
+}
+
+.carousel-next {
+    right: 10px;
+}
+  
+/* Efecto hover para el botón */
+.carousel-prev:hover,
+.carousel-next:hover {
+    background-color: rgba(0, 0, 0, 0.7); /* Cambia el color al pasar el cursor */
+}
+  
+section.how-it-works {
+    background-color: #0104102a; /* Blanco Puro */
+    padding: 20px;
+    border: 1px solid #C0C0C0; /* Plateado */
+    border-radius: 8px;
+    max-width: 1100px;
+    margin: 20px auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+section.how-it-works h3 {
+    color: #13226ca9; /* Azul Marino */
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#como-funciona h3 {
+    color: #000000c8; /* Azul */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.steps {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.step {
+    text-align: center;
+    flex: 1;
+    background-color: #13226ce7; /* Azul Acero */
+    padding: 10px;
+    border-radius: 10px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.step:hover {
+    background-color: #13226c; /* Azul Eléctrico */
+    transform: translateY(-5px);
+}
+
+.step img {
+    width: 110px;
+    height: 110px;
+    margin-bottom: 10px;
+    border: 2px solid #C0C0C0; /* Plateado */
+    border-radius: 50%;
+    background-color: #FFFFFF; /* Blanco Puro */
+}
+
+.step p {
+    color: #FFFFFF; /* Blanco Puro */
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* Media Query para pantallas pequeñas (máx-width: 600px) */
+@media (max-width: 600px) {
+    .steps {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .step {
+        margin-bottom: 20px;
+    }
+}
+
+
+#cotizaciones {
+    background-color: #F4F4F4; /* Gris Claro */
+    padding: 30px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para el título */
+#cotizaciones h2 {
+    color: #1B3A57; /* Azul Marino */
+    font-size: 2em;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+/* Estilo para el párrafo */
+#cotizaciones p {
+    color: #4682B4; /* Azul Acero */
+    font-size: 1.1em;
+    margin-bottom: 25px;
+    font-weight: normal;
+}
+
+/* Estilo para el botón */
+.quote-button {
+    background-color: #13226ced; /* Azul Marino */
+    color: #FFFFFF; /* Blanco Puro */
+    border: none;
+    padding: 15px 50px; /* Aumento del padding horizontal */
+    font-size: 1.1em;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 97%; /* Ocupará todo el ancho disponible */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: inline-block; /* Asegurar un bloque de tamaño */
+    justify-content: center;
+}
+
+/* Efecto hover para el botón */
+.quote-button:hover {
+    background-color: #13226c; /* Azul Acero */
+    transform: scale(1.05); /* Escalar ligeramente para dar efecto de expansión */
+}
+
+/* Estilo para el borde del botón */
+.quote-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px #C0C0C0; /* Plateado */
+}
+
+
+
+
+
+/* Estilos generales */
+#marcas {
+    background-color: #0104102a;
+    padding: 60px;
+    text-align: center;
+}
+
+#marcas h2 {
+    color: #010000;
+    font-size: 2em;
+    margin-bottom: 30px;
+}
+
+/* Estilos del contenedor de marcas */
+.brands {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 0 10px;
+}
+
+/* Estilos de cada marca */
+
+.brand {
+    background-color: #00010289;
+    border-radius: 10px;
+    border: 1px solid #C0C0C0;
+    padding: 20px;
+    text-align: center;
+    width: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    color: white;
+}
+
+
+/* Efecto al pasar el cursor sobre cada marca */
+.brand:hover {
+    transform: translateY(-10px);
+}
+
+/* Estilos de la imagen de cada marca */
+.brand img {
+    max-width: 100px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+/* Estilos del nombre de la marca */
+.brand p {
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Medios de pantalla (responsividad) */
+@media (max-width: 768px) {
+    .brand {
+        width: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .brand {
+        width: 120px;
+    }
+}
+
+
+
+#galeria {
+    background-color: #0104102a; /* Gris Claro */
+    padding: 40px 0;
+    text-align: center;
+    color: #13226c; /* Azul Marino */
+}
+
+#galeria h2 {
+    font-family: 'Arial', sans-serif;
+    color: #000000; /* Azul Marino */
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Estilos para la galería */
+.gallery {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.gallery img {
+    border: 5px solid #C0C0C0; /* Plateado */
+    border-radius: 8px;
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+    border-color: #13226c; /* Azul Eléctrico */
+}
+
+
+#preguntas-frecuentes {
+    background-color:#0104102a; /* Blanco */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#preguntas-frecuentes h2 {
+    font-size: 24px;
+    color: #000000; /* Azul */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.faq p {
+    font-size: 16px;
+    color: #13226c; /* Azul */
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.faq p strong {
+    color: #13226c; /* Azul */
+    font-weight: bold;
+}
+
+.faq p:nth-child(odd) {
+    background-color: #E0E0E0; /* Gris Claro */
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.faq p:nth-child(even) {
+    background-color: #F4F4F4; /* Blanco Puro */
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.footer-content {
+display: flex;
+justify-content: space-around;
+padding: 20px;
+background: #000000;
+color: #ffffff;
+}
+
+/* General Footer Styles */
+footer {
+background: #1d1d1d;
+color: #fff;
+padding: 40px 20px;
+font-family: 'Arial', sans-serif;
+}
+
+/* Footer Content Layout */
+.footer-content {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+gap: 20px;
+}
+
+.footer-section {
+flex: 1 1 250px;
+margin: 10px;
+}
+
+/* About Section */
+.footer-section.about img {
+width: 120px;
+margin-bottom: 15px;
+filter: brightness(0) invert(1); /* Blanco puro para el logo */
+}
+
+.footer-section.about p {
+font-size: 14px;
+line-height: 1.8;
+}
+
+/* Section Titles */
+.footer-section h2 {
+color: #13226c; /* Azul oscuro */
+margin-bottom: 15px;
+font-size: 20px;
+border-bottom: 2px solid #13226ca9;
+display: inline-block;
+}
+
+/* Links Section */
+.footer-section ul {
+list-style: none;
+padding: 0;
+}
+
+.footer-section ul li {
+margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+color: #b3c0e6; /* Azul claro */
+text-decoration: none;
+transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+color: #ffffff;
+}
+
+/* Contact Section */
+.footer-section.contact p {
+margin: 10px 0;
+font-size: 14px;
+}
+
+.footer-section.contact p i {
+margin-right: 10px;
+color: #13226c; /* Azul oscuro */
+}
+
+/* Social Icons Section */
+.footer-section.social .social-icons {
+display: flex;
+gap: 15px;
+}
+
+.footer-section.social .social-icons a {
+color: #ffffff;
+font-size: 18px;
+text-decoration: none;
+transition: color 0.3s;
+}
+
+.footer-section.social .social-icons a:hover {
+color: #13226c; /* Azul oscuro al pasar el cursor */
+}
+
+/* Redes Sociales - Síguenos */
+.footer-section.social-media h3 {
+    color: #13226c; /* Azul oscuro */
+    margin-bottom: 15px;
+    font-size: 20px;
+    border-bottom: 2px solid #13226ca9; /* Línea debajo del título */
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+}
+
+.icon {
+    position: relative;
+    width: 55px;  /* Tamaño del círculo */
+    height: 55px; /* Tamaño del círculo */
+    background: #13226c; /* Azul oscuro */
+    border-radius: 50%;
+    text-align: center;
+    line-height: 60px; /* Centra el icono dentro del círculo */
+    transition: background 0.3s, transform 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.icon i {
+    color: #ffffff;
+    font-size: 35px; /* Tamaño del icono */
+}
+
+.icon:hover {
+    background: #ffffff30; /* Fondo translúcido al pasar el cursor */
+    transform: scale(1.1);
+}
+
+/* Tooltip */
+.tooltip {
+    position: absolute;
+    top: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.3s, opacity 0.3s;
+}
+
+.icon:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Colores de los iconos */
+.icon.facebook {
+    background: #3b5998; /* Facebook Azul */
+}
+
+.icon.instagram {
+    background: #e4405f; /* Instagram Rosa */
+}
+
+.icon.twitter {
+    background: #1da1f2; /* Twitter Azul Claro */
+}
+
+.icon.linkedin {
+    background: #0077b5; /* LinkedIn Azul */
+}
+
+/* Footer Bottom Section */
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    border-top: 1px solid #444;
+    padding-top: 10px;
+    font-size: 14px;
+}
+
+.footer-bottom p {
+    margin: 5px 0;
+}
+
+.footer-bottom p a {
+    color: #05237d; /* Azul claro */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-bottom p a:hover {
+    text-decoration: underline;
+    color: #ffffff;
+}
+
+/* Media Query para pantallas pequeñas (máx-width: 600px) */
+@media (max-width: 600px) {
+    .wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .icon {
+        margin-bottom: 20px;
+    }
+}
+
+/* Media Query para pantallas pequeñas (máx-width: 600px) */
+@media (max-width: 600px) {
+    header
+    {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 20px 0;
+        
+    }
+
+    section
+    {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+
+    }
+    nav
+    {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 20px 0;
+
+    }
+    nav a
+    {
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    .carousel
+    {
+        margin-bottom: 20px;
+        width: 100%;
+        height: 250px;
+        overflow: hidden;
+        border-radius: 10px;
+    }
+    .how-it-works
+    {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 20px 0;
+        margin-bottom: 20px;
+    }
+    .contact-section
+    {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 20px 0;
+        margin-bottom: 20px;
+    }
+  }
+  /* Media Query para pantallas medianas (máx-width: 900px) */
+  @media (max-width: 900px) {
+    header
+    {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 20px 0;
+    }
+    section
+    {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    nav
+    {
+        display: none; /* Oculta el menú por defecto */
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 20px 0;
+    }
+    nav.active {
+        display: flex; /* Muestra el menú al activar el ícono */
+    }
+    .menu-icon {
+        display: block; /* Muestra el ícono del menú hamburguesa */
+    }
+
+ #nav-menu.hidden {
+        display: none; /* Ocultar menú */
+    }
+    .carousel
+    {
+        margin-bottom: 20px;
+        width: 100%;
+        height: 250px;
+        overflow: hidden;
+        border-radius: 10px;
+    }
+    .carousel img
+    {
+        width: 100%;
+    }
+    }
+   

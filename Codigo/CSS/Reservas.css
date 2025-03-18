@@ -1,0 +1,185 @@
+:root {
+    --color1: #1a73e8; /* Azul */
+    --color2: #185abc; /* Azul oscuro */
+    --color3: #333333; /* Gris oscuro */
+    --fondo: #ffffff; /* Blanco */
+    --border: #d1d5db; /* Gris medio */
+    --eliminar: #e74c3c; /* Rojo */
+    --eliminar-texto: #ffffff; /* Blanco */
+}
+
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--fondo);
+    color: var(--color3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    background-color: var(--fondo);
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    color: var(--color3);
+    animation: fadeIn 1s ease-in-out;
+}
+
+h1.title {
+    text-align: center;
+    color: var(--color2);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Estilos para la selección de días y horas */
+#seleccionFechaHora {
+    background-color: var(--fondo);
+    padding: 20px;
+    border-radius: 10px;
+    color: var(--color3);
+}
+
+.selection-fullscreen {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.selection-fullscreen .column {
+    flex: 1;
+    min-width: 150px;
+    background-color: var(--fondo);
+    padding: 10px;
+    border-radius: 5px;
+    color: var(--color3);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.selection-fullscreen h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.selection-fullscreen .scrollable {
+    max-height: 300px;
+    overflow-y: auto;
+    list-style: none;
+    padding: 0;
+}
+
+.selection-fullscreen .list-item {
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: var(--color1);
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    color: var(--eliminar-texto);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.selection-fullscreen .list-item:hover {
+    background-color: var(--color2);
+    transform: scale(1.05);
+}
+
+/* Datos personales */
+#datosYCotizacion {
+    background-color: var(--fondo);
+    padding: 20px;
+    border-radius: 10px;
+    color: var(--color3);
+    margin-top: 20px;
+}
+
+#datosYCotizacion .summary {
+    margin-bottom: 20px;
+}
+
+#datosYCotizacion .summary p {
+    margin: 10px 0;
+}
+
+#formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: var(--color3);
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 10px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    background-color: var(--fondo);
+    color: var(--color3);
+}
+
+textarea {
+    resize: none;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button.btn {
+    background-color: var(--color1);
+    color: var(--eliminar-texto);
+}
+
+button.btn:hover {
+    background-color: var(--color2);
+    transform: scale(1.05);
+}
+
+button.cancelar {
+    background-color: var(--eliminar);
+    color: var(--eliminar-texto);
+}
+
+button.cancelar:hover {
+    background-color: darkred;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
