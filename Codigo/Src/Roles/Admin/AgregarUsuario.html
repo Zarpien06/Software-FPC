@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Full Paint Cars es una empresa de detallado automotriz que ofrece servicios de alta calidad para mantener y mejorar la apariencia de tu vehículo.">
+        <meta name="keywords" content="detallado automotriz, pulido de autos, limpieza de autos, Full Paint Cars">
+        <meta name="author" content="Full Paint Cars">
+        <meta property="og:title" content="Full Paint Cars - Detallado Automotriz">
+        <meta property="og:description" content="Servicios de detallado automotriz para cuidar la estética de tu coche.">
+        <meta property="og:image" content="https://th.bing.com/th/id/OIP.FkSJKO8L_VLk5rrkmEMn-AHaHa?rs=1&pid=ImgDetMain">
+        <meta property="og:url" content="https://FullPaintCars.com">
+        <meta name="robots" content="index, follow">
+    
+        <!-- Favicon -->
+        <link rel="icon" href="https://th.bing.com/th/id/OIP.FkSJKO8L_VLk5rrkmEMn-AHaHa?rs=1&pid=ImgDetMain" type="image/x-icon">
+    
+        <!-- Fuente personalizada -->
+        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+        
+        <!-- FontAwesome para los iconos -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/AgregarUsuario.css">
+    <title>Actualizar Usuario</title>
+</head>
+
+<body>
+        <main class="contenido-principal">
+            <h1 class="titulo">Agregar Usuario</h1>
+            <form id="actualizar-usuario-form" action="actualizar-usuario.php" method="POST">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label class="nose" for="apellido">Apellido:</label>
+                <input type="text" id="apellido" name="apellido" required>
+
+                <label class="nose" for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label class="nose" for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" required>
+
+                <label class="nose" for="direccion">Dirección:</label>
+                <input type="text" id="direccion" name="direccion" required>
+
+                <label class="nose" for="marca">Rol:</label>
+                <select id="rol" name="rol" required>
+                    <option value="nada"></option>
+                    <option value="cliente">Cliente</option>
+                    <option value="empleado">Empleado</option>
+                </select>
+                <label class="nose" for="tipo-documento">Tipo de documento:</label>
+                <select id="tipo-documento" name="tipo-documento" required>
+                    <option value="nada"></option>
+                    <option value="CC">CC</option>
+                    <option value="TI">TI</option>
+                    <option value="CE">CE</option>
+                    <option value="PA">PA</option>
+                    <option value="RC">RC</option>
+                    <option value="NIT">NIT</option>
+                    <option value="Pasaporte">Pasaporte</option>
+                </select>
+
+                <label class="nose" for="password">Numero de documento:</label>
+                <input type="number" id="documento" name="documento" required>
+
+                <label class="nose" for="password">Genero:</label>
+                <select id="genero" name="genero" required>
+                    <option value="nada"></option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                </select>
+
+                <label class="nose" id="formulario-ag-auto" src="" alt="automovil">Automovil</label>
+              <!-- Botón para abrir/cerrar el formulario -->
+<button type="button" id="toggle-form-btn" class="btn-agregar-auto">Agregar Automóvil</button>
+
+<!-- Formulario oculto -->
+<div id="agregar-auto-form" class="modal-form">
+  <h5>Agregar Automóvil</h5>
+  <form>
+    <label for="patente-auto">Codigo:</label>
+    <input type="number" id="codigo" name="codigo" required>
+    <label for="marca-auto">Marca:</label>
+    <input type="text" id="marca-auto" name="marca-auto" required>
+    
+    <label for="modelo-auto">Modelo:</label>
+    <input type="text" id="modelo-auto" name="modelo-auto" required>
+    
+    <label for="matricula">Matricula:</label>
+    <input type="text" id="matricula" name="matricula" required>
+    
+    <label for="anio-auto">Año:</label>
+    <input type="number" id="anio-auto" name="anio-auto" required>
+    
+    <label for="nacionalidad">Nacionalidad:</label>
+    <input type="text" id="nacionalidad" name="nacionalidad" required>
+
+    <label for="bastidores">Numero de Bastidores:</label>
+    <input type="text" id="bastidores" name="bastidores" required>
+
+    <label for="color-auto">Color:</label>
+    <input type="text" id="color-auto" name="color-auto" required>
+    
+    <label for="potencia">Potencia:</label>
+    <input type="number" id="potencia" name="potencia" required>
+
+    <label for="matricula">Matricula:</label>
+    <input type="text" id="matricula" name="matricula" required>
+    <!-- Campo para subir imágenes -->
+    <label for="imagen-auto">Subir Imagen:</label>
+    <input type="file" id="imagen-auto" name="imagen-auto" accept="image/*">
+    <img id="imagen-preview" src="" alt="Vista previa de la imagen" style="display: none;">
+
+    <!-- Botón para cerrar el formulario -->
+    <button type="button" id="close-form-btn" class="btn-cerrar-auto">Cerrar</button>
+  </form>
+</div>
+
+
+
+                
+
+                <div class="botones">
+                    <button type="submit" class="btn-actualizar">Agregar</button>
+                    <a href="index.html" class="btn-volver">Volver al inicio</a>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/agregar usuario.js"></script>
+</body>
+
+</html>
+
