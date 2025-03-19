@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Full Paint Cars es una empresa de detallado automotriz que ofrece servicios de alta calidad para mantener y mejorar la apariencia de tu vehículo.">
+        <meta name="keywords" content="detallado automotriz, pulido de autos, limpieza de autos, Full Paint Cars">
+        <meta name="author" content="Full Paint Cars">
+        <meta property="og:title" content="Full Paint Cars - Detallado Automotriz">
+        <meta property="og:description" content="Servicios de detallado automotriz para cuidar la estética de tu coche.">
+        <meta property="og:image" content="https://th.bing.com/th/id/OIP.FkSJKO8L_VLk5rrkmEMn-AHaHa?rs=1&pid=ImgDetMain">
+        <meta property="og:url" content="https://FullPaintCars.com">
+        <meta name="robots" content="index, follow">
+    
+        <!-- Favicon -->
+        <link rel="icon" href="https://th.bing.com/th/id/OIP.FkSJKO8L_VLk5rrkmEMn-AHaHa?rs=1&pid=ImgDetMain" type="image/x-icon">
+    
+        <!-- Fuente personalizada -->
+        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+        
+        <!-- FontAwesome para los iconos -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/empleado.css">
+    <title>Usuario Empleado</title>
+</head>
+<body>
+    <!-- Login Section -->
+<header>
+    <h1>Full Paint Cars</h1>
+</header>
+    <div class="contenedor-dashboard">
+        <button id="menu-toggle" class="menu-icon">
+            &#9776; <!-- Ícono de tres líneas -->
+        </button>
+        <aside class="barra-lateral">
+            <div class="logo">
+                <img src="../img/pixelcut-export.png" alt="logo" width="120" height="100">
+                <h2>Empleado</h2>
+                <br>
+            </div>
+            <nav class="menu">
+                <a href="usuario.html" class="opcion">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M234-276q51-39 114-61.5T480-360q69 0 132 22.5T726-276q35-41 54.5-93T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 59 19.5 111t54.5 93Zm246-164q-59 0-99.5-40.5T340-580q0-59 40.5-99.5T480-720q59 0 99.5 40.5T620-580q0 59-40.5 99.5T480-440Zm0 360q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q53 0 100-15.5t86-44.5q-39-29-86-44.5T480-280q-53 0-100 15.5T294-220q39 29 86 44.5T480-160Zm0-360q26 0 43-17t17-43q0-26-17-43t-43-17q-26 0-43 17t-17 43q0 26 17 43t43 17Zm0-60Zm0 360Z"/></svg>
+                    Datos
+                </a>
+                <a href="procesos.html" class="opcion">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M620-163 450-333l56-56 114 114 226-226 56 56-282 282Zm220-397h-80v-200h-80v120H280v-120h-80v560h240v80H200q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h167q11-35 43-57.5t70-22.5q40 0 71.5 22.5T594-840h166q33 0 56.5 23.5T840-760v200ZM480-760q17 0 28.5-11.5T520-800q0-17-11.5-28.5T480-840q-17 0-28.5 11.5T440-800q0 17 11.5 28.5T480-760Z"/></svg>
+                    Procesos
+
+                     <!-- Enlace para mostrar el submenú -->  
+                     <a href="#" class="opcion submenu-toggle" id="adminUsuarioToggle">  
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">  
+                            <path d="M0-240v-63q0-43 44-70t116-27q13 0 25 .5t23 2.5q-14 21-21 44t-7 48v65H0Zm240 0v-65q0-32 17.5-58.5T307-410q32-20 76.5-30t96.5-10q53 0 97.5 10t76.5 30q32 20 49 46.5t17 58.5v65H240Zm540 0v-65q0-26-6.5-49T754-397q11-2 22.5-2.5t23.5-.5q72 0 116 26.5t44 70.5v63H780Zm-455-80h311q-10-20-55.5-35T480-370q-55 0-100.5 15T325-320ZM160-440q-33 0-56.5-23.5T80-520q0-34 23.5-57t56.5-23q34 0 57 23t23 57q0 33-23 56.5T160-440Zm640 0q-33 0-56.5-23.5T720-520q0-34 23.5-57t56.5-23q34 0 57 23t23 57q0 33-23 56.5T800-440Zm-320-40q-50 0-85-35t-35-85q0-51 35-85.5t85-34.5q51 0 85.5 34.5T600-600q0 50-34.5 85T480-480Zm0-80q17 0 28.5-11.5T520-600q0-17-11.5-28.5T480-640q-17 0-28.5 11.5T440-600q0 17 11.5 28.5T480-560Zm1 240Zm-1-280Z"/>  
+                        </svg>  
+                        Administrar Usuario  
+                    </a>  
+            
+                    <!-- Submenú oculto por defecto -->  
+                    <div class="submenu" id="userSubmenu">  
+                        <ul>
+                      <li><a href="adminUsuarios.html" class="opcion">Clientes</a></li>  
+                    </ul>
+                    </div>
+            
+                           
+                            
+                        </nav>
+                    </aside>
+        </aside>
+
+        <main class="contenido-principal">
+           
+            <nav>
+                <a href="adminPrincipal.html">Inicio</a>
+                <a href="conversacion.html">Conversaciones</a>
+                <a href="#" id="logout-link">Salir</a>
+              
+            </nav>
+
+            <img src="img/header.png" alt="brum" height="230">
+            <section id="cotizaciones" class="quote">
+               <a href="procesos.html"><button class="quote-button">Cotizar ahora</button>
+           </a>
+           </section>
+             <!-- Cómo funciona -->
+   <section id="como-funciona" class="how-it-works">
+       <h3>¿Cómo funciona Full Paint Cars?</h3>
+       <div class="steps">
+           <div class="step">
+               <img src="../img/whatsProcesos/registra.jpg" alt="Paso 1">
+               <p>Registra tu vehículo</p>
+           </div>
+           <div class="step">
+               <img src="../img/servicio.jpg" alt="Paso 2">
+               <p>Elige un servicio</p>
+           </div>
+           <div class="step">
+               <img src="../img/whatsProcesos/timereal.jpg" alt="Paso 3">
+               <p>Observa el progreso en tiempo real</p>
+           </div>
+           
+       </div>
+     <center> <button class="action-btn" data-target="add-image-title-form">Añadir</button>
+       <button class="action-btn" data-target="modify-image-title-form">Modificar</button>
+      
+   </center> 
+       <!-- Formularios -->
+       <div id="add-image-title-form" class="form-modal">
+           <h3>Añadir Imagen y Título</h3>
+           <form>
+               <label>Subir Imagen: 
+                   <input type="file" name="image" accept="image/*" onchange="previewImage(event)">
+               </label><br>
+               <label>Título: <input type="text" name="title"></label><br>
+               <img id="image-preview" style="display:none; margin-top: 10px; max-width: 100%; height: auto;" alt="Vista previa">
+               <br>
+               <button type="submit">Guardar</button>
+               <button type="button" class="close-btn">Cerrar</button>
+           </form>
+       </div>
+       <div id="add-image-title-form-overlay" class="overlay"></div>
+
+       <div id="modify-image-title-form" class="form-modal">
+           <h3>Modificar Imagen y Título</h3>
+           <form>
+               <label>ID de la Imagen: <input type="text" name="id"></label><br>
+               <label>Nueva Imagen: <input type="file" name="image" accept="image/*"></label><br>
+               <label>Nuevo Título: <input type="text" name="title"></label><br>
+               <button type="submit">Modificar</button>
+               <button type="button" class="close-btn">Cerrar</button>
+           </form>
+       </div>
+   </section>
+       
+           <!-- Marcas atendidas -->
+           <section id="marcas">
+               <h2>Marcas atendidas</h2>
+               <div class="brands">
+                   <div class="brand">
+                       <img src="../img/Marcas/toyota.png" alt="Toyota" height="100px" width="90px">
+                       <p>Toyota</p>
+                   </div>
+                   <div class="brand">
+                       <img src="../img/Marcas/Chevrolet.png" alt="Chevrolet" height="100px" width="90px">
+                       <p>Chevrolet</p>
+                   </div>
+                   <div class="brand">
+                       <img src="../img/Marcas/ford-removebg-preview.png" alt="Ford" height="100px" width="90px">
+                       <p>Ford</p>
+                   </div>
+                   <div class="brand">
+                       <img src="../img/Marcas/nissan-removebg-preview.png" alt="Nissan" height="100px" width="90px">
+                       <p>Nissan</p>
+                   </div>
+                   <div class="brand">
+                       <img src="../img/Marcas/Suzuki.png" alt="Suzuki" height="100px" width="90px">
+                       <p>Suzuki</p>
+                   </div>
+                   <div class="brand">
+                       <img src="../img/Marcas/mitsubichi-removebg-preview.png" alt="Mitsubishi" height="100px" width="90px">
+                       <p>Mitsubishi</p>
+                   </div>
+                   <div class="brand">
+                       <img src="../img/Marcas/Mazda.png" alt="Mazda" height="100px" width="90px">
+                       <p>Mazda</p>
+                   </div>
+                   <div class="brand">
+                       <img src="../img/Marcas/honda-removebg-preview.png" alt="Honda" height="100px" width="90px">
+                       <p>Honda</p>
+                   </div>
+                   <div class="brand">
+                       <img src="../img/Marcas/BMW-removebg-preview.png" alt="BMW" height="100px" width="90px">
+                       <p>BMW</p>
+                   </div>
+               </div>
+
+               <!-- Sección 1: Imagen y Título -->
+   <section id="image-title-management">
+<br>
+       <button class="action-btn" data-target="add-image-title-form">Añadir</button>
+       <button class="action-btn" data-target="modify-image-title-form">Modificar</button>
+      
+
+       <!-- Formularios -->
+       <div id="add-image-title-form" class="form-modal">
+           <h3>Añadir Imagen y Título</h3>
+           <form>
+               <label>Subir Imagen: 
+                   <input type="file" name="image" accept="image/*" onchange="previewImage(event)">
+               </label><br>
+               <label>Título: <input type="text" name="title"></label><br>
+               <img id="image-preview" style="display:none; margin-top: 10px; max-width: 100%; height: auto;" alt="Vista previa">
+               <br>
+               <button type="submit">Guardar</button>
+               <button type="button" class="close-btn">Cerrar</button>
+           </form>
+       </div>
+       <div id="add-image-title-form-overlay" class="overlay"></div>
+
+       <div id="modify-image-title-form" class="form-modal">
+           <h3>Modificar Imagen y Título</h3>
+           <form>
+               <label>ID de la Imagen: <input type="text" name="id"></label><br>
+               <label>Nueva Imagen: <input type="file" name="image" accept="image/*"></label><br>
+               <label>Nuevo Título: <input type="text" name="title"></label><br>
+               <button type="submit">Modificar</button>
+               <button type="button" class="close-btn">Cerrar</button>
+           </form>
+       </div>
+       <div id="modify-image-title-form-overlay" class="overlay"></div>
+
+       <div id="delete-image-title-form" class="form-modal">
+           <h3>Eliminar Imagen y Título</h3>
+           <form>
+               <label>ID del Elemento: <input type="text" name="id"></label><br>
+               <button type="submit">Eliminar</button>
+               <button type="button" class="close-btn">Cerrar</button>
+           </form>
+       </div>
+       <div id="delete-image-title-form-overlay" class="overlay"></div>
+   </section>
+
+
+
+           </section>
+       
+           <!-- Evidencias -->
+           <section id="galeria">
+               <h2>Galería de servicios</h2>
+               <div class="gallery">
+                   <img src="../img/whatsProcesos/proceso1.jpg" alt="Carro antes">
+                   <img src="../img/whatsProcesos/proceso2.jpg" alt="Carro después">
+                   <img src="../img/whatsProcesos/proceso3.jpg" alt="Carro en proceso">
+               </div>
+                <!-- Sección 1: Imagen y Título -->
+   <section id="image-title-management">
+    <br>
+       <button class="action-btn" data-target="add-image-title-form">Añadir</button>
+       <button class="action-btn" data-target="modify-image-title-form">Modificar</button>
+      
+
+       <!-- Formularios -->
+       <div id="add-image-title-form" class="form-modal">
+           <h3>Añadir Imagen y Título</h3>
+           <form>
+               <label>Subir Imagen: 
+                   <input type="file" name="image" accept="image/*" onchange="previewImage(event)">
+               </label><br>
+               <label>Título: <input type="text" name="title"></label><br>
+               <img id="image-preview" style="display:none; margin-top: 10px; max-width: 100%; height: auto;" alt="Vista previa">
+               <br>
+               <button type="submit">Guardar</button>
+               <button type="button" class="close-btn">Cerrar</button>
+           </form>
+       </div>
+       <div id="add-image-title-form-overlay" class="overlay"></div>
+
+       <div id="modify-image-title-form" class="form-modal">
+           <h3>Modificar Imagen y Título</h3>
+           <form>
+               <label>ID de la Imagen: <input type="text" name="id"></label><br>
+               <label>Nueva Imagen: <input type="file" name="image" accept="image/*"></label><br>
+               <label>Nuevo Título: <input type="text" name="title"></label><br>
+               <button type="submit">Modificar</button>
+               <button type="button" class="close-btn">Cerrar</button>
+           </form>
+       </div>
+       <div id="modify-image-title-form-overlay" class="overlay"></div>
+
+       <div id="delete-image-title-form" class="form-modal">
+           <h3>Eliminar Imagen y Título</h3>
+           <form>
+               <label>ID del Elemento: <input type="text" name="id"></label><br>
+               <button type="submit">Eliminar</button>
+               <button type="button" class="close-btn">Cerrar</button>
+           </form>
+       </div>
+       <div id="delete-image-title-form-overlay" class="overlay"></div>
+   </section>
+           </section>
+       
+           <!-- Preguntas frecuentes -->
+           <section id="preguntas-frecuentes">
+               <h2>Preguntas frecuentes</h2>
+               <div class="faq">
+                   <p><strong>1. ¿Cuánto tiempo toma el servicio?</strong> Depende del servicio, pero en promedio, entre 1 y 3 días.</p>
+                   <p><strong>2. ¿Cuentan con garantía?</strong> Sí, todos nuestros servicios tienen garantía.</p>
+                   <p><strong>3. ¿Ofrecen servicio a domicilio?</strong> Sí, contamos con atención a domicilio en Bogotá.</p>
+               </div>
+           </section>
+          <center>  <!-- Sección 3: Gestión de Texto -->
+           <section id="text-management">
+        
+               <button class="action-btn" data-target="add-text-form">Añadir</button>
+               <button class="action-btn" data-target="modify-text-form">Modificar</button>
+               <button class="action-btn" data-target="delete-text-form">Eliminar</button>
+       
+               <!-- Formularios -->
+               <div id="add-text-form" class="form-modal">
+                   <h3>Añadir Texto</h3>
+                   <form>
+                       <label>Texto a Añadir: <textarea name="text" rows="3"></textarea></label><br>
+                       <button type="submit">Guardar</button>
+                       <button type="button" class="close-btn">Cerrar</button>
+                   </form>
+               </div>
+               <div id="modify-text-form" class="form-modal">
+                   <h3>Modificar Texto</h3>
+                   <form>
+                       <label>ID del Texto: <input type="text" name="id"></label><br>
+                       <label>Nuevo Texto: <textarea name="new-text" rows="3"></textarea></label><br>
+                       <button type="submit">Modificar</button>
+                       <button type="button" class="close-btn">Cerrar</button>
+                   </form>
+               </div>
+               <div id="delete-text-form" class="form-modal">
+                   <h3>Eliminar Texto</h3>
+                   <form>
+                       <label>ID del Texto a Eliminar: <input type="text" name="id"></label><br>
+                       <button type="submit">Eliminar</button>
+                       <button type="button" class="close-btn">Cerrar</button>
+                   </form>
+               </div>
+           </section></center>
+       
+            <!-- Contacto y Ubicación -->
+           <footer>
+              <center>  <!-- Sección 4: Información de Contacto -->
+               <section id="contact-management">
+               
+                   <button class="action-btn" data-target="modify-contact-form">Modificar Contacto</button>
+           
+                   <!-- Formulario -->
+                   <div id="modify-contact-form" class="form-modal">
+                       
+                       <form>
+                           <label>Teléfono: <input type="text" name="phone"></label><br>
+                           <label>Email: <input type="email" name="email"></label><br>
+                           <label>Redes Sociales: <textarea name="socials" rows="3"></textarea></label><br>
+                           <label>Mapa (URL): <input type="text" name="map"></label><br>
+                           <button type="submit">Guardar</button>
+                           <button type="button" class="close-btn">Cerrar</button>
+                       </form>
+                   </div>
+               </section></center>
+               <section id="contacto" class="contact-section">
+                   
+                   <h2>Contacto</h2>
+                   <div class="contact-container">
+                       <div class="address">
+                           <h3>Sede única</h3>
+                           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d873.8498272142588!2d-74.0664273876182!3d4.669438454140227!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9af9d9d3d4b5%3A0x14fb36e73760a458!2sCra.%2027a%20%2378-39%2C%20Bogot%C3%A1!5e1!3m2!1ses-419!2sco!4v1732138152928!5m2!1ses-419!2sco" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                       </div>
+                       <div class="contact-info">
+                           <h3>Información de contacto</h3>
+                           <p><strong>Teléfono:</strong> +57 123 456 7890</p>
+                           <p><strong>Email:</strong> <a href="mailto:contacto@fpc.com.co">contacto@fpc.com.co</a></p>
+                       </div>
+                       <div class="social-media">
+                           <h3>Síguenos</h3>
+                           <ul class="wrapper">
+                               <li class="icon facebook">
+                                   <a href="https://facebook.com" target="_blank">
+                                       <span><i class="fab fa-facebook-f"></i></span>
+                                       <div class="tooltip">Facebook</div>
+                                   </a>
+                               </li>
+                               <li class="icon youtube">
+                                   <a href="https://instagram.com" target="_blank">
+                                       <span><i class="fab fa-instagram"></i></span>
+                                       <div class="tooltip">YouTube</div>
+                                   </a>
+                               </li>
+                           </ul>
+                       </div>
+                   </div>
+               </section>
+           </footer>
+
+          
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="js/empleado.js" defer></script>  
+</body>
+</html>

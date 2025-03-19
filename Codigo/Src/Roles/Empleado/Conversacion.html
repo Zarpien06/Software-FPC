@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Full Paint Cars es una empresa de detallado automotriz que ofrece servicios de alta calidad para mantener y mejorar la apariencia de tu vehículo.">
+        <meta name="keywords" content="detallado automotriz, pulido de autos, limpieza de autos, Full Paint Cars">
+        <meta name="author" content="Full Paint Cars">
+        <meta property="og:title" content="Full Paint Cars - Detallado Automotriz">
+        <meta property="og:description" content="Servicios de detallado automotriz para cuidar la estética de tu coche.">
+        <meta property="og:image" content="https://th.bing.com/th/id/OIP.FkSJKO8L_VLk5rrkmEMn-AHaHa?rs=1&pid=ImgDetMain">
+        <meta property="og:url" content="https://FullPaintCars.com">
+        <meta name="robots" content="index, follow">
+    
+        <!-- Favicon -->
+        <link rel="icon" href="https://th.bing.com/th/id/OIP.FkSJKO8L_VLk5rrkmEMn-AHaHa?rs=1&pid=ImgDetMain" type="image/x-icon">
+    
+        <!-- Fuente personalizada -->
+        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+        
+        <!-- FontAwesome para los iconos -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/conversacion.css">
+    <title>conversacion</title>
+</head>
+<body>
+    <div class="contenedor-dashboard">
+        <button id="menu-toggle" class="menu-icon">
+            &#9776; <!-- Ícono de tres líneas -->
+        </button>
+        <aside class="barra-lateral">
+          <div class="logo">
+              <img src="img/image.png" alt="logo" width="120" height="100">
+              <h2>Cliente</h2>
+              <br>
+          </div>
+          <nav class="menu">
+              <a href="usuario.html" class="opcion">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M234-276q51-39 114-61.5T480-360q69 0 132 22.5T726-276q35-41 54.5-93T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 59 19.5 111t54.5 93Zm246-164q-59 0-99.5-40.5T340-580q0-59 40.5-99.5T480-720q59 0 99.5 40.5T620-580q0 59-40.5 99.5T480-440Zm0 360q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q53 0 100-15.5t86-44.5q-39-29-86-44.5T480-280q-53 0-100 15.5T294-220q39 29 86 44.5T480-160Zm0-360q26 0 43-17t17-43q0-26-17-43t-43-17q-26 0-43 17t-17 43q0 26 17 43t43 17Zm0-60Zm0 360Z"/></svg>
+                  Cliente
+              </a>
+              <a href="procesos.html" class="opcion">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M620-163 450-333l56-56 114 114 226-226 56 56-282 282Zm220-397h-80v-200h-80v120H280v-120h-80v560h240v80H200q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h167q11-35 43-57.5t70-22.5q40 0 71.5 22.5T594-840h166q33 0 56.5 23.5T840-760v200ZM480-760q17 0 28.5-11.5T520-800q0-17-11.5-28.5T480-840q-17 0-28.5 11.5T440-800q0 17 11.5 28.5T480-760Z"/></svg>
+                  Procesos
+
+                   <!-- Enlace para mostrar el submenú -->  
+                   <a href="empleado/adminUsuarios.html" class="opcion submenu-toggle" id="adminUsuarioToggle">  
+                      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">  
+                          <path d="M0-240v-63q0-43 44-70t116-27q13 0 25 .5t23 2.5q-14 21-21 44t-7 48v65H0Zm240 0v-65q0-32 17.5-58.5T307-410q32-20 76.5-30t96.5-10q53 0 97.5 10t76.5 30q32 20 49 46.5t17 58.5v65H240Zm540 0v-65q0-26-6.5-49T754-397q11-2 22.5-2.5t23.5-.5q72 0 116 26.5t44 70.5v63H780Zm-455-80h311q-10-20-55.5-35T480-370q-55 0-100.5 15T325-320ZM160-440q-33 0-56.5-23.5T80-520q0-34 23.5-57t56.5-23q34 0 57 23t23 57q0 33-23 56.5T160-440Zm640 0q-33 0-56.5-23.5T720-520q0-34 23.5-57t56.5-23q34 0 57 23t23 57q0 33-23 56.5T800-440Zm-320-40q-50 0-85-35t-35-85q0-51 35-85.5t85-34.5q51 0 85.5 34.5T600-600q0 50-34.5 85T480-480Zm0-80q17 0 28.5-11.5T520-600q0-17-11.5-28.5T480-640q-17 0-28.5 11.5T440-600q0 17 11.5 28.5T480-560Zm1 240Zm-1-280Z"/>  
+                      </svg>  
+                      Administrar Usuario  
+                  </a>  
+      </aside>
+
+        <main class="contenido-principal">
+           <center> <h1 class="titulo">Datos Usuario</h1> </center>
+           
+             <nav>
+                 <a href="adminPrincipal.html">Inicio</a>
+                 <a href="#servicios">Editar inicio</a>
+                 <a href="#como-funciona">Conversaciones</a>
+                 <a href="#preguntas-frecuentes">Salir</a>
+                 <a href="#contacto">Contacto</a>
+             </nav>
+
+           
+
+             <!-- conversacion entre el cliente y empleado -->
+             <center> <h2>Conversaciones clientes y empleados</h2></center>
+             <div class="chat-container">
+              <div class="chat-area">
+                <!-- Enlaces para seleccionar un chat -->
+                <div class="chat-menu-item" onclick="toggleChat(1)">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#333"><path d="M234-276q51-39 114-61.5T480-360q69 0 132 22.5T726-276q35-41 54.5-93T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 59 19.5 111t54.5 93Zm246-164q-59 0-99.5-40.5T340-580q0-59 40.5-99.5T480-720q59 0 99.5 40.5T620-580q0 59-40.5 99.5T480-440Zm0 360q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q53 0 100-15.5t86-44.5q-39-29-86-44.5T480-280q-53 0-100 15.5T294-220q39 29 86 44.5T480-160Zm0-360q26 0 43-17t17-43q0-26-17-43t-43-17q-26 0-43 17t-17 43q0 26 17 43t43 17Zm0-60Zm0 360Z"/></svg>
+                    <path d="M234-276q51-39..."></path>
+                  </svg>
+                  <span>Luis Felipe</span>
+                </div>
+                <div class="chat-menu-item" onclick="toggleChat(2)">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#333"><path d="M234-276q51-39 114-61.5T480-360q69 0 132 22.5T726-276q35-41 54.5-93T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 59 19.5 111t54.5 93Zm246-164q-59 0-99.5-40.5T340-580q0-59 40.5-99.5T480-720q59 0 99.5 40.5T620-580q0 59-40.5 99.5T480-440Zm0 360q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q53 0 100-15.5t86-44.5q-39-29-86-44.5T480-280q-53 0-100 15.5T294-220q39 29 86 44.5T480-160Zm0-360q26 0 43-17t17-43q0-26-17-43t-43-17q-26 0-43 17t-17 43q0 26 17 43t43 17Zm0-60Zm0 360Z"/></svg>
+                    <path d="M234-276q51-39..."></path>
+                  </svg>
+                  <span>Gabriel Fernandez</span>
+                </div>
+                <div class="chat-menu-item" onclick="toggleChat(3)">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#333"><path d="M234-276q51-39 114-61.5T480-360q69 0 132 22.5T726-276q35-41 54.5-93T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 59 19.5 111t54.5 93Zm246-164q-59 0-99.5-40.5T340-580q0-59 40.5-99.5T480-720q59 0 99.5 40.5T620-580q0 59-40.5 99.5T480-440Zm0 360q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q53 0 100-15.5t86-44.5q-39-29-86-44.5T480-280q-53 0-100 15.5T294-220q39 29 86 44.5T480-160Zm0-360q26 0 43-17t17-43q0-26-17-43t-43-17q-26 0-43 17t-17 43q0 26 17 43t43 17Zm0-60Zm0 360Z"/></svg>
+                    <path d="M234-276q51-39..."></path>
+                  </svg>
+                  <span>Richard Rios</span>
+                </div>
+                
+              </div>
+              
+            
+             <!-- Contenedores de los chats -->
+<div id="chat-message-1" class="chat-message" style="display: none;">
+  <div class="chat-header">
+    <span>Chat 1</span>
+    <button onclick="closeChat(1)">Cerrar</button>
+  </div>
+  <div class="chat-content">
+      <!-- Mensajes del chat -->
+      <div class="message sender">
+        Hola buenas tardes, quisiera saber como va mi automovil
+      </div>
+      <div class="message receiver">
+        Hola, claro con mucho gusto le muestro el proceso que llevamos 
+      </div>
+      <div class="message receiver">
+        <img src="img/whatsProcesos/WhatsApp Image 2024-11-20 at 7.11.41 PM.jpeg" alt="conversacion" width="200" height="200" >
+      </div>
+      <div class="message sender">
+        Si me gusta pero le podrian cambiar el color a uno mas palido, gracias
+      </div>
+    </div>
+  </div>
+  
+  <div id="chat-message-2" class="chat-message" style="display: none;">
+    <div class="chat-header">
+      <span>Chat 2</span>
+      <button onclick="closeChat(2)">Cerrar</button>
+    </div>
+    <div class="chat-content">
+      <div class="message sender">
+        Hola buenas tardes quisiera saber cuanto me valdria polarizarlo despues de pintarlo
+      </div>
+      <div class="message receiver">
+        Claro el polarizado tiene un valor de 80.000 pero como usted es un cliente recurente se lo dejamos en 70.000
+      </div>
+      <div class="message sender">
+        Si, me gustaria entonces que lo polarizaran despues de pintarlo.
+      </div>
+      <div class="message receiver">
+        con mucho gusto 
+            </div>
+    </div>
+  </div>
+  
+  <div id="chat-message-3" class="chat-message" style="display: none;">
+    <div class="chat-header">
+      <span>Chat 3</span>
+      <button onclick="closeChat(3)">Cerrar</button>
+    </div>
+    <div class="chat-content">
+      <div class="message sender">
+        Oye, ¿viste el partido de ayer?
+      </div>
+      <div class="message receiver">
+        ¡Sí! Estuvo increíble, ¿verdad?
+      </div>
+      <div class="message sender">
+        Totalmente, el último gol fue espectacular.
+      </div>
+    </div>
+  </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="js/conversacion.js" defer></script>  
+</body>
+</html>

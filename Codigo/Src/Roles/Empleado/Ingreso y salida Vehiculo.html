@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Entrada y Salida de Vehículos</title>
+    <link rel="icon" href="nuevas img/image.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/ingresosalida.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Gestión de Entrada y Salida de Vehículos</h1>
+        </header>
+
+        <main>
+            <section class="vehicle-info">
+                <h2>Información del Vehículo</h2>
+                <table id="vehicle-table">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Nombre del Dueño</th>
+                            <th>Identificación</th>
+                            <th>Hora de Ingreso</th>
+                            <th>Revisión General</th>
+                            <th>Hora de Salida</th>
+                            <th>Firma</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ABC-123</td>
+                            <td>Juan Pérez</td>
+                            <td>3456789</td>
+                            <td>08:00 AM</td>
+                            <td>Completada</td>
+                            <td>10:00 AM</td>
+                            <td>Juan Pérez</td>
+                        </tr>
+                        <tr>
+                            <td>ABC-123</td>
+                            <td>Juan Pérez</td>
+                            <td>3456789</td>
+                            <td>09:00 AM</td>
+                            <td>En Proceso</td>
+                            <td>11:00 AM</td>
+                            <td>Juan Pérez</td>
+                        </tr>
+                        <tr>
+                            <td>ABC-123</td>
+                            <td>Juan Pérez</td>
+                            <td>3456789</td>
+                            <td>10:30 AM</td>
+                            <td>Pendiente</td>
+                            <td>12:30 PM</td>
+                            <td>Juan Pérez</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="responsible-info">
+                <h2>Responsable del Vehículo</h2>
+                <form id="responsible-form">
+                    <label for="responsible-name">Nombre del Responsable:</label>
+                    <input type="text" id="responsible-name" value="Juan Pérez" readonly>
+            
+                    <label for="responsible-signature">Firma:</label>
+                    <input type="text" id="responsible-signature" value="Juan Pérez" readonly>
+                </form>
+            </section>
+            
+
+            <div class="buttons">
+                <a href="historialCliente.html" class="action-button">Aceptar</a>
+                <a href="registrosalida.html" class="action-button exit-button">Registro Salida</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/EntradaSalidaVehiculo.js"></script>
+</body>
+</html>
