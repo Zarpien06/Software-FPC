@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Credenciales</title>
+    <link rel="icon" href="/maquetacion FPC/Src/Roles/Assents/img/Icono/pixelcut-export.png" type="image/x-icon">
+    <link rel="stylesheet" href="CSS/ActualizarCredenciales.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Actualizar Credenciales</h1>
+        <form id="updateForm">
+            <div class="field">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" value="Oscar Mauricio" readonly>
+            </div>
+            <div class="field">
+                <label for="apellidos">Apellidos:</label>
+                <input type="text" id="apellidos" value="Cruz Figueroa" readonly>
+            </div>
+            <div class="field">
+                <label for="telefono">Teléfono:</label>
+                <input type="text" id="telefono" placeholder="Ingrese su teléfono" required>
+            </div>
+            <div class="field">
+                <label for="correo">Correo Electrónico:</label>
+                <input type="email" id="correo" placeholder="Ingrese su correo electrónico" required>
+            </div>
+            <div class="field">
+                <label for="tipoDocumento">Tipo de Documento:</label>
+                <input type="text" id="tipoDocumento" value="Cédula de Ciudadanía" readonly>
+            </div>
+            <div class="field">
+                <label for="numeroDocumento">Número de Documento:</label>
+                <input type="text" id="numeroDocumento" value="123456789" readonly>
+            </div>
+            <button type="submit">Guardar Cambios</button>
+            <a href="Credenciales.html" class="button-link">Cancelar</a>
+        </form>
+    </div>
+    
+
+    <script src="Js/ActualizacionCredenciales.js"></script>
+</body>
+</html>

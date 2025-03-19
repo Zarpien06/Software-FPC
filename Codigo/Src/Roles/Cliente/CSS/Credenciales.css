@@ -1,0 +1,129 @@
+/* Estilos básicos */
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background: url('../IMG/mustan.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Oscurecer la imagen de fondo */
+    z-index: -1;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 600px;
+    width: 100%;
+    background-color: rgba(24, 20, 20, 0.8); /* Fondo blanco con transparencia */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* Título */
+h1 {
+    color: #ffffff; /* Blanco para el título */
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+}
+
+/* Estilo de las credenciales */
+.credentials {
+    margin-top: 20px;
+}
+
+.field {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.field label {
+    font-weight: bold;
+    flex: 1;
+    text-align: left;
+    color: #ffffff; /* Blanco para las etiquetas */
+}
+
+.field span {
+    color: #ffffff; /* Blanco para el texto */
+    flex: 2;
+    text-align: right;
+}
+
+/* Botones */
+.buttons {
+    margin-top: 30px;
+}
+
+.button-link {
+    display: inline-block;
+    padding: 12px 25px;
+    text-decoration: none;
+    background-color: #13226ca9; /* Naranja */
+    color: white;
+    border-radius: 5px;
+    margin: 5px;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.button-link:hover {
+    background-color: #13226ca9; /* Naranja más oscuro */
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Media Queries para hacerlo responsivo */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .field {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .field label,
+    .field span {
+        text-align: left;
+        width: 100%;
+    }
+
+    .button-link {
+        width: 100%;
+        padding: 14px;
+    }
+}
+
+/* Agregar un toque vibrante al fondo */
+@media (max-width: 480px) {
+    .button-link {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+}

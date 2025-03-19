@@ -1,0 +1,60 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f8ff;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+header {
+    text-align: center;
+    border-bottom: 2px solid #007acc;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+header .vehicle-logo {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* Vehicle Details */
+.vehicle-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.detail {
+    flex: 1;
+    min-width: 300px;
+}
+
+.detail p {
+    font-size: 16px;
+    margin: 8px 0;
+}
+
+.vehicle-photo img {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #007acc;
+    border-radius: 8px;
+}
+
+
