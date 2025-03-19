@@ -1,0 +1,680 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo General del Cuerpo */
+body {
+    font-family: 'Poppins', sans-serif; /* Fuente moderna y limpia */
+    font-size: 16px;
+    line-height: 1.6;
+    color: #FFFFFF; /* Blanco puro para el texto */
+    background: linear-gradient(to right, #2E3B4E, #A5A6A7, #D1D3D4, #4E5B6E, #6C7B8C);
+
+}    
+
+/* Estilo del Encabezado */
+header {
+    background-color: #111111; /* Fondo negro */
+    padding: 20px;
+    text-align: center;
+    color: #F4F4F4; /* Gris Claro para el texto */
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Secciones informativas */
+section {
+    background-color: #F4F4F4; /* Gris Claro para el fondo de las secciones */
+    padding: 40px;
+    margin: 20px auto;
+    max-width: 800px;
+    border-radius: 8px;
+    color: #1B3A57; /* Texto en Azul Marino */
+}
+
+/* Botones secundarios */
+button.secondary {
+    background-color: #4682B4; /* Azul Acero */
+    color: #FFFFFF; /* Blanco puro */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin: 10px;
+}
+
+/* Botones principales de acción */
+button.primary {
+    background-color: #007BFF; /* Azul Eléctrico */
+    color: #FFFFFF; /* Blanco puro */
+    border: none;
+    padding: 12px 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+/* Iconos con borde metálico */
+.icon {
+    border: 2px solid #C0C0C0; /* Gris Plateado para bordes */
+    padding: 10px;
+    display: inline-block;
+    border-radius: 50%;
+    margin: 10px;
+}
+
+  /*Cookies*/
+
+  /* Contenedor principal del aviso de cookies */
+.cookie-container {
+    background-color: #1B3A57; /* Azul Marino */
+    color: #FFFFFF; /* Blanco Puro para el texto */
+    padding: 20px;
+    border: 2px solid #C0C0C0; /* Bordes plateados */
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Arial', sans-serif; /* Fuente limpia y legible */
+    max-width: 600px;
+    margin: 20px auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Texto del mensaje */
+  .cookie-container p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  /* Enlace de más información */
+  .cookie-container a {
+    color: #007BFF; /* Azul Eléctrico para destacar */
+    text-decoration: underline;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  .cookie-container a:hover {
+    color: #4682B4; /* Azul Acero al pasar el cursor */
+  }
+  
+  /* Botón de aceptar cookies */
+  .cookie-btn {
+    background-color: #4682B4; /* Azul Acero */
+    color: #FFFFFF; /* Blanco Puro para el texto */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cookie-btn:hover {
+    background-color: #007BFF; /* Azul Eléctrico para resaltar al pasar el cursor */
+  }
+
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #2E3B4E; /* Azul Profundo */
+    color: #FFFFFF; /* Blanco Puro */
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para dar profundidad */
+    border-bottom: 3px solid #4E5B6E; /* Azul Grisáceo */
+}
+
+/* Title Styles */
+header h1 {
+    font-size: 2rem; /* Aumenté el tamaño */
+    font-weight: bold;
+    color: #FFFFFF; /* Blanco Puro */
+    text-transform: uppercase; /* Título en mayúsculas */
+}
+
+/* Button Container */
+.button-container {
+    display: flex;
+    gap: 0; /* Eliminé el espacio entre los botones */
+}
+
+/* Button Styles */
+.login-button {
+    padding: 12px 25px; /* Más espacioso */
+    font-size: 1.2rem; /* Mayor tamaño de texto */
+    font-weight: bold;
+    border: none;
+    border-radius: 30px; /* Bordes más redondeados */
+    cursor: pointer;
+    color: #FFFFFF; /* Blanco Puro */
+    background-color: #4682B4; /* Azul Acero */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #007BFF; /* Azul Eléctrico */
+    transform: scale(1.1); /* Botón más grande en hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra al pasar el ratón */
+}
+
+.login-button:active {
+    background-color: #C0C0C0; /* Plateado */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+    .button-container {
+        margin-top: 20px; /* Ajusté el margen */
+    }
+}
+
+/* Navegacion */
+
+/* Estilos para la navegación */
+nav {
+    background-color: #1B3A57; /* Azul Marino */
+    padding: 15px 30px; /* Aumento de padding para más espacio */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 3px solid #D1D3D4; /* Gris Claro */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para más profundidad */
+}
+
+/* Estilos de los enlaces de navegación */
+nav a {
+    color: #FFFFFF; /* Blanco Puro */
+    text-decoration: none;
+    font-size: 18px; /* Aumenté el tamaño */
+    font-weight: bold;
+    padding: 12px 20px; /* Botones de navegación más grandes */
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+nav a:hover {
+    background-color: #4682B4; /* Azul Acero */
+    color: #F4F4F4; /* Gris Claro */
+}
+
+nav a:active {
+    background-color: #007BFF; /* Azul Eléctrico */
+    color: #FFFFFF; /* Blanco Puro */
+}
+
+/*Servicios*/
+
+.container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que las tarjetas se acomoden en múltiples filas si no caben */
+    gap: 16px; /* Espaciado entre tarjetas */
+    justify-content: center; /* Centra las tarjetas horizontalmente */
+    margin: 20px;
+  }
+  
+  /* Estilos de las tarjetas */
+  .card {
+    display: flex;
+    flex-direction: row; /* Alineación horizontal del contenido */
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 350px; /* Ancho de cada tarjeta */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Imagen de la tarjeta */
+  .card-img {
+    width: 120px;
+    height: 120px;
+    background-color: #eaeaea;
+    flex-shrink: 0; /* Mantiene el tamaño fijo de la imagen */
+  }
+  
+  /* Información de la tarjeta */
+  .card-info {
+    padding: 16px;
+    flex: 1; /* Toma el resto del espacio disponible */
+  }
+  
+  .text-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 0 8px;
+    color: #333;
+  }
+  
+  .text-body {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  /* Pie de la tarjeta */
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+    border-top: 1px solid #ddd;
+  }
+  
+  .text-title {
+    color: #1a73e8;
+    font-weight: bold;
+  }
+  
+  .card-button {
+    cursor: pointer;
+  }
+  
+  .card-button svg {
+    fill: #555;
+    width: 20px;
+    height: 20px;
+  }
+  
+  /* Responsivo */
+  @media (max-width: 768px) {
+    .card {
+      width: 100%; /* Ocupa todo el ancho en pantallas pequeñas */
+      flex-direction: column; /* Cambia la dirección a vertical */
+    }
+    
+    .card-img {
+      width: 100%; /* Imagen ocupa todo el ancho */
+      height: 200px; /* Ajusta la altura */
+    }
+  }
+
+  /*como Funciona*/
+
+  section.how-it-works {
+    background-color: #FFFFFF; /* Blanco Puro */
+    padding: 20px;
+    border: 1px solid #C0C0C0; /* Plateado */
+    border-radius: 8px;
+    max-width: 800px;
+    margin: 20px auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+section.how-it-works h3 {
+    color: #1B3A57; /* Azul Marino */
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.steps {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.step {
+    text-align: center;
+    flex: 1;
+    background-color: #4682B4; /* Azul Acero */
+    padding: 10px;
+    border-radius: 8px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.step:hover {
+    background-color: #007BFF; /* Azul Eléctrico */
+    transform: translateY(-5px);
+}
+
+.step img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+    border: 2px solid #C0C0C0; /* Plateado */
+    border-radius: 50%;
+    background-color: #FFFFFF; /* Blanco Puro */
+}
+
+.step p {
+    color: #FFFFFF; /* Blanco Puro */
+    font-size: 1rem;
+    margin: 0;
+}
+
+/*Cotizaciones*/
+
+#cotizaciones {
+    background-color: #F4F4F4; /* Gris Claro */
+    padding: 30px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para el título */
+#cotizaciones h2 {
+    color: #1B3A57; /* Azul Marino */
+    font-size: 2em;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+/* Estilo para el párrafo */
+#cotizaciones p {
+    color: #4682B4; /* Azul Acero */
+    font-size: 1.1em;
+    margin-bottom: 25px;
+    font-weight: normal;
+}
+
+/* Estilo para el botón */
+.quote-button {
+    background-color: #007BFF; /* Azul Eléctrico */
+    color: #FFFFFF; /* Blanco Puro */
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Efecto hover para el botón */
+.quote-button:hover {
+    background-color: #4682B4; /* Azul Acero */
+    transform: scale(1.05);
+}
+
+/* Estilo para el borde del botón */
+.quote-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px #C0C0C0; /* Plateado */
+}
+
+
+/*Marcas atendidas*/
+
+/* Estilos generales */
+#marcas {
+    background-color: #F4F4F4;
+    padding: 50px;
+    text-align: center;
+}
+
+#marcas h2 {
+    color: #1B3A57;
+    font-size: 2em;
+    margin-bottom: 30px;
+}
+
+/* Estilos del contenedor de marcas */
+.brands {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 0 10px;
+}
+
+/* Estilos de cada marca */
+
+.brand {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    border: 1px solid #C0C0C0;
+    padding: 20px;
+    text-align: center;
+    width: 180px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+/* Efecto al pasar el cursor sobre cada marca */
+.brand:hover {
+    transform: translateY(-10px);
+}
+
+/* Estilos de la imagen de cada marca */
+.brand img {
+    max-width: 100px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+/* Estilos del nombre de la marca */
+.brand p {
+    color: #4682B4;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Medios de pantalla (responsividad) */
+@media (max-width: 768px) {
+    .brand {
+        width: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .brand {
+        width: 120px;
+    }
+}
+
+/*Evidencias*/
+
+#galeria {
+    background-color: #F4F4F4; /* Gris Claro */
+    padding: 40px 0;
+    text-align: center;
+    color: #1B3A57; /* Azul Marino */
+}
+
+#galeria h2 {
+    font-family: 'Arial', sans-serif;
+    color: #1B3A57; /* Azul Marino */
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Estilos para la galería */
+.gallery {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.gallery img {
+    border: 5px solid #C0C0C0; /* Plateado */
+    border-radius: 8px;
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+    border-color: #007BFF; /* Azul Eléctrico */
+}
+
+/*Preguntas frecuentes*/
+
+#preguntas-frecuentes {
+    background-color: #F4F4F4; /* Gris Claro */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#preguntas-frecuentes h2 {
+    font-size: 24px;
+    color: #1B3A57; /* Azul Marino */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.faq p {
+    font-size: 16px;
+    color: #4682B4; /* Azul Acero */
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.faq p strong {
+    color: #007BFF; /* Azul Eléctrico */
+    font-weight: bold;
+}
+
+.faq p:nth-child(odd) {
+    background-color: #C0C0C0; /* Plateado */
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.faq p:nth-child(even) {
+    background-color: #FFFFFF; /* Blanco Puro */
+    padding: 10px;
+    border-radius: 4px;
+}
+
+/*Footer*/
+
+footer {
+    background-color: #F4F4F4; /* Gris Claro */
+    padding: 40px 20px;
+    color: #1B3A57; /* Azul Marino */
+}
+
+footer h2 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #1B3A57; /* Azul Marino */
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Estilo para la sección de contacto */
+.contact-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Contenedor principal de contacto */
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+/* Estilo para la dirección */
+.address iframe {
+    width: 100%;
+    max-width: 600px;
+    height: 450px;
+    border: none;
+    border-radius: 10px;
+}
+
+.address h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1B3A57; /* Azul Marino */
+    margin-bottom: 10px;
+}
+
+/* Estilo para la información de contacto */
+.contact-info {
+    flex: 1;
+}
+
+.contact-info h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1B3A57; /* Azul Marino */
+    margin-bottom: 15px;
+}
+
+.contact-info p {
+    font-size: 18px;
+    color: #4682B4; /* Azul Acero */
+}
+
+.contact-info a {
+    color: #007BFF; /* Azul Eléctrico */
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo para las redes sociales */
+.social-media {
+    flex: 1;
+}
+
+.social-media h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1B3A57; /* Azul Marino */
+    margin-bottom: 15px;
+}
+
+.social-media .wrapper {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+}
+
+.social-media .wrapper li {
+    position: relative;
+}
+
+.social-media .wrapper li a {
+    font-size: 28px;
+    color: #4682B4; /* Azul Acero */
+    transition: color 0.3s;
+}
+
+.social-media .wrapper li a:hover {
+    color: #007BFF; /* Azul Eléctrico */
+}
+
+.social-media .tooltip {
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #1B3A57; /* Azul Marino */
+    color: #FFFFFF; /* Blanco Puro */
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.social-media .wrapper li:hover .tooltip {
+    opacity: 1;
+}
