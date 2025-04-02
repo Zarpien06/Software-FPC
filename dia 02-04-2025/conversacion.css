@@ -1,0 +1,269 @@
+:root {
+  --blanco: #f4f4f4;
+  --darkblue: #00008B; 
+  --SteelBlue: #4682B4;
+  --RoyalBlue: #4169E1;
+  --MediumBlue: #0000CD;
+  --DarkBlue: #00008B;
+  --Navy: #000080;
+  --MidnightBlue: #191970;
+  --negro: #3E363F;
+  --gris-oscuro: #2a2a2a;
+  --DarkSlateGray: #2F4F4F;
+  --gris-claro: #e0e0e0;
+  --fondo: #808b96;
+  --sombra: rgba(0, 0, 0, 0.1);
+  --sombra-dura: rgba(0, 0, 0, 0.3);
+  --transicion: 0.3s;
+  --animacion-duracion: 0.6s;
+  --azul-Marino: #1B3A57;
+  --azul-acero: #14146b;
+}
+
+body {
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+  background: var(--gris-claro);
+  color: var(--negro);
+  min-height: 100vh; 
+  padding: 0;
+}
+
+.contenedor-dashboard {
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+}
+
+.barra-lateral {
+  position: fixed;
+  top: 0;
+  left: -250px; /* Fuera de la vista por defecto */
+  height: 100vh;
+  width: 250px;
+  background-color: var(--azul-Marino);
+  color: white;
+  transition: left var(--transicion) ease; /* Efecto al abrir/cerrar */
+  z-index: 999;
+  overflow-y: auto;
+}
+
+.barra-lateral.visible {
+  left: 0; /* Mueve la barra lateral a la vista */
+}
+
+/* Botón hamburguesa */
+.menu-icon {
+  font-size: 30px;
+  cursor: pointer;
+  color: black; /* Color inicial */
+  z-index: 1000;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  transition: color var(--transicion) ease;
+}
+
+.logo {
+  text-align: center;
+  padding: 20px; /* Ajusta el padding según sea necesario */
+  font-size: 20px;
+  font-weight: 400;
+  background-color: var(--azul-Marino);
+  border-bottom: 1.5px solid var(--sombra);
+}
+
+.logo h2 {
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--gris-claro);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Menú de navegación */
+.menu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.menu .opcion {
+  padding: 12px 20px;
+  text-decoration: none;
+  color: #FFFFFF; /* Cambiado a blanco */
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color var(--transicion) ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.menu .opcion:hover {
+  background-color: #4682B4;
+  transform: scale(1.1);
+}
+
+/* Estilos para la navegación */
+/* Asegúrate de que el contenedor de navegación ocupe todo el ancho */
+.container-fluid {
+  width: 100%;
+  padding: 0; /* Elimina el padding para que ocupe todo el ancho */
+  margin: 0; /* Elimina el margen para que no haya espacios en blanco */
+}
+
+/* Estilos para la navegación */
+/* Estilos para la navegación */
+nav {
+  background: var(--azul-Marino); /* Azul Marino */
+  padding: 15px 10%; /* Espaciado interno */
+  width: 100%; /* Ancho inicial */
+  display: flex;
+  justify-content: space-between; /* Espaciado entre los elementos */
+  align-items: center;
+  font-size: 16px; /* Tamaño de fuente */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para un efecto moderno */
+}
+
+nav a {
+  color: var(--blanco); /* Blanco Puro */
+  text-decoration: none; /* Sin subrayado */
+  font-size: 16px; /* Tamaño de fuente */
+  padding: 10px 20px; /* Espaciado interno */
+  margin: 0 10px; /* Espaciado entre enlaces */
+  border-radius: 5px; /* Bordes redondeados */
+  transition: background-color var(--transicion) ease, transform 0.2s ease; /* Transiciones suaves */
+
+}
+
+/* Efecto hover para los enlaces */
+nav a:hover {
+  background-color: #4682B4; /* Color de fondo al pasar el cursor */
+  transform: scale(1.05); /* Efecto de aumento */
+}
+
+/* Estilo para el efecto hover de línea */
+nav a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px; /* Altura de la línea */
+  width: 0%;
+  background-color: #4682B4; /* Color de la línea */
+  transition: width var(--transicion) ease; /* Suaviza el efecto de la línea */
+}
+
+/* Mostrar la línea solo en el hover */
+nav a:hover::after {
+  width: 100%; /* La línea se extiende completamente bajo el texto al pasar el cursor */
+  transition: width var(--transicion) ease;
+}
+
+/* Mostrar la línea solo en el hover */
+nav a:hover::after {
+  width: 100%; /* La línea se extiende completamente bajo el texto al pasar el cursor */
+  transition: width var(--transicion) ease;
+}
+
+/* Estilos para el contenedor de chat */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centra verticalmente */
+  align-items: center; /* Centra horizontalmente */
+  background-color: var(--azul-Marino); /* Fondo azul marino */
+  width: 100%; /* Ancho completo */
+  max-width: 900px; /* Ancho máximo */
+  height: 80vh; /* Aumentar la altura del contenedor de chat */
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 20px auto; /* Centrado dentro del contenedor padre */
+  overflow: hidden; /* Evita que los elementos sobresalgan */
+}
+
+.chat-area {
+  width: 90%; /* Ajustado al ancho del contenedor */
+  height: 90%; /* Ajustado al alto del contenedor */
+  padding: 15px;
+  overflow-y: auto; /* Scroll para contenido largo */
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Espaciado entre enlaces */
+  background-color: var(--gris-claro); /* Fondo blanco */
+  border-radius: 5px;
+  box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1); /* Sombras internas */
+}
+
+/* Otros estilos de chat y mensajes */
+.chat-menu-item {
+  display: flex; /* Coloca el ícono y el texto uno al lado del otro */
+  align-items: center; /* Centra verticalmente el contenido */
+  gap: 10px; /* Espaciado entre el ícono y el texto */
+  background-color: var(--blanco); /* Fondo gris claro */
+  fill: #333;
+  padding: 15px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #333333; /* Texto gris oscuro */
+  transition: background-color var(--transicion) ease;
+  cursor: pointer;
+}
+
+.chat-menu-item:hover {
+  background-color: #a3a3a3; /* Cambio de fondo al pasar el cursor */
+  color: #333; /* Cambio de color al pasar el cursor */
+  text-decoration: none;
+  text-decoration: underline; /* Resalta el texto al pasar el cursor */
+  transform: scale(1.05);
+}
+
+.message {
+  max-width: 90%; /* Limitar el ancho del mensaje */
+  margin: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  line-height: 1.4;
+}
+
+/* Mensajes enviados por el remitente */
+.message.sender {
+  background-color: #e0f7fa;
+  align-self: flex-end; /* Alinear a la derecha */
+  text-align: right;
+}
+
+/* Mensajes enviados por el receptor */
+.message.receiver {
+  background-color: #f0f0f0;
+  align-self: flex-start; /* Alinear a la izquierda */
+  text-align: left;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .barra-lateral {
+    width: 200px; /* Ajustar el ancho de la barra lateral en pantallas más pequeñas */
+  }
+
+  .menu-icon {
+    left: 15px; /* Ajustar la posición del botón hamburguesa */
+  }
+
+  nav {
+    flex-direction: column; /* Cambiar a columna en pantallas pequeñas */
+    padding: 10px; /* Ajustar el padding */
+  }
+
+  nav a {
+    padding: 10px; /* Ajustar el padding de los enlaces */
+    font-size: 14px; /* Ajustar el tamaño de fuente */
+  }
+
+  .chat-container {
+    width: 95%; /* Ajustar el ancho del contenedor de chat */
+    height: 90vh; /* Aumentar la altura del contenedor de chat */
+  }
+}

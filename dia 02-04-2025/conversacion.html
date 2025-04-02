@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/conversacion.css">
+    <title>Conversación</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <button id="menu-toggle" class="menu-icon">
+            &#9776; <!-- Ícono de tres líneas -->
+        </button>
+        <aside class="barra-lateral">
+            <div class="logo">
+                <img src="img/image.png" alt="logo" class="img-fluid" width="120" height="100">
+                <h2>Administrador</h2>
+            </div>
+            <nav class="menu">
+                <a href="usuario.html" class="opcion">Usuario</a>
+                <a href="procesos.html" class="opcion">Procesos</a>
+                <a href="AgregarUsuario.html" class="opcion">Agregar Usuarios</a>
+                <a href="#" class="opcion submenu-toggle" id="adminUsuarioToggle">Administrar Usuario</a>
+                <div class="submenu" id="userSubmenu">
+                    <ul>
+                        <li><a href="adminUsuarios.html" class="opcion">Clientes</a></li>
+                        <li><a href="adminEmpleado.html" class="opcion">Empleados</a></li>
+                    </ul>
+                </div>
+                <a href="#" class="opcion">Ver Procesos Automovil</a>
+                <a href="#" class="opcion">Agregar Automovil</a>
+            </nav>
+        </aside>
+
+        <main class="col-md-9 col-lg-10 contenido-principal">
+            <h1 class="titulo text-center">Datos Usuario</h1>
+            <nav class="nav justify-content-between">
+              <a class="nav-link" href="adminPrincipal.html">Inicio</a>
+              <a class="nav-link" href="#servicios">Editar inicio</a>
+              <a class="nav-link" href="#como-funciona">Conversaciones</a>
+              <a class="nav-link" href="#preguntas-frecuentes">Salir</a>
+              <a class="nav-link" href="#contacto">Contacto</a>
+          </nav>
+
+            <h2 class="text-center">Conversaciones clientes y empleados</h2>
+            <div class="chat-container">
+                <div class="chat-area">
+                    <div class="chat-menu-item" onclick="toggleChat(1)">
+                        <span>Luis Felipe</span>
+                    </div>
+                    <div class="chat-menu-item" onclick="toggleChat(2)">
+                        <span>Gabriel Fernandez</span>
+                    </div>
+                    <div class="chat-menu-item" onclick="toggleChat(3)">
+                        <span>Richard Rios</span>
+                    </div>
+                </div>
+
+                <!-- Contenedores de los chats -->
+                <div id="chat-message-1" class="chat-message" style="display: none;">
+                    <div class="chat-header">
+                        <span>Chat 1</span>
+                        <button onclick="closeChat(1)">Cerrar</button>
+                    </div>
+                    <div class="chat-content">
+                        <div class="message sender">Hola buenas tardes, quisiera saber como va mi automovil</div>
+                        <div class="message receiver">Hola, claro con mucho gusto le muestro el proceso que llevamos</div>
+                        <div class="message receiver">
+                            <img src="img/whatsProcesos/WhatsApp Image 2024-11-20 at 7.11.41 PM.jpeg" alt="conversacion" class="img-fluid">
+                        </div>
+                        <div class="message sender">Si me gusta pero le podrian cambiar el color a uno mas palido, gracias</div>
+                    </div>
+                </div>
+
+                <div id="chat-message-2" class="chat-message" style="display: none;">
+                    <div class="chat-header">
+                        <span>Chat 2</span>
+                        <button onclick="closeChat(2)">Cerrar</button>
+                    </div>
+                    <div class="chat-content">
+                        <div class="message sender">Hola buenas tardes quisiera saber cuanto me valdria polarizarlo despues de pintarlo</div>
+                        <div class="message receiver">Claro el polarizado tiene un valor de 80.000 pero como usted es un cliente recurrente se lo dejamos en 70.000</div>
+                        <div class="message sender">Si, me gustaria entonces que lo polarizaran despues de pintarlo.</div>
+                        <div class="message receiver">Con mucho gusto</div>
+                    </div>
+                </div>
+
+                <div id="chat-message-3" class="chat-message" style="display: none;">
+                    <div class="chat-header">
+                        <span>Chat 3</span>
+                        <button onclick="closeChat(3)">Cerrar</button>
+                    </div>
+                    <div class="chat-content">
+                        <div class="message sender">Oye, ¿viste el partido de ayer?</div>
+                        <div class="message receiver">¡Sí! Estuvo increíble, ¿verdad?</div>
+                        <div class="message sender">Totalmente, el último gol fue espectacular.</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/conversacion.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
