@@ -1,0 +1,162 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+nav {
+    background-color: #0e1a4a;
+    padding: 15px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+nav a:hover {
+    background-color: #1f3d8f;
+    border-radius: 5px;
+}
+
+.container {
+    width: 90%;
+    max-width: 900px;
+    margin: 40px auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    color: black;
+}
+
+.title {
+    font-size: 28px;
+    color: #0e1a4a;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+form label {
+    font-size: 16px;
+    color: #0e1a4a;
+}
+
+form input[type="date"],
+form input[type="time"],
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"],
+form select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+form button {
+    padding: 12px;
+    background-color: #0e1a4a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+form button:hover {
+    background-color: #1f3d8f;
+}
+
+.cotizacion-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.cotizacion-link a {
+    text-decoration: none;
+    background-color: #28a745;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.cotizacion-link a:hover {
+    background-color: #218838;
+}
+
+.client-info {
+    margin-top: 30px;
+    background-color: #e3e9f3;
+    padding: 20px;
+    border-radius: 8px;
+    display: none;
+}
+
+.appointment-info {
+    margin-top: 30px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    display: block;
+}
+
+.appointment-info label {
+    font-size: 16px;
+}
+
+.modificar-btn {
+    background-color: #0a0e58;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    border: none;
+}
+
+.modificar-btn:hover {
+    background-color: rgba(0, 87, 179, 0.849);
+}
+
+.date-time-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.date-time-container span {
+    display: inline-block;
+    min-width: 150px;
+}
+
+/* Responsivo */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    nav a {
+        display: block;
+        padding: 10px;
+    }
+
+    .date-time-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

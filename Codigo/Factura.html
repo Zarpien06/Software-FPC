@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factura - Full Paint Cars</title>
+    <link rel="stylesheet" href="CSS/factura.css">
+</head>
+<body>
+    <div class="factura-container">
+        <header>
+            <h1>Full Paint Cars</h1>
+            <p>Detallado Automotriz</p>
+        </header>
+        <main>
+            <section class="cliente-info">
+                <h2>Información del Cliente</h2>
+                <p><strong>Nombre:</strong> <span id="nombreCliente"></span></p>
+                <p><strong>Apellido:</strong> <span id="apellidoCliente"></span></p>
+                <p><strong>Correo Electrónico:</strong> <span id="correoCliente"></span></p>
+                <p><strong>Teléfono:</strong> <span id="telefonoCliente"></span></p>
+                <p><strong>Comentario Adicional:</strong> <span id="comentarioCliente"></span></p>
+                <p><strong>Fecha y Hora Seleccionada:</strong> <span id="fechaHora"></span></p>
+            </section>
+            <section class="factura-detalles">
+                <h2>Detalles de la Factura</h2>
+                <p><strong>Fecha:</strong> <span id="fechaFactura"></span></p>
+                <p><strong>Número de Factura:</strong> #12345</p>
+            </section>
+            <section class="servicios">
+                <h2>Servicios</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Descripción</th>
+                            <th>Cantidad</th>
+                            <th>Precio Unitario</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="serviciosTabla">
+                        <!-- Los servicios se agregarán dinámicamente aquí -->
+                    </tbody>
+                </table>
+            </section>
+            <section class="total">
+                <p><strong>Subtotal:</strong> <span id="subtotal">$0</span></p>
+                <p><strong>Descuento:</strong> <span id="descuento">$0</span></p>
+                <p><strong>Total:</strong> <span id="total">$0</span></p>
+            </section>
+        </main>
+        <footer>
+            <p>Gracias por su compra!</p>
+        </footer>
+    </div>
+    <script src="JS/factura.js"></script>
+</body>
+</html>
