@@ -1,0 +1,232 @@
+:root {
+  --blanco: #f4f4f4;
+  --darkblue: #00008B; 
+  --SteelBlue: #4682B4;
+  --RoyalBlue: #4169E1;
+  --MediumBlue: #0000CD;
+  --DarkBlue: #00008B;
+  --Navy: #000080;
+  --MidnightBlue: #191970;
+  --negro: #3E363F;
+  --gris-oscuro: #2a2a2a;
+  --DarkSlateGray: #2F4F4F;
+  --gris-claro: #e0e0e0;
+  --fondo: #808b96;
+  --sombra: rgba(0, 0, 0, 0.1);
+  --sombra-dura: rgba(0, 0, 0, 0.3);
+  --transicion: 0.3s;
+  --animacion-duracion: 0.6s;
+  --azul-Marino: #1B3A57;
+  --azul-acero: #14146b;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: var(--gris-claro);
+  color: var(--negro);
+  min-height: 100vh; 
+  padding: 0;
+}
+
+.contenedor-dashboard {
+  display: flex;
+  min-height: 100vh;
+}
+
+.barra-lateral {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 250px;
+  background-color: var(--azul-Marino);
+  color: var(--azul-Marino);
+  z-index: 999;
+  overflow-y: auto;
+}
+
+.logo {
+  text-align: center;
+  padding: 20px;
+  font-size: 20px;
+  font-weight: 400;
+  background-color: var(--azul-marino);
+  border-bottom: 1.5px solid var(--sombra);
+}
+
+.logo h2 {
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--gris-claro);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.menu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: var(--azul-Marino);
+}
+
+.menu .opcion {
+  padding: 12px 20px;
+  text-decoration: none;
+  color: #FFFFFF;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.menu .opcion:hover {
+  background-color: #4682B4;
+  transform: scale(1.1);
+}
+
+.contenido-principal {
+  flex: 1;
+  padding: 20px;
+  margin-left: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  width: 100%;
+  background-color: var(--azul-Marino);
+  padding: 20px;
+  color: white;
+}
+
+
+.search-container {
+  margin-bottom: 40px; /* Aumentar el margen inferior para separar más de la tabla de chats */
+  width: 100%;
+  max-width: 300px;
+  margin-left: -1000px; /* Ajustar el margen izquierdo para moverlo más a la izquierda */
+}
+.input-group {
+  border-radius: 25px;
+}
+
+.input-group .form-control {
+  border-radius: 25px;
+}
+
+/* Ajustar tamaño del cuadro de chats */
+.chat-list {
+  width: 70%; /* Reducido un poco */
+  max-width: none;
+  height: 65vh; /* Reducido para que no empuje la barra de búsqueda */
+  overflow-y: auto;
+  background-color: var(--azul-Marino);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px var(--sombra-dura); /* Sombra para efecto moderno */
+}
+
+/* Cambiar el color de los chats dentro del cuadro azul */
+.chat-menu-item {
+  padding: 10px;
+  border: 1px solid var(--gris-oscuro);
+  border-radius: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  color: black; /* Cambiar el color del texto a negro */
+  background-color: var(--gris-claro); /* Nuevo color */
+}
+
+
+.icon {
+  color: black; /* Cambiar el color de los iconos a negro */
+}
+
+.chat-menu-item:hover {
+  background-color: var(--SteelBlue);
+  transform: translateY(-3px);
+}
+
+/* Modal más grande y con estilo moderno */
+.modal {
+  display: flex; /* Usar flexbox para centrar el contenido */
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
+  position: fixed; /* Fijar el modal en la pantalla */
+  top: 50%; /* Mover el modal al centro vertical */
+  left: 50%; /* Mover el modal al centro horizontal */
+  transform: translate(-50%, -50%); /* Ajustar la posición para centrar */
+  width: 80vw; /* Ancho del modal */
+  max-width: 600px; /* Ancho máximo */
+  height: auto; /* Altura automática */
+  max-height: 90vh; /* Altura máxima */
+  background: var(--blanco); /* Color de fondo */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0px 5px 15px var(--sombra-dura); /* Sombra moderna */
+  padding: 20px; /* Espaciado interno */
+  overflow-y: auto; /* Habilitar scroll si es necesario */
+}
+
+/* Ajustes para el contenido del modal */
+.modal-body {
+  max-height: 70vh; /* Altura máxima del contenido */
+  overflow-y: auto; /* Habilitar scroll en el contenido */
+}
+
+/* Ajuste del área de chat dentro del modal */
+.chat-content {
+  max-height: 60vh; /* Altura máxima del área de chat */
+  overflow-y: auto; /* Habilitar scroll en el área de chat */
+}
+/* Burbujas de mensajes con efecto más moderno */
+.message {
+  padding: 10px;
+  border-radius: 20px;
+  margin: 5px 0;
+  max-width: 85%;
+  box-shadow: 0px 2px 5px var(--sombra); /* Pequeña sombra */
+}
+
+.sender {
+  background-color: var(--RoyalBlue);
+  color: white;
+  text-align: right;
+  margin-left: auto;
+}
+
+.receiver {
+  background-color: var(--SteelBlue);
+  color: white;
+  text-align: left;
+  margin-right: auto;
+}
+
+/* Estilos para los botones de paginación */
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.pagination button {
+  background-color: var(--azul-Marino);
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s;
+}
+
+.pagination button:hover {
+  background-color: var(--SteelBlue);
+  transform: scale(1.1);
+  box-shadow: 0px 4px 8px var(--sombra);
+}

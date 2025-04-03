@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://th.bing.com/th/id/OIP.FkSJKO8L_VLk5rrkmEMn-AHaHa?rs=1&pid=ImgDetMain" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/conversacion.css">
+    <style>
+        /* Estilos para la barra lateral y el menú hamburguesa */
+        .barra-lateral {
+            width: 250px;
+            background-color: #f8f9fa;
+            transition: transform 0.3s ease;
+        }
+
+        .menu {
+            display: block;
+        }
+
+        .menu a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .menu a:hover {
+            background-color: #e2e6ea;
+        }
+
+        .menu-hamburguesa {
+            display: none;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .barra-lateral {
+                transform: translateX(-100%);
+                position: fixed;
+                height: 100%;
+                z-index: 1000;
+            }
+
+            .barra-lateral.active {
+                transform: translateX(0);
+            }
+
+            .menu-hamburguesa {
+                display: block;
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                z-index: 1001;
+            }
+
+            .menu {
+                display: none;
+            }
+        }
+    </style>
+    <title>Conversación</title>
+</head>
+<body>
+    <div class="contenedor-dashboard d-flex">
+        <div class="menu-hamburguesa" onclick="toggleMenu()">
+            <i class="fas fa-bars fa-2x"></i>
+        </div>
+        <aside class="barra-lateral">
+            <div class="logo">
+                <img src="img/image.png" alt="logo" width="120" height="100">
+                <h2>Full Paint Cars</h2>
+            </div>
+            <nav class="menu">
+                <a href="usuario.html" class="opcion">Cliente</a>
+                <a href="procesos.html" class="opcion">Procesos</a>
+                <a href="empleado/adminUsuarios.html" class="opcion">Administrar Usuario</a>
+            </nav>
+        </aside>
+
+        <main class="contenido-principal flex-grow-1">
+            <div class="header">
+                <h1 class="titulo">Conversaciones</h1>
+            </div>
+            <div class="search-container">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-search"></i></span>
+                    </div>
+                    <input type="text" id="search" placeholder="Buscar cliente..." class="form-control rounded">
+                </div>
+            </div>
+            <div class="chat-list" id="chat-list">
+                <!-- Los elementos de chat se generarán dinámicamente -->
+            </div>
+            <div class="pagination">
+                <button class="btn btn-primary" id="prevButton" onclick="changePage(-1)">Previous</button>
+                <span id="page-info">1</span>
+                <button class="btn btn-primary" id="nextButton" onclick="changePage(1)">Next</button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal para las conversaciones -->
+    <div class="modal fade" id="chatModal" tabindex="-1" role="dialog" aria-labelledby="chatModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="chatModalLabel">Chat</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="chat-content" class="chat-content"></div>
+                    <div class="input-group mb-3">
+                        <input type="file" class="form-control" id="fileInput" accept="image/*,audio/*,application/pdf">
+                        <input type="text" class="form-control" id="messageInput" placeholder="Escribe un mensaje...">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" id="sendMessage">Enviar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="js/conversacion.js" defer></script>
+    <script>
+        // Función para alternar el menú hamburguesa
+        function toggleMenu() {
+            const barraLateral = document.querySelector('.barra-lateral');
+            barraLateral.classList.toggle('active');
+        }
+
+        // Simulación de mensajes
+        const chats = {
+            1: [
+                { sender: 'sender', text: 'Hola buenas tardes, quisiera saber como va mi automovil' },
+                { sender: 'receiver', text: 'Hola, claro con mucho gusto le muestro el proceso que llevamos' }
+            ],
+            2: [
+                { sender: 'sender', text: 'Hola buenas tardes quisiera saber cuanto me valdria polarizarlo despues de pintarlo' },
+                { sender: 'receiver', text: 'Claro el polarizado tiene un valor de 80.000 pero como usted es un cliente recurrente se lo dejamos en 70.000' }
+            ],
+            3: [
+                { sender: 'sender', text: '¿Cuánto tiempo tardará la pintura?' },
+                { sender: 'receiver', text: 'Normalmente tardamos entre 3 a 5 días.' }
+            ],
+            4: [
+                { sender: 'sender', text: '¿Puedo ver ejemplos de trabajos anteriores?' },
+                { sender: 'receiver', text: 'Claro, tenemos una galería en nuestra página web.' }
+            ],
+            5: [
+                { sender: 'sender', text: '¿Hacen entregas a domicilio?' },
+                { sender: 'receiver', text: 'Sí, ofrecemos servicio de entrega a domicilio.' }
+            ],
+            6: [
+                { sender: 'sender', text: '¿Qué tipo de pintura utilizan?' },
+                { sender: 'receiver', text: 'Utilizamos pinturas de alta calidad y durabilidad.' }
+            ],
+            7: [
+                { sender: 'sender', text: '¿Tienen garantía en sus servicios?' },
+                { sender: 'receiver', text: 'Sí, ofrecemos garantía de 1 año en nuestros trabajos.' }
+            ],
+            8: [
+                { sender: 'sender', text: '¿Puedo agendar una cita para una evaluación?' },
+                { sender: 'receiver', text: 'Por supuesto, puede llamarnos para agendar una cita.' }
+            ],
+            9: [
+                { sender: 'sender', text: '¿Hacen trabajos de restauración?' },
+                { sender: 'receiver', text: 'Sí, también realizamos trabajos de restauración de vehículos.' }
+            ],
+            10: [
+                { sender: 'sender', text: '¿Cuáles son sus horarios de atención?' },
+                { sender: 'receiver', text: 'Estamos abiertos de lunes a sábado de 9 AM a 6 PM.' }
+            ],
+        };
+
+        const userNames = [
+            "Luis Felipe",
+            "Gabriel Fernandez",
+            "Richard Rios",
+            "Maria Lopez",
+            "Juan Perez",
+            "Ana Torres",
+            "Carlos Sanchez",
+            "Laura Martinez",
+            "Pedro Gomez",
+            "Sofia Ramirez"
+        ];
+
+        let currentPage = 1;
+        const chatsPerPage = 4; // Cambia este valor para mostrar más o menos chats por página
+        let filteredUsers = userNames; // Almacena los usuarios filtrados
+
+        function openModal(chatId) {
+            const chatContent = document.getElementById('chat-content');
+            chatContent.innerHTML = ''; // Limpiar contenido anterior
+
+            // Cargar mensajes del chat seleccionado
+            chats[chatId].forEach(message => {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message ${message.sender}`;
+                messageDiv.textContent = message.text;
+                chatContent.appendChild(messageDiv);
+            });
+
+            $('#chatModal').modal('show'); // Mostrar el modal
+        }
+
+        document.getElementById('sendMessage').addEventListener('click', function() {
+            const messageInput = document.getElementById('messageInput').value;
+            const chatContent = document.getElementById('chat-content');
+            if (messageInput) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'message sender';
+                messageDiv.textContent = messageInput;
+                chatContent.appendChild(messageDiv);
+                document.getElementById('messageInput').value = ''; // Limpiar el input
+            }
+        });
+
+        function changePage(direction) {
+            const totalPages = Math.ceil(filteredUsers.length / chatsPerPage);
+            currentPage += direction;
+
+            // Asegurarse de que la página actual esté dentro de los límites
+            if (currentPage < 1) {
+                currentPage = 1;
+            } else if (currentPage > totalPages) {
+                currentPage = totalPages;
+            }
+
+            document.getElementById('page-info').textContent = currentPage;
+
+            // Actualizar la lista de chats según la página actual
+            updateChatList();
+        }
+
+        function updateChatList() {
+            const chatList = document.getElementById('chat-list');
+            chatList.innerHTML = ''; // Limpiar la lista de chats
+
+            const start = (currentPage - 1) * chatsPerPage;
+            const end = Math.min(start + chatsPerPage, filteredUsers.length);
+
+            for (let i = start; i < end; i++) {
+                const chatItem = document.createElement('div');
+                chatItem.className = 'chat-menu-item';
+                chatItem.onclick = () => openModal(i + 1); // +1 para abrir el modal correcto
+                chatItem.innerHTML = `<i class="fas fa-user"></i> ${filteredUsers[i]}`; // Mostrar nombres
+                chatList.appendChild(chatItem);
+            }
+        }
+
+        // Función para buscar usuarios
+        document.getElementById('search').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            filteredUsers = userNames.filter(name => name.toLowerCase().includes(searchTerm)); // Filtrar usuarios
+
+            // Reiniciar la página actual a 1 si no hay resultados
+            if (filteredUsers.length === 0) {
+                currentPage = 1;
+            }
+
+            // Actualizar la lista de chats
+            updateChatList();
+        });
+
+        // Inicializar la lista de chats al cargar la página
+        updateChatList();
+    </script>
+</body>
+</html>
