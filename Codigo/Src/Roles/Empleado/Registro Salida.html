@@ -1,67 +1,98 @@
-<!DOCTYPE html>  
-<html lang="es">  
-<head>  
-    <meta charset="UTF-8">  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>Gestión de Salida de Vehículos</title>  
-    <link rel="icon" href="nuevas img/image.png" type="image/x-icon">  
-    <link rel="stylesheet" href="CSS/ResgistroSalida.css">  
-    <!-- Enlace a Bootstrap CSS -->  
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">  
-</head>  
-<body>  
-    <div class="container mt-5">  
-        <header class="text-center mb-4">  
-            <h1>Gestión de Salida de Vehículos</h1>  
-        </header>  
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestión de Salida de Vehículos</title>
+    <link rel="icon" href="nuevas img/image.png" type="image/x-icon" />
+    <link rel="stylesheet" href="CSS/ResgistroSalida.css" />
+    <!-- Enlace a Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <style>
+      /* Estilo personalizado para los botones */
+      .btn-personalizado {
+        background-color: #16324a; /* Azul marino oscuro */
+        color: white; /* Texto blanco */
+        border: none;
+      }
 
-        <main>  
-            <section class="vehicle-info">  
-                <h2>Registro de Salidas</h2>  
-                <table class="table table-bordered table-striped">  
-                    <thead class="thead-dark">  
-                        <tr>  
-                            <th>Código</th>  
-                            <th>Nombre del Dueño</th>  
-                            <th>Identificación</th>  
-                            <th>Hora de Ingreso</th>  
-                            <th>Hora de Salida</th>  
-                            <th>Observaciones</th>  
-                            <th>Firma</th>  
-                        </tr>  
-                    </thead>  
-                    <tbody>  
-                        <tr>  
-                            <td>ABC-123</td>  
-                            <td>Juan Pérez</td>  
-                            <td>3456789</td>  
-                            <td>08:00 AM</td>  
-                            <td>10:00 AM</td>  
-                            <td>Sin novedades</td>  
-                            <td>Juan Pérez</td>  
-                        </tr>  
-                        <tr>  
-                            <td>ABC-124</td>  
-                            <td>María López</td>  
-                            <td>9876543</td>  
-                            <td>09:00 AM</td>  
-                            <td>11:00 AM</td>  
-                            <td>Completado sin incidentes</td>  
-                            <td>María López</td>  
-                        </tr>  
-                    </tbody>  
-                </table>  
-            </section>  
-        </main>  
+      /* Efecto hover para los botones */
+      .btn-personalizado:hover {
+        background-color: #1b3a57; /* Un tono más claro de azul marino */
+        color: white; /* Mantener el texto blanco */
+      }
+    </style>
+  </head>
 
-        <div class="text-center mt-4">  
-            <a href="Ingreso y salida Vehiculo.html" class="btn btn-primary">Volver</a>  
-        </div>  
-    </div>  
+  <body>
+    <div class="container mt-5">
+      <header class="text-center mb-4">
+        <h1>Gestión de Salida de Vehículos</h1>
+      </header>
 
-    <!-- Enlace a jQuery y Bootstrap JS -->  
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>  
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  
-</body>  
-</html> 
+      <main>
+        <section class="vehicle-info">
+          <h2>Registro de Salidas</h2>
+          <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+              <tr>
+                <th>Código</th>
+                <th>Nombre del Dueño</th>
+                <th>Identificación</th>
+                <th>Hora de Ingreso</th>
+                <th>Hora de Salida</th>
+                <th>Observaciones</th>
+                <th>Firma</th>
+                <th>Factura</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>ABC-123</td>
+                <td>Juan Pérez</td>
+                <td>3456789</td>
+                <td>08:00 AM</td>
+                <td>10:00 AM</td>
+                <td>Sin novedades</td>
+                <td>Juan Pérez</td>
+                <td>
+                  <div>
+                    <a href="maquetacion FPC/Factura.html">
+                      <button class="btn btn-personalizado">Factura</button>
+                    </a>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>ABC-124</td>
+                <td>María López</td>
+                <td>9876543</td>
+                <td>09:00 AM</td>
+                <td>11:00 AM</td>
+                <td>Completado sin incidentes</td>
+                <td>María López</td>
+                <td>
+                  <div>
+                    <a href="maquetacion FPC/Factura.html">
+                      <button class="btn btn-personalizado">Factura</button>
+                    </a>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </main>
+
+      <div class="text-center mt-4">
+        <a href="Ingreso y salida Vehiculo.html" class="btn btn-personalizado">Volver</a>
+      </div>
+    </div>
+
+    <!-- Enlace a Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
