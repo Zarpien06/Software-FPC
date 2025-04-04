@@ -1,80 +1,109 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Historial</title>
-    <link rel="icon" href="nuevas img/image.png" type="image/x-icon">
-    <link rel="stylesheet" href="css/procesosrealizados.css">
-</head>
+    <link rel="icon" href="nuevas img/image.png" type="image/x-icon" />
+    <!-- Enlace a la hoja de estilos de Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Tu archivo CSS personalizado -->
+    <link rel="stylesheet" href="css/procesosrealizados.css" />
 
-<body>
-    <div class="container">
-        <h1>Historial</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Proceso</th>
-                    <th>Agendaciones</th>
-                    <th>Automóvil</th>
-                    <th>Empleado a Cargo</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Juan Pérez</td>
-                    <td>En revisión</td>
-                    <td>12/12/2024</td>
-                    <td>
-                        <a href="https://www.ejemplo.com/vehiculo" class="auto-link">
-                            <img src="img/whatsProcesos/442494418_999387448253340_5398519346112153979_n.jpg" alt="Automóvil" class="car-icon">
-                        </a>
-                    </td>
-                    <td>Juan López</td>
-                </tr>
-                <tr>
-                    <td>María Gómez</td>
-                    <td>Finalizado</td>
-                    <td>10/11/2024</td>
-                    <td>
-                        <a href="https://www.ejemplo.com/vehiculo" class="auto-link">
-                            <img src="img/whatsProcesos/448300696_438121928985108_8542972512314731734_n.jpg" alt="Automóvil" class="car-icon">
-                        </a>
-                    </td>
-                    <td>Ana Ruiz</td>
-                </tr>
-                <tr>
-                    <td>Carlos Martínez</td>
-                    <td>Pendiente</td>
-                    <td>05/01/2025</td>
-                    <td>
-                        <a href="https://www.ejemplo.com/vehiculo" class="auto-link">
-                            <img src="img/whatsProcesos/444137577_968775338136088_8678117027597071214_n.jpg" alt="Automóvil" class="car-icon">
-                        </a>
-                    </td>
-                    <td>Luis Fernández</td>
+    <style>
+      /* Definir el color personalizado para los botones */
+      .btn-personalizado {
+        background-color: #16324a; /* Azul marino oscuro */
+        color: white; /* Texto blanco */
+        border: none;
+      }
 
-                    <tr>
-                        <td>Carlos Martínez</td>
-                        <td>Pendiente</td>
-                        <td>05/01/2025</td>
-                        <td>
-                            <a href="https://www.ejemplo.com/vehiculo" class="auto-link">
-                                <img src="img/whatsProcesos/446908136_1676734333102541_2626535041913439493_n.jpg" alt="Automóvil" class="car-icon">
-                            </a>
-                        </td>
-                        <td>Luis Fernández</td>
-                    </tr>
-                </tr>
-            </tbody>
-        </table>
+      /* Efecto hover para el botón */
+      .btn-personalizado:hover {
+        background-color: #1b3a57; /* Un tono ligeramente más claro de azul marino */
+        color: white; /* Mantener el texto blanco */
+      }
+    </style>
+  </head>
 
-        <div class="buttons">
-            <a href="FPC/historialCliente.html" class="button-link">Volver</a>
-        </div>
+  <body>
+    <div class="container mt-4">
+      <h1 class="text-center mb-4">Historial</h1>
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th>Nombre</th>
+            <th>Proceso</th>
+            <th>Agendaciones</th>
+            <th>Automóvil</th>
+            <th>Empleado a Cargo</th>
+            <th>Modificar</th>
+            <th>Eliminar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Juan Pérez</td>
+            <td>En revisión</td>
+            <td>12/12/2024</td>
+            <td>Juan López</td>
+            <td>Jorge Ramirez</td>
+            <td>
+              <a href="#" class="btn btn-personalizado">Modificar</a>
+            </td>
+            <td>
+              <a href="#" class="btn btn-personalizado">Eliminar</a>
+            </td>
+          </tr>
+          <tr>
+            <td>María Gómez</td>
+            <td>Finalizado</td>
+            <td>10/11/2024</td>
+            <td>Ana Ruiz</td>
+            <td>Jorge Ramirez</td>
+            <td>
+              <a href="#" class="btn btn-personalizado">Modificar</a>
+            </td>
+            <td>
+              <a href="#" class="btn btn-personalizado">Eliminar</a>
+            </td>
+          </tr>
+          <tr>
+            <td>Carlos Martínez</td>
+            <td>Pendiente</td>
+            <td>05/01/2025</td>
+            <td>Luis Fernández</td>
+            <td>Jorge Ramirez</td>
+            <td>
+              <a href="#" class="btn btn-personalizado">Modificar</a>
+            </td>
+            <td>
+              <a href="#" class="btn btn-personalizado">Eliminar</a>
+            </td>
+          </tr>
+          <tr>
+            <td>Carlos Martínez</td>
+            <td>Pendiente</td>
+            <td>05/01/2025</td>
+            <td>Luis Fernández</td>
+            <td>Jorge Ramirez</td>
+            <td>
+              <a href="#" class="btn btn-personalizado">Modificar</a>
+            </td>
+            <td>
+              <a href="#" class="btn btn-personalizado">Eliminar</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="text-center mt-4">
+        <a href="FPC/historialCliente.html" class="btn btn-personalizado">Volver</a>
+      </div>
     </div>
-</body>
 
+    <!-- Enlace a los scripts de Bootstrap (para JS, Popper.js, etc.) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
 </html>
