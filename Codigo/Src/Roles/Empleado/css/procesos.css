@@ -1,400 +1,389 @@
 :root {
-    --blanco: #f4f4f4;
-    --darkblue: #00008B; 
-    --SteelBlue: #4682B4;
-    --RoyalBlue: #4169E1;
-    --MediumBlue: #0000CD;
-    --DarkBlue: #00008B;
-    --Navy: #000080;
-    --MidnightBlue: #191970;
-    --negro: #3E363F;
-    --gris-oscuro: #2a2a2a;
-    --DarkSlateGray: #2F4F4F;
-    --gris-claro: #e0e0e0;
-    --fondo: #808b96;
-    --sombra: rgba(0, 0, 0, 0.1);
-    --sombra-dura: rgba(0, 0, 0, 0.3);
-    --transicion: 0.3s;
-    --animacion-duracion: 0.6s;
-    --azul-Marino: #1B3A57;
-    --azul-acero: #14146b;
+  --blanco: #f4f4f4;
+  --darkblue: #00008b;
+  --SteelBlue: #4682b4;
+  --RoyalBlue: #4169e1;
+  --MediumBlue: #0000cd;
+  --DarkBlue: #00008b;
+  --Navy: #000080;
+  --MidnightBlue: #191970;
+  --negro: #3e363f;
+  --gris-oscuro: #2a2a2a;
+  --DarkSlateGray: #2f4f4f;
+  --fondo: #808b96;
+  --sombra: rgba(0, 0, 0, 0.1);
+  --sombra-dura: rgba(0, 0, 0, 0.3);
+  --transicion: 0.3s;
+  --animacion-duracion: 0.6s;
+  --azul-Marino: #1b3a57;
+  --azul-acero: #14146b;
 }
 
 body {
-    margin: 0;
-    font-family: 'Lato', sans-serif;
-    background: var(--gris-claro);    color: var(--negro);
-    min-height: 100vh; 
-    padding: 0;
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+  background: var(--gris-claro);
+  color: var(--negro);
+  min-height: 100vh;
+  padding: 0;
 }
 
 .contenedor-dashboard {
-    display: flex;
-    min-height: 100vh;
-    position: relative;
+  display: flex;
+  min-height: 100vh;
+  position: relative;
 }
 
 .barra-lateral {
-    position: fixed;
-    top: 0;
-    left: -250px; /* Fuera de la vista por defecto */
-    height: 100vh;
-    width: 250px;
-    background-color: var(--azul-Marino);
-    color: white;
-    transition: left 0.3s ease; /* Efecto al abrir/cerrar */
-    z-index: 999;
-    overflow-y: auto;
-  }
+  position: fixed;
+  top: 0;
+  left: -250px; /* Fuera de la vista por defecto */
+  height: 100vh;
+  width: 250px;
+  background-color: var(--azul-Marino);
+  color: white;
+  transition: left 0.3s ease; /* Efecto al abrir/cerrar */
+  z-index: 999;
+  overflow-y: auto;
+}
 
 .barra-lateral.visible {
-    left: 0; /* Mueve la barra lateral a la vista */
+  left: 0; /* Mueve la barra lateral a la vista */
 }
 
 /* Botón hamburguesa */
 .menu-icon {
-    font-size: 30px;
-    cursor: pointer;
-    color: black; /* Color inicial */
-    z-index: 1000;
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    transition: color 0.3s ease;
-  }
+  font-size: 30px;
+  cursor: pointer;
+  color: black; /* Color inicial */
+  z-index: 1000;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  transition: color 0.3s ease;
+}
 
 .oculto {
-    display: none;
+  display: none;
 }
 
 .logo {
-    text-align: center;
-    padding: var(--padding-general);
-    font-size: 20px;
-    font-weight: 400;
-    background-color: var(--azul-marino);
-    border-bottom: 1.5px solid var(--sombra);
+  text-align: center;
+  padding: var(--padding-general);
+  font-size: 20px;
+  font-weight: 400;
+  background-color: var(--azul-marino);
+  border-bottom: 1.5px solid var(--sombra);
 }
 
 .logo h2 {
-    font-size: 24px;
-    font-weight: 300;
-    color: var(--gris-claro);
-    margin: 0;
-    line-height: 1.5;
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--gris-claro);
+  margin: 0;
+  line-height: 1.5;
 }
 
 /* Menú de navegación */
 .menu {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: auto;
-  }
-  
-  .menu .opcion {
-    padding: 12px 20px;
-    text-decoration: none;
-    color: #FFFFFF;
-    font-size: 16px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    cursor: pointer;
-  }
-  
-  .menu .opcion:hover {
-    background-color: #4682B4;
-    transform: scale(1.1);
-  }
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: auto;
+}
+
+.menu .opcion {
+  padding: 12px 20px;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.menu .opcion:hover {
+  background-color: #4682b4;
+  transform: scale(1.1);
+}
 
 /* Efectos al pasar el cursor */
 .menu .opcion:hover {
-    background-color: #4682B4; /* Azul Acero */
-    color: #F4F4F4; /* Gris Claro */
-    transform: scale(1.1); /* Efecto de aumento */
+  background-color: #4682b4; /* Azul Acero */
+  color: #f4f4f4; /* Gris Claro */
+  transform: scale(1.1); /* Efecto de aumento */
 }
 
 /* Efectos al hacer clic */
 .menu .opcion:active {
-    background-color: #007BFF; /* Azul Eléctrico */
-    color: #FFFFFF; /* Blanco */
+  background-color: #007bff; /* Azul Eléctrico */
+  color: #ffffff; /* Blanco */
 }
 
 /* Iconos dentro de las opciones del menú */
 .menu .opcion svg {
-    margin-right: 10px;
-    fill: var(--blanco, #FFFFFF); /* Color del icono */
-    transition: fill 0.3s; /* Suavizado del cambio de color */
+  margin-right: 10px;
+  fill: var(--blanco, #ffffff); /* Color del icono */
+  transition: fill 0.3s; /* Suavizado del cambio de color */
 }
 
-.menu ul li
-{
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    transition: background-color 0.3s ease;
-    cursor: pointer;
-    position: relative;
+.menu ul li {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  position: relative;
 }
 
-.menu ul li:hover
-{
-    transition: background-color 0.3s ease;
-    cursor: pointer;
-    position: relative;
+.menu ul li:hover {
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  position: relative;
 }
 
-.contenedor-principal
-{
-    flex: 1;
-    padding: 0px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.contenedor-principal {
+  flex: 1;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.contenedor-principal h1
-{
-    font-size: 10px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    text-align: center;
-    color: var(--blanco);
+.contenedor-principal h1 {
+  font-size: 10px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  color: var(--blanco);
 }
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: #2E3B4E; /* Azul Profundo */
-    color: #FFFFFF; /* Blanco Puro */
-    font-family: Arial, sans-serif;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para dar profundidad */
-    border-bottom: 3px solid #4E5B6E; /* Azul Grisáceo */
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #2e3b4e; /* Azul Profundo */
+  color: #ffffff; /* Blanco Puro */
+  font-family: Arial, sans-serif;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para dar profundidad */
+  border-bottom: 3px solid #4e5b6e; /* Azul Grisáceo */
 }
 header h1 {
-    font-size: 2rem; /* Aumenté el tamaño */
-    font-weight: bold;
-    color: #FFFFFF; /* Blanco Puro */
-    text-transform: uppercase; /* Título en mayúsculas */
-    margin-bottom: 10px; /* Espacio entre el título y el logotipo */
-    cursor: pointer; /* Cambio de cursor al pasar el mouse */
+  font-size: 2rem; /* Aumenté el tamaño */
+  font-weight: bold;
+  color: #ffffff; /* Blanco Puro */
+  text-transform: uppercase; /* Título en mayúsculas */
+  margin-bottom: 10px; /* Espacio entre el título y el logotipo */
+  cursor: pointer; /* Cambio de cursor al pasar el mouse */
 }
 /* Estilos para la navegación */
 nav {
-    background: var(--azul-Marino); /* Azul Marino */
-    padding: 15px 50px; /* Espaciado interno */
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    font-size: 5px;
-    width: 92vw;
-  }
-  
-  /* Estilos de los enlaces de navegación */
-  nav a {
-    color: #FFFFFF; /* Blanco Puro */
-    text-decoration: none; /* Sin subrayado */
-    font-size: 12px; /* Tamaño de fuente */
-    padding: 5px 10px; /* Espaciado interno reducido para evitar efecto botón */
-    position: relative; /* Necesario para posicionar la línea */
-    transition: color 0.3s ease;
-  }
-  
-  /* Estilo para el efecto hover de línea */
-  nav a::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 3px; /* Altura de la línea */
-    width: 0%;
-    background-color: #4682B4; /* Color de la línea */
-    transition: width 0.3s ease; /* Suaviza el efecto de la línea */
-  }
-  
-  /* Mostrar la línea solo en el hover */
-  nav a:hover::after {
-    width: 100%; /* La línea se extiende completamente bajo el texto al pasar el cursor */
-    transition: width 0.3s ease;
-    transform:scale(1.10);
-  }
+  background: var(--azul-Marino); /* Azul Marino */
+  padding: 15px 50px; /* Espaciado interno */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 5px;
+  width: 92vw;
+}
+
+/* Estilos de los enlaces de navegación */
+nav a {
+  color: #ffffff; /* Blanco Puro */
+  text-decoration: none; /* Sin subrayado */
+  font-size: 12px; /* Tamaño de fuente */
+  padding: 5px 10px; /* Espaciado interno reducido para evitar efecto botón */
+  position: relative; /* Necesario para posicionar la línea */
+  transition: color 0.3s ease;
+}
+
+/* Estilo para el efecto hover de línea */
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px; /* Altura de la línea */
+  width: 0%;
+  background-color: #4682b4; /* Color de la línea */
+  transition: width 0.3s ease; /* Suaviza el efecto de la línea */
+}
+
+/* Mostrar la línea solo en el hover */
+nav a:hover::after {
+  width: 100%; /* La línea se extiende completamente bajo el texto al pasar el cursor */
+  transition: width 0.3s ease;
+  transform: scale(1.1);
+}
 /* Estilo general de la tabla */
 .tabla {
-    width: 100%;  
-    border-collapse: collapse;  
-    margin-top: 40px ;  
-    border-radius: 5px;   
-    max-width: 564px;   
-    color: var(--negro);  
-    font-size: 15px;  
-    margin-bottom: 40px;  
-    position: relative;  
-    max-height: none;  /* Permitir que la tabla crezca según el contenido */ 
-    margin: 10px 10px; 
-    
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 40px;
+  border-radius: 5px;
+  max-width: 564px;
+  color: var(--negro);
+  font-size: 15px;
+  margin-bottom: 40px;
+  position: relative;
+  max-height: none; /* Permitir que la tabla crezca según el contenido */
+  margin: 10px 10px;
 }
 
 /* Estilo para las celdas (th y td) */
-.tabla th, .tabla td {
-    padding: 15px;
-    text-align: left;
-    border-bottom: 1px solid var(--sombra);
-    transition: background-color 0.3s ease;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-break: break-word;
-    align-content: center;
-    justify-content: center;
-    vertical-align: middle;
-    background-color: #7a8591;
-    color: var(--negro);
-    
+.tabla th,
+.tabla td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid var(--sombra);
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+  align-content: center;
+  justify-content: center;
+  vertical-align: middle;
+  background-color: #7a8591;
+  color: var(--negro);
 }
 
 /* Estilo específico para los encabezados (th) */
 .tabla th {
-    background-color: var(--azul-Marino);
-    color: var(--blanco);
-    font-weight: bold;
-    text-align: center;
-    padding-left: 60px;
-    transition: background-color 0.3s ease;
+  background-color: var(--azul-Marino);
+  color: var(--blanco);
+  font-weight: bold;
+  text-align: center;
+  padding-left: 60px;
+  transition: background-color 0.3s ease;
 }
 
 /* Estilo para las imágenes dentro de la tabla */
 .tabla .imagen {
-    width: 120px;
-    height: 120px;
-    border-radius: 100%; /* Hace la imagen circular */
-    object-fit: cover;
-    margin-right: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    border: 1px solid var(--sombra-dura);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    background-color: var(--fondo);
-    background-image: url('#'); /* Inserta la URL de tu imagen aquí */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 120px;
+  height: 120px;
+  border-radius: 100%; /* Hace la imagen circular */
+  object-fit: cover;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: 1px solid var(--sombra-dura);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  background-color: var(--fondo);
+  background-image: url('#'); /* Inserta la URL de tu imagen aquí */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Efecto hover para las imágenes */
 .tabla .imagen:hover {
-    background-color: var(--azul-Marino);
-    color: var(--blanco);
-    border-color: var(--azul-Marino);
-    transform: scale(1.10);
-    transition: background-color 0.3s ease, transform 0.3s ease;
+  background-color: var(--azul-Marino);
+  color: var(--blanco);
+  border-color: var(--azul-Marino);
+  transform: scale(1.1);
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 /* Estilo para la sección de botones */
 .tabla .botones {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    background-color: var(--gris-claro);
-    padding: 20px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-    width: 60%;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  background-color: var(--gris-claro);
+  padding: 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  width: 60%;
 }
 
-
 .botones button {
-    background-color: var(--azul-Marino); /* Azul */
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-right: 10px;
-    font-size: 17px;
+  background-color: var(--azul-Marino); /* Azul */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 10px;
+  font-size: 17px;
 }
 
 .botones button:hover {
-    background-color: #0056b3;
-    transform: scale(1.10);
-    color: white;
-    transition: background-color 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    outline: none;
-
+  background-color: #0056b3;
+  transform: scale(1.1);
+  color: white;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  outline: none;
 }
 
-.tabla .botones button:active 
-{
-    background-color: #003f5c;
-    transform: scale(1.05);
-    color: white;
-    transition: background-color 0.3s ease;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-    outline: none;
+.tabla .botones button:active {
+  background-color: #003f5c;
+  transform: scale(1.05);
+  color: white;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  outline: none;
 }
 
-.tabla .botones .eliminar:hover
-{
-    background-color: rgb(138, 0, 0);
-    transform: scale(1.10);
-    color: white;
-    transition: background-color 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    outline: none; 
+.tabla .botones .eliminar:hover {
+  background-color: #003f5c;
+  transform: scale(1.1);
+  color: white;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  outline: none;
 }
 /* Estilo general del contenedor */
 .acciones {
-    display: flex; /* Coloca los botones en línea */
-    gap: 10px; /* Espaciado entre botones */
-    justify-content: center; /* Centra los botones horizontalmente */
-    margin-top: 50px ;
-    margin: 110px 100px;
+  display: flex; /* Coloca los botones en línea */
+  gap: 10px; /* Espaciado entre botones */
+  justify-content: center; /* Centra los botones horizontalmente */
+  margin-top: 50px;
+  margin: 110px 100px;
 }
 
 /* Estilo base para los botones */
 button {
-    padding: 10px;
-    font-size: 16px;
-    font-family: Arial, sans-serif;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    display: flex;
-    justify-content: center;
-    margin: 10px 30px;
+  padding: 10px;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: flex;
+  justify-content: center;
+  margin: 10px 30px;
 }
 
 /* Estilo específico para el botón "Volver al inicio" */
 .btn-volver {
-    background-color: var(--azul-Marino); /* Rojo */
-    color: #fff; /* Texto blanco */
+  background-color: var(--azul-Marino); /* Rojo */
+  color: #fff; /* Texto blanco */
 }
 
 .btn-volver:hover {
-    background-color: var(--azul-acero); /* Rojo más oscuro al pasar el cursor */
-    transform: scale(1.05); /* Pequeño efecto de zoom */
+  background-color: var(--azul-acero); /* Rojo más oscuro al pasar el cursor */
+  transform: scale(1.05); /* Pequeño efecto de zoom */
 }
 
-
 .agregar-proceso {
-    background-color: var(--azul-Marino); 
-    color: #fff; /* Texto blanco */
+  background-color: var(--azul-Marino);
+  color: #003f5c; /* Texto blanco */
 }
 
 .agregar-proceso:hover {
-    background-color: var(--azul-acero); 
-    transform: scale(1.05); /* Pequeño efecto de zoom */
+  background-color: var(--azul-acero);
+  transform: scale(1.05); /* Pequeño efecto de zoom */
 }
 
 .modal-modificar,
@@ -404,7 +393,7 @@ button {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: white;
+  background: #003f5c;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   z-index: 1000;
@@ -417,177 +406,206 @@ button {
 }
 
 .modal-modificar,
-.modal-nuevo 
-{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-    max-width: 400px;
-    height: 500px;
-    background-color: var(--gris-claro);
-    padding: 48px;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.modal-nuevo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  max-width: 400px;
+  height: 500px;
+  background-color: var(--gris-claro);
+  padding: 48px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
-    font-size: 15px;
-    margin-bottom: 110px;
-    color: var(--azul-Marino);
-    margin-top: 0px;
-    text-transform: uppercase;
-    transition: color 0.3s ease;
-
+  font-size: 15px;
+  margin-bottom: 110px;
+  color: var(--azul-Marino);
+  margin-top: 0px;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
 }
 
 /* Animación para el modal */
-@keyframes modal-entrada 
-{
-    0% {
-        opacity: 0;
-        transform: translateY(-100px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        z-index: 1000;
-    }
-
+@keyframes modal-entrada {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
 }
 /* Estilos para los modales */
 .modal-modificar,
 .modal-nuevo,
 .cerrar-modal {
-    background-color: var(--gris-claro);
-    color: var(--negro);
-    padding: 10px 60px;
-    border: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-    margin-right: 10px;
-    font-size: 12px;
-    animation: modal-entrada 0.5s ease-out; /* Aplica la animación */
+  background-color: var(--gris-claro);
+  color: var(--negro);
+  padding: 10px 60px;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  margin-right: 10px;
+  font-size: 12px;
+  animation: modal-entrada 0.5s ease-out; /* Aplica la animación */
 }
 
-.cerrar-modal
-{
-    top: 20px;
-    right: 0px;
-    cursor: pointer;
-    font-size: 15px;
-    background: #d4d4d4;
-    color: var(--rojo);
-    transition: color 0.3s ease;
-    animation: modal-entrada 0.5s ease-out; /* Aplica la animación */
+.cerrar-modal {
+  top: 20px;
+  right: 0px;
+  cursor: pointer;
+  font-size: 15px;
+  background: #003f5c;
+  color: var(--rojo);
+  transition: color 0.3s ease;
+  animation: modal-entrada 0.5s ease-out; /* Aplica la animación */
 }
 
-.cerrar-modal:hover 
-{
-    color: var(--azul-acero);
-    transform: scale(1.10);
-    box-shadow: 0 2px 4px rgba(116, 115, 115, 0.5);
-    outline: none;
+.cerrar-modal:hover {
+  color: var(--azul-acero);
+  transform: scale(1.1);
+  box-shadow: 0 2px 4px rgba(116, 115, 115, 0.5);
+  outline: none;
 }
-
 
 /* Estilos de los inputs */
 .modal-modificar input,
 .modal-nuevo input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 40px;
-    border: 1px solid var(--gris-claro);
-    border-radius: 5px;
-    transition: border-color 0.3s ease;
-    font-size: 13px;
-    font-family: Arial, sans-serif;
-    box-sizing: border-box;
-    outline: none;
-    display: block;
-    text-align: center;
-    color: var(--negro);
-    background-color: var(--blanco);
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    flex-direction: row;
-    max-width: 300px;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 40px;
+  border: 1px solid var(--gris-claro);
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
+  font-size: 13px;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+  outline: none;
+  display: block;
+  text-align: center;
+  color: var(--negro);
+  background-color: var(--blanco);
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-direction: row;
+  max-width: 300px;
 }
 
 /* Estilos de los botones */
 .modal-modificar button,
-.modal-nuevo button{
-    background-color: var(--azul-Marino);
-    color: var(--blanco);
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-family: Arial, sans-serif;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: -30px;
-    max-width: 400px;
-    margin: -20px auto;
+.modal-nuevo button {
+  background-color: var(--azul-Marino);
+  color: var(--blanco);
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: -30px;
+  max-width: 400px;
+  margin: -20px auto;
 }
 
 /* Hover en los botones */
 .modal-modificar button:hover,
 .modal-nuevo button:hover {
-    background-color: var(--azul-acero);
-    transform: scale(1.10);
-    color: var(--blanco);
-    transition: background-color 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    outline: none;
+  background-color: var(--azul-acero);
+  transform: scale(1.1);
+  color: var(--blanco);
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  outline: none;
 }
 
 /* Estilos para los textarea */
 .modal-modificar textarea,
 .modal-nuevo textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 40px;
-    border: 1px solid var(--gris-claro);
-    border-radius: 5px;
-    transition: border-color 0.3s ease;
-    font-size: 13px;
-    font-family: Arial, sans-serif;
-    box-sizing: border-box;
-    outline: none;
-    display: block;
-    text-align: center;
-    color: var(--negro);
-    background-color: var(--blanco);
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    flex-direction: row;
-    max-width: 300px;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 40px;
+  border: 1px solid var(--gris-claro);
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
+  font-size: 13px;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+  outline: none;
+  display: block;
+  text-align: center;
+  color: var(--negro);
+  background-color: var(--blanco);
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-direction: row;
+  max-width: 300px;
 }
 
 /* Estilos de los encabezados */
 .modal-modificar h2,
 .modal-nuevo h2 {
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: var(--azul-Marino);
-    margin-top: 20px;
-    text-transform: uppercase;
-    transition: color 0.3s ease;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: var(--azul-Marino);
+  margin-top: 20px;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
 }
 
-.submenu {  
-    display: none; /* Ocultar el submenu por defecto */  
-    padding-left: 20px; /* Indent to look like a submenu */  
-}  
+.submenu {
+  display: none; /* Ocultar el submenu por defecto */
+  padding-left: 20px; /* Indent to look like a submenu */
+}
+
+/* pruebaaaaaaaaaaaaaaaaaaa */
+
+.pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+.page-item {
+  margin: 0 5px;
+}
+
+.page-link {
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #007bff;
+  border: 1px solid #003f5c;
+  border-radius: 4px;
+}
+
+.page-link:hover {
+  background-color: #003f5c;
+}
+
+.page-item.active .page-link {
+  background-color: #007bff;
+  color: white;
+  border: 1px solid #007bff;
+}
+
+.page-item.disabled .page-link {
+  color: #6c757d;
+  pointer-events: none;
+}
