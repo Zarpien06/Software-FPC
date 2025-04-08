@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Paint Cars - Gestión de Procesos</title>
+    <link rel="stylesheet" href="css/sty.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-car"></i>
+                <h2>Full Paint Cars</h2>
+            </div>
+            <nav>
+                <ul>
+                    <li class="active"><a href="#"><i class="fas fa-list-ul"></i> Procesos</a></li>
+                    <li><a href="Gestion Reportes.html"><i class="fas fa-car"></i> Reportes</a></li>
+                    <li><a href="#"><i class="fas fa-tools"></i> Mantenimientos</a></li>
+                    <li><a href="#"><i class="fas fa-calendar-alt"></i> Programación</a></li>
+                    <li><a href="#"><i class="fas fa-chart-bar"></i> Reportes</a></li>
+                    <li><a href="#"><i class="fas fa-cog"></i> Configuración</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main>
+            <header>
+                <div class="search-bar">
+                    <input type="text" placeholder="Buscar procesos...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <div class="user-menu">
+                    <span class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </span>
+                    <div class="user">
+                        <img src="/api/placeholder/40/40" alt="Usuario">
+                        <span>Admin</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="content">
+                <div class="page-header">
+                    <h1>Gestión de Procesos</h1>
+                    <button id="btnNuevoProceso" class="btn-primary"><i class="fas fa-plus"></i> Nuevo Proceso</button>
+                </div>
+
+                <div class="stats-cards">
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-wrench"></i></div>
+                        <div class="card-info">
+                            <h3>127</h3>
+                            <p>Procesos activos</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-calendar-check"></i></div>
+                        <div class="card-info">
+                            <h3>42</h3>
+                            <p>Programados</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-check-circle"></i></div>
+                        <div class="card-info">
+                            <h3>89</h3>
+                            <p>Completados (este mes)</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                        <div class="card-info">
+                            <h3>5</h3>
+                            <p>Pendientes urgentes</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter-bar">
+                    <div class="filter-group">
+                        <label for="filtroEstado">Estado:</label>
+                        <select id="filtroEstado">
+                            <option value="todos">Todos</option>
+                            <option value="activo">Activo</option>
+                            <option value="programado">Programado</option>
+                            <option value="completado">Completado</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="filtroFecha">Fecha:</label>
+                        <input type="date" id="filtroFecha">
+                    </div>
+                    <div class="filter-group">
+                        <label for="filtroVehiculo">Vehículo:</label>
+                        <select id="filtroVehiculo">
+                            <option value="todos">Todos</option>
+                            <option value="1">Toyota Corolla</option>
+                            <option value="2">Honda Civic</option>
+                            <option value="3">Ford F-150</option>
+                        </select>
+                    </div>
+                    <button class="btn-secondary"><i class="fas fa-filter"></i> Filtrar</button>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Vehículo</th>
+                                <th>Tipo de Proceso</th>
+                                <th>Descripción</th>
+                                <th>Fecha</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaProcesos">
+                            <tr>
+                                <td>#PRO-001</td>
+                                <td>Toyota Corolla (ABC-123)</td>
+                                <td>Mantenimiento preventivo</td>
+                                <td>Cambio de aceite y filtros</td>
+                                <td>05/04/2025</td>
+                                <td><span class="badge-completed">Completado</span></td>
+                                <td class="actions">
+                                    <button class="btn-view" title="Ver detalle"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-edit" title="Editar"><i class="fas fa-edit"></i></button>
+                                    <button class="btn-delete" title="Eliminar"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#PRO-002</td>
+                                <td>Honda Civic (DEF-456)</td>
+                                <td>Reparación</td>
+                                <td>Sustitución de frenos delanteros</td>
+                                <td>06/04/2025</td>
+                                <td><span class="badge-active">En progreso</span></td>
+                                <td class="actions">
+                                    <button class="btn-view" title="Ver detalle"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-edit" title="Editar"><i class="fas fa-edit"></i></button>
+                                    <button class="btn-delete" title="Eliminar"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#PRO-003</td>
+                                <td>Ford F-150 (GHI-789)</td>
+                                <td>Inspección</td>
+                                <td>Revisión general de sistemas</td>
+                                <td>08/04/2025</td>
+                                <td><span class="badge-scheduled">Programado</span></td>
+                                <td class="actions">
+                                    <button class="btn-view" title="Ver detalle"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-edit" title="Editar"><i class="fas fa-edit"></i></button>
+                                    <button class="btn-delete" title="Eliminar"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#PRO-004</td>
+                                <td>Chevrolet Cruze (JKL-012)</td>
+                                <td>Mantenimiento correctivo</td>
+                                <td>Reparación sistema eléctrico</td>
+                                <td>03/04/2025</td>
+                                <td><span class="badge-urgent">Urgente</span></td>
+                                <td class="actions">
+                                    <button class="btn-view" title="Ver detalle"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-edit" title="Editar"><i class="fas fa-edit"></i></button>
+                                    <button class="btn-delete" title="Eliminar"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#PRO-005</td>
+                                <td>Nissan Sentra (MNO-345)</td>
+                                <td>Mantenimiento preventivo</td>
+                                <td>Alineación y balanceo</td>
+                                <td>10/04/2025</td>
+                                <td><span class="badge-scheduled">Programado</span></td>
+                                <td class="actions">
+                                    <button class="btn-view" title="Ver detalle"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-edit" title="Editar"><i class="fas fa-edit"></i></button>
+                                    <button class="btn-delete" title="Eliminar"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="pagination">
+                    <button class="btn-page"><i class="fas fa-angle-left"></i></button>
+                    <button class="btn-page active">1</button>
+                    <button class="btn-page">2</button>
+                    <button class="btn-page">3</button>
+                    <span>...</span>
+                    <button class="btn-page">10</button>
+                    <button class="btn-page"><i class="fas fa-angle-right"></i></button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal para crear/editar proceso -->
+    <div id="procesoModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Nuevo Proceso</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="formProceso">
+                    <div class="form-group">
+                        <label for="vehiculo">Vehículo:</label>
+                        <select id="vehiculo" required>
+                            <option value="">-- Seleccione vehículo --</option>
+                            <option value="1">Toyota Corolla (ABC-123)</option>
+                            <option value="2">Honda Civic (DEF-456)</option>
+                            <option value="3">Ford F-150 (GHI-789)</option>
+                            <option value="4">Chevrolet Cruze (JKL-012)</option>
+                            <option value="5">Nissan Sentra (MNO-345)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="tipoProceso">Tipo de Proceso:</label>
+                        <select id="tipoProceso" required>
+                            <option value="">-- Seleccione tipo --</option>
+                            <option value="mantenimiento_preventivo">Mantenimiento preventivo</option>
+                            <option value="mantenimiento_correctivo">Mantenimiento correctivo</option>
+                            <option value="reparacion">Reparación</option>
+                            <option value="inspeccion">Inspección</option>
+                            <option value="garantia">Garantía</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="descripcion">Descripción:</label>
+                        <textarea id="descripcion" rows="3" required placeholder="Describa el proceso a realizar"></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fechaInicio">Fecha de inicio:</label>
+                            <input type="date" id="fechaInicio" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="fechaFin">Fecha estimada fin:</label>
+                            <input type="date" id="fechaFin">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="estado">Estado:</label>
+                        <select id="estado" required>
+                            <option value="programado">Programado</option>
+                            <option value="activo">En progreso</option>
+                            <option value="completado">Completado</option>
+                            <option value="urgente">Urgente</option>
+                            <option value="cancelado">Cancelado</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="kilometraje">Kilometraje actual:</label>
+                        <input type="number" id="kilometraje" placeholder="Kilometraje del vehículo">
+                    </div>
+                    <div class="form-group">
+                        <label for="notas">Notas adicionales:</label>
+                        <textarea id="notas" rows="2" placeholder="Información adicional relevante"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" id="btnCancelar">Cancelar</button>
+                        <button type="submit" class="btn-primary" id="btnGuardar">Guardar Proceso</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de confirmación para eliminar -->
+    <div id="confirmDeleteModal" class="modal">
+        <div class="modal-content confirm-modal">
+            <div class="modal-header">
+                <h2>Confirmar eliminación</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>¿Está seguro que desea eliminar este proceso? Esta acción no se puede deshacer.</p>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="btnCancelarDelete">Cancelar</button>
+                    <button type="button" class="btn-danger" id="btnConfirmarDelete">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script src="js/scrt.js"></script>
+</body>
+</html>

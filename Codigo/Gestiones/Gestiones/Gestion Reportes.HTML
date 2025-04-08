@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Paint Cars - Gestión de Reportes</title>
+    <link rel="stylesheet" href="CSS/reportes.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-car"></i>
+                <h2>Full Paint Cars</h2>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="Gestion Procesos.html"><i class="fas fa-list-ul"></i> Procesos</a></li>
+                    <li class="active"><a href=""><i class="fas fa-file-alt"></i> Reportes</a></li>
+                    <li><a href="#"><i class="fas fa-tools"></i> Mantenimientos</a></li>
+                    <li><a href="#"><i class="fas fa-calendar-alt"></i> Programación</a></li>
+                    <li><a href="#"><i class="fas fa-chart-bar"></i> Estadísticas</a></li>
+                    <li><a href="#"><i class="fas fa-cog"></i> Configuración</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="content">
+            <header class="top-bar">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar reportes...">
+                </div>
+                <div class="user-profile">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="user-info">
+                        <img src="https://via.placeholder.com/40" alt="Perfil">
+                        <span>Admin</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </header>
+
+            <div class="page-header">
+                <h1>Gestión de Reportes</h1>
+                <button class="btn-primary" id="btnNewReport">
+                    <i class="fas fa-plus"></i> Nuevo Reporte
+                </button>
+            </div>
+
+            <div class="dashboard-cards">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Total Reportes</h3>
+                        <p class="card-number">247</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Este Mes</h3>
+                        <p class="card-number">38</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-car-crash"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Pendientes</h3>
+                        <p class="card-number">12</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Completados</h3>
+                        <p class="card-number">235</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <div class="filter-group">
+                    <label for="filterDate">Filtrar por fecha:</label>
+                    <select id="filterDate">
+                        <option value="all">Todos</option>
+                        <option value="today">Hoy</option>
+                        <option value="week">Esta semana</option>
+                        <option value="month">Este mes</option>
+                        <option value="custom">Personalizado</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="filterStatus">Estado:</label>
+                    <select id="filterStatus">
+                        <option value="all">Todos</option>
+                        <option value="pending">Pendiente</option>
+                        <option value="inprogress">En progreso</option>
+                        <option value="completed">Completado</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="filterType">Tipo de Servicio:</label>
+                    <select id="filterType">
+                        <option value="all">Todos</option>
+                        <option value="paint">Pintura</option>
+                        <option value="mechanical">Mecánico</option>
+                        <option value="electrical">Eléctrico</option>
+                        <option value="bodywork">Chapa y Pintura</option>
+                    </select>
+                </div>
+                <button class="btn-secondary" id="btnApplyFilters">
+                    <i class="fas fa-filter"></i> Aplicar Filtros
+                </button>
+            </div>
+
+            <div class="reports-table-wrapper">
+                <table class="reports-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Cliente</th>
+                            <th>Vehículo</th>
+                            <th>Tipo de Servicio</th>
+                            <th>Fecha</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#REP-2025042</td>
+                            <td>Carlos Ramírez</td>
+                            <td>Toyota Corolla 2022</td>
+                            <td>Pintura completa</td>
+                            <td>05/04/2025</td>
+                            <td><span class="status-badge completed">Completado</span></td>
+                            <td class="action-buttons">
+                                <button class="btn-view" title="Ver reporte"><i class="fas fa-eye"></i></button>
+                                <button class="btn-edit" title="Editar reporte"><i class="fas fa-edit"></i></button>
+                                <button class="btn-delete" title="Eliminar reporte"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#REP-2025041</td>
+                            <td>María González</td>
+                            <td>Honda Civic 2023</td>
+                            <td>Reparación de chapa</td>
+                            <td>04/04/2025</td>
+                            <td><span class="status-badge in-progress">En progreso</span></td>
+                            <td class="action-buttons">
+                                <button class="btn-view" title="Ver reporte"><i class="fas fa-eye"></i></button>
+                                <button class="btn-edit" title="Editar reporte"><i class="fas fa-edit"></i></button>
+                                <button class="btn-delete" title="Eliminar reporte"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#REP-2025040</td>
+                            <td>Juan Pérez</td>
+                            <td>Ford Mustang 2020</td>
+                            <td>Detailing premium</td>
+                            <td>03/04/2025</td>
+                            <td><span class="status-badge completed">Completado</span></td>
+                            <td class="action-buttons">
+                                <button class="btn-view" title="Ver reporte"><i class="fas fa-eye"></i></button>
+                                <button class="btn-edit" title="Editar reporte"><i class="fas fa-edit"></i></button>
+                                <button class="btn-delete" title="Eliminar reporte"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#REP-2025039</td>
+                            <td>Elena Martínez</td>
+                            <td>Nissan Sentra 2021</td>
+                            <td>Cambio de color</td>
+                            <td>03/04/2025</td>
+                            <td><span class="status-badge pending">Pendiente</span></td>
+                            <td class="action-buttons">
+                                <button class="btn-view" title="Ver reporte"><i class="fas fa-eye"></i></button>
+                                <button class="btn-edit" title="Editar reporte"><i class="fas fa-edit"></i></button>
+                                <button class="btn-delete" title="Eliminar reporte"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#REP-2025038</td>
+                            <td>Fernando López</td>
+                            <td>Chevrolet Camaro 2019</td>
+                            <td>Pintado parcial</td>
+                            <td>02/04/2025</td>
+                            <td><span class="status-badge completed">Completado</span></td>
+                            <td class="action-buttons">
+                                <button class="btn-view" title="Ver reporte"><i class="fas fa-eye"></i></button>
+                                <button class="btn-edit" title="Editar reporte"><i class="fas fa-edit"></i></button>
+                                <button class="btn-delete" title="Eliminar reporte"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#REP-2025037</td>
+                            <td>Laura Torres</td>
+                            <td>Hyundai Elantra 2022</td>
+                            <td>Reparación de golpe</td>
+                            <td>01/04/2025</td>
+                            <td><span class="status-badge in-progress">En progreso</span></td>
+                            <td class="action-buttons">
+                                <button class="btn-view" title="Ver reporte"><i class="fas fa-eye"></i></button>
+                                <button class="btn-edit" title="Editar reporte"><i class="fas fa-edit"></i></button>
+                                <button class="btn-delete" title="Eliminar reporte"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="pagination">
+                <button class="btn-page"><i class="fas fa-chevron-left"></i></button>
+                <button class="btn-page active">1</button>
+                <button class="btn-page">2</button>
+                <button class="btn-page">3</button>
+                <span>...</span>
+                <button class="btn-page">12</button>
+                <button class="btn-page"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal para crear/editar reportes -->
+    <div class="modal" id="reportModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Nuevo Reporte</h2>
+                <button class="btn-close" id="closeModal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <form id="reportForm">
+                    <div class="form-group">
+                        <label for="clientName">Cliente:</label>
+                        <input type="text" id="clientName" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="vehicleModel">Modelo de Vehículo:</label>
+                            <input type="text" id="vehicleModel" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="vehicleYear">Año:</label>
+                            <input type="number" id="vehicleYear" min="1900" max="2025" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="serviceType">Tipo de Servicio:</label>
+                            <select id="serviceType" required>
+                                <option value="">Seleccionar...</option>
+                                <option value="paint">Pintura completa</option>
+                                <option value="partial">Pintado parcial</option>
+                                <option value="repair">Reparación de chapa</option>
+                                <option value="color">Cambio de color</option>
+                                <option value="detailing">Detailing</option>
+                                <option value="other">Otro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="reportStatus">Estado:</label>
+                            <select id="reportStatus" required>
+                                <option value="pending">Pendiente</option>
+                                <option value="inprogress">En progreso</option>
+                                <option value="completed">Completado</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="serviceDescription">Descripción del servicio:</label>
+                        <textarea id="serviceDescription" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="observations">Observaciones:</label>
+                        <textarea id="observations" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Fotos/Documentos:</label>
+                        <div class="file-upload">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Arrastre los archivos aquí o haga clic para cargar</p>
+                            <input type="file" id="fileUpload" multiple>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" id="cancelReport">Cancelar</button>
+                        <button type="submit" class="btn-primary">Guardar Reporte</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de confirmación para eliminar -->
+    <div class="modal" id="deleteModal">
+        <div class="modal-content delete-modal">
+            <div class="modal-header">
+                <h2>Confirmar Eliminación</h2>
+                <button class="btn-close" id="closeDeleteModal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="delete-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <p>¿Está seguro que desea eliminar este reporte? Esta acción no se puede deshacer.</p>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="cancelDelete">Cancelar</button>
+                    <button type="button" class="btn-danger" id="confirmDelete">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="JS/reportes.js"></script>
+</body>
+</html>
