@@ -1,22 +1,38 @@
--- Consultas basicas
+USE FULLPAINTT;
 
--- Seleccionar todos los registros de cada tabla
-SELECT * FROM Roles;
-SELECT * FROM Usuarios;
-SELECT * FROM Clientes;
-SELECT * FROM Empleados;
-SELECT * FROM Administradores;
-SELECT * FROM Vehiculos;
-SELECT * FROM Servicios;
-SELECT * FROM Historial_Servicios;
-SELECT * FROM Facturas;
-SELECT * FROM Detalle_Factura;
-SELECT * FROM Tipos_Proceso;
-SELECT * FROM Procesos;
-SELECT * FROM Registro_Mantenimiento;
-SELECT * FROM Historial_Cliente;
-SELECT * FROM Historial_Servicios_Realizados;
-SELECT * FROM Asignacion_Proceso_Vehiculo;
+-- DESDE LA LINEA 4 HASTA LA 35 SON CONSULTAS BASICAS HECHAS POR RONNY
+-- Consulta los usuarios que esten activos y con un rol asignado
+SELECT * FROM usuarios 
+WHERE estado = 'activo' AND rol_id IS NOT NULL;
+
+-- Lista de usuarios ordenados por fecha de registro, lo mas recientes van de primeros
+SELECT * FROM usuarios 
+ORDER BY fecha_registro DESC;
+
+-- Servicios ordenados por precio de menor a mayor
+SELECT * FROM servicios 
+ORDER BY precio ASC;
+
+-- Mostrar los 10 servicios mas caros
+SELECT * FROM servicios 
+ORDER BY precio DESC 
+LIMIT 10;
+
+-- Mostrar los últimos 6 vehículos registrados
+SELECT * FROM vehiculos 
+ORDER BY fecha_registro DESC 
+LIMIT 6;
+
+-- servicios que hayan costado entre $50.000 & $200.000
+SELECT * FROM servicios 
+WHERE precio BETWEEN 50000 AND 200000;
+ 
+-- Calificaciones entre 1 y 3 estrellas
+SELECT * FROM calificaciones
+WHERE puntuacion BETWEEN 1 AND 3;
+
+-- Calcular el promedio de precios de todos los servicios:
+SELECT AVG(precio) AS promedio_precio FROM servicios;
 
 -- Seleccionar un registro específico por ID
 SELECT * FROM Usuarios WHERE usuario_id = 1;
