@@ -2,6 +2,8 @@ USE FULLPAINTT;
 
 -- Inserciones
 
+INSERT INTO roles (nombre) VALUES ('admin'), ('empleado'), ('cliente');
+
 -- TABLE roles
 INSERT INTO roles (nombre) VALUES ('admin'), ('empleado'), ('cliente');
 
