@@ -1,1 +1,43 @@
 
+# FastAPI y servidor
+fastapi==0.104.1
+uvicorn==0.24.0
+
+# Base de datos
+SQLAlchemy==2.0.23
+PyMySQL==1.1.0
+
+# Validación de datos
+pydantic==2.5.0
+pydantic-core==2.14.1
+pydantic-settings==2.1.0
+email-validator==2.1.0
+
+# Seguridad y autenticación
+passlib==1.7.4
+bcrypt==4.3.0
+python-jose==3.3.0
+cryptography==41.0.7
+
+# Utilidades
+python-dotenv==1.0.0
+python-multipart==0.0.6
+
+# Dependencias de sistema
+annotated-types==0.7.0
+anyio==3.7.1
+cffi==1.17.1
+click==8.2.1
+colorama==0.4.6
+dnspython==2.7.0
+ecdsa==0.19.1
+greenlet==3.2.2
+h11==0.16.0
+idna==3.10
+pyasn1==0.6.1
+pycparser==2.22
+rsa==4.9.1
+six==1.17.0
+sniffio==1.3.1
+starlette==0.27.0
+typing-extensions==4.13.2
