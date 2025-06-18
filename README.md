@@ -51,7 +51,6 @@ Este software permite a los clientes obtener información detallada y en tiempo 
 
 > Guarda las imágenes en una carpeta `/docs/img/` o usa enlaces públicos si tu repositorio es privado.
 
-```markdown
 ![Seguimiento del Vehículo](docs/img/seguimiento.png)
 *Ejemplo de vista del cliente: seguimiento en tiempo real.*
 
