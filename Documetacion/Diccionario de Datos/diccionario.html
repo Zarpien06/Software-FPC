@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Diccionario de Datos - FULLPAINTT</title>
+</head>
+<body>
+    <h1>Diccionario de Datos - FULLPAINTT</h1>
+    <p>Documentación completa de la estructura de la base de datos del sistema de gestión de taller de pintura FULLPAINTT.</p>
+    
+    <div class="note">
+        <strong>Leyenda:</strong>
+        <span class="pk">Clave Primaria</span> | 
+        <span class="fk">Clave Foránea</span> | 
+        <span class="required">NOT NULL</span> | 
+        <span class="default">Valor por defecto</span> | 
+        <span class="enum">ENUM/CHECK</span>
+    </div>
+
+    <div class="table-container">
+        <!-- Tabla: roles -->
+        <h3>Tabla: roles</h3>
+        <table>
+            <tr>
+                <th>Campo</th>
+                <th>Tipo</th>
+                <th>Descripción</th>
+                <th>Restricciones</th>
+            </tr>
+            <tr>
+                <td class="pk">id</td>
+                <td>INT</td>
+                <td>Identificador único del rol</td>
+                <td>PRIMARY KEY, AUTO_INCREMENT</td>
+            </tr>
+            <tr>
+                <td>nombre</td>
+                <td>VARCHAR(50)</td>
+                <td>Nombre del rol (Ej: Admin, Cliente, Técnico)</td>
+                <td class="required">NOT NULL, UNIQUE</td>
+            </tr>
+            <tr>
+                <td>descripcion</td>
+                <td>VARCHAR(255)</td>
+                <td>Descripción detallada del rol</td>
+                <td></td>
+            </tr>
+        </table>
+
+        <!-- Tabla: tipos_identificacion -->
+        <h3>Tabla: tipos_identificacion</h3>
+        <table>
+            <tr>
+                <th>Campo</th>
+                <th>Tipo</th>
+                <th>Descripción</th>
+                <th>Restricciones</th>
+            </tr>
+            <tr>
+                <td class="pk">tipo_id</td>
+                <td>VARCHAR(2)</td>
+                <td>Código abreviado del tipo (CC, TI, NIT, etc.)</td>
+                <td>PRIMARY KEY</td>
+            </tr>
+            <tr>
+                <td>descripcion</td>
+                <td>VARCHAR(50)</td>
+                <td>Descripción completa del tipo de documento</td>
+                <td class="required">NOT NULL</td>
+            </tr>
+        </table>
+
+        <!-- Tabla: usuarios -->
+        <h3>Tabla: usuarios</h3>
+        <table>
+            <tr>
+                <th>Campo</th>
+                <th>Tipo</th>
+                <th>Descripción</th>
+                <th>Restricciones</th>
+            </tr>
+            <tr>
+                <td class="pk">usuario_id</td>
+                <td>INT</td>
+                <td>Identificador único del usuario</td>
+                <td>PRIMARY KEY, AUTO_INCREMENT</td>
+            </tr>
+            <tr>
+                <td>nombre_completo</td>
+                <td>VARCHAR(100)</td>
+                <td>Nombre completo del usuario</td>
+                <td class="required">NOT NULL</td>
+            </tr>
+            <tr>
+                <td>telefono</td>
+                <td>VARCHAR(15)</td>
+                <td>Número de contacto telefónico</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>correo</td>
+                <td>VARCHAR(100)</td>
+                <td>Correo electrónico (usado como usuario)</td>
+                <td class="required">NOT NULL, UNIQUE</td>
+            </tr>
+            <tr>
+                <td>tipo_identificacion</td>
+                <td>VARCHAR(2)</td>
+                <td>Tipo de documento de identidad</td>
+                <td class="required">NOT NULL, <span class="fk">FOREIGN KEY (tipos_identificacion.tipo_id)</span>, ON UPDATE CASCADE</td>
+            </tr>
+            <tr>
+                <td>numero_identificacion</td>
+                <td>VARCHAR(20)</td>
+                <td>Número del documento de identidad</td>
+                <td class="required">NOT NULL</td>
+            </tr>
+            <tr>
+                <td>password_hash</td>
+                <td>VARCHAR(255)</td>
+                <td>Contraseña encriptada</td>
+                <td class="required">NOT NULL</td>
+            </tr>
+            <tr>
+                <td>estado</td>
+                <td>VARCHAR(10)</td>
+                <td>Estado de la cuenta (activo/inactivo)</td>
+                <td class="default">DEFAULT 'activo', <span class="enum">CHECK (activo/inactivo)</span></td>
+            </tr>
+            <tr>
+                <td>rol_id</td>
+                <td>INT</td>
+                <td>Rol asignado al usuario</td>
+                <td><span class="fk">FOREIGN KEY (roles.id)</span>, ON DELETE SET NULL, ON UPDATE CASCADE</td>
+            </tr>
+            <tr>
+                <td>foto_perfil</td>
+                <td>VARCHAR(255)</td>
+                <td>Ruta/URL de la imagen de perfil</td>
+                <td class="default">DEFAULT 'static/img/default-profile.png'</td>
+            </tr>
+            <tr>
+                <td>fecha_registro</td>
+                <td>TIMESTAMP</td>
+                <td>Fecha y hora de registro</td>
+                <td class="default">DEFAULT CURRENT_TIMESTAMP</td>
+            </tr>
+        </table>
+
+        <!-- Tabla: estados_vehiculo -->
+        <h3>Tabla: estados_vehiculo</h3>
+        <table>
+            <tr>
+                <th>Campo</th>
+                <th>Tipo</th>
+                <th>Descripción</th>
+                <th>Restricciones</th>
+            </tr>
+            <tr>
+                <td class="pk">estado_id</td>
+                <td>VARCHAR(20)</td>
+                <td>Código del estado (ej: en_proceso, terminado)</td>
+                <td>PRIMARY KEY</td>
+            </tr>
+            <tr>
+                <td>descripcion</td>
+                <td>VARCHAR(100)</td>
+                <td>Descripción detallada del estado</td>
+                <td class="required">NOT NULL</td>
+            </tr>
+        </table>
+
+        <!-- Tabla: tipos_vehiculo -->
+        <h3>Tabla: tipos_vehiculo</h3>
+        <table>
+            <tr>
+                <th>Campo</th>
+                <th>Tipo</th>
+                <th>Descripción</th>
+                <th>Restricciones</th>
+            </tr>
+            <tr>
+                <td class="pk">tipo_id</td>
+                <td>INT</td>
+                <td>Identificador único del tipo</td>
+                <td>PRIMARY KEY, AUTO_INCREMENT</td>
+            </tr>
+            <tr>
+                <td>nombre</td>
+                <td>VARCHAR(50)</td>
+                <td>Nombre del tipo (Sedán, Camioneta, etc.)</td>
+                <td class="required">NOT NULL, UNIQUE</td>
+            </tr>
+        </table>
+
+        <!-- Tabla: marcas_vehiculo -->
+        <h3>Tabla: marcas_vehiculo</h3>
+        <table>
+            <tr>
+                <th>Campo</th>
+                <th>Tipo</th>
+                <th>Descripción</th>
+                <th>Restricciones</th>
+            </tr>
+            <tr>
+                <td class="pk">marca_id</td>
+                <td>INT</td>
+                <td>Identificador único de la marca</td>
+                <td>PRIMARY KEY, AUTO_INCREMENT</td>
+            </tr>
+            <tr>
+                <td>nombre</td>
+                <td>VARCHAR(100)</td>
+                <td>Nombre de la marca (Toyota, Ford, etc.)</td>
+                <td class="required">NOT NULL, UNIQUE</td>
+            </tr>
+        </table>
+
+        <!-- Tabla: colores -->
+        <h3>Tabla: colores</h3>
+        <table>
+            <tr>
+                <th>Campo</th>
+                <th>Tipo</th>
+                <th>Descripción</th>
+                <th>Restricciones</th>
+            </tr>
+            <tr>
+                <td class="pk">color_id</td>
+                <td>INT</td>
+                <td>Identificador único del color</td>
+                <td>PRIMARY KEY, AUTO_INCREMENT</td>
+            </tr>
+            <tr>
+                <td>nombre</td>
+                <td>VARCHAR(50)</td>
+                <td>Nombre del color (Rojo, Azul, etc.)</td>
+                <td class="required">NOT NULL, UNIQUE</td>
+            </tr>
+        </table>
+
+        <!-- Tabla: vehiculos -->
+        <h3>Tabla: vehiculos</h3>
+        <table>
+            <tr>
+                <th>Campo</th>
+                <th>Tipo</th>
+                <th>Descripción</th>
+                <th>Restricciones</th>
+            </tr>
+            <tr>
+                <td class="pk">vehiculo_id</td>
+                <td>INT</td>
+                <td>Identificador único del vehículo</td>
+                <td>PRIMARY KEY, AUTO_INCREMENT</td>
+            </tr>
+            <tr>
+                <td>usuario_id</td>
+                <td>INT</td>
+                <td>Dueño/propietario del vehículo</td>
+                <td class="required">NOT NULL, <span class="fk">FOREIGN KEY (usuarios.usuario_id)</span>, ON DELETE CASCADE</td>
+            </tr>
+            <tr>
+                <td>marca_id</td>
+                <td>INT</td>
+                <td>Marca del vehículo</td>
+                <td class="required">NOT NULL, <span class="fk">FOREIGN KEY (marcas_vehiculo.marca_id)</span></td>
+            </tr>
+            <tr>
+                <td>modelo</td>
+                <td>VARCHAR(100)</td>
+                <td>Modelo específico del vehículo</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>anio</td>
+                <td>INT</td>
+                <td>Año de fabricación</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>placa</td>
+                <td>VARCHAR(20)</td>
+                <td>Número de placa/licencia</td>
+                <td>UNIQUE</td>
+            </tr>
+            <tr>
+                <td>color_id</td>
+                <td>INT</td>
+                <td>Color actual del vehículo</td>
+                <td class="required">NOT NULL, <span class="fk">FOREIGN KEY (colores.color_id)</span></td>
+            </tr>
+            <tr>
+                <td>tipo_id</td>
+                <td>INT</td>
+                <td>Tipo de vehículo</td>
+                <td class="required">NOT NULL, <span class="fk">FOREIGN KEY (tipos_vehiculo.tipo_id)</span></td>
+            </tr>
+            <tr>
+                <td>imagen</td>
+                <td>VARCHAR(255)</td>
+                <td>Imagen/foto del vehículo</td>
+                <td class="default">DEFAULT 'static/img/default-car.png'</td>
+            </tr>
+            <tr>
+                <td>estado_id</td>
+                <td>VARCHAR(20)</td>
+                <td>Estado actual en el taller</td>
+                <td class="default">DEFAULT 'sin_servicio', <span class="fk">FOREIGN KEY (estados_vehiculo.estado_id)</span></td>
+            </tr>
+            <tr>
+                <td>fecha_registro</td>
+                <td>TIMESTAMP</td>
+                <td>Fecha de registro en el sistema</td>
+                <td class="default">DEFAULT CURRENT_TIMESTAMP</td>
+            </tr>
+        </table>
+
+        <!-- Tabla: categorias_servicio -->
+        <h3>Tabla: categorias_servicio</h3>
+        <table>
+            <tr>
+                <th>Campo</th>
+                <th>Tipo</th>
+                <th>Descripción</th>
+                <th>Restricciones</th>
+            </tr>
+            <tr>
+                <td class="pk">categoria_id</td>
+                <td>INT</td>
+                <td>Identificador único de la categoría</td>
+                <td>PRIMARY KEY, AUTO_INCREMENT</td>
+            </tr>
+            <tr>
+                <td>nombre</td>
+                <td>VARCHAR(100)</td>
+                <td>Nombre de la categoría (Pintura, Detallado, etc.)</td>
+                <td class="required">NOT NULL</td>
+            </tr>
+            <tr>
+                <td>descripcion</td>
+                <td>TEXT</td>
+                <td>Descripción detallada de la categoría</td>
+                <td></td>
+            </tr>
+        </table>
+
+        <!-- Tabla: servicios -->
+        <h3>Tabla: servicios</h3>
+        <table>
+            <tr>
+                <th>Campo</th>
+                <th>Tipo</th>
+                <th>Descripción</th>
+                <th>Restricciones</th>
+            </tr>
+            <tr>
+                <td class="pk">servicio_id</td>
+                <td>INT</td>
+                <td>Identificador único del servicio</td>
+                <td>PRIMARY KEY, AUTO_INCREMENT</td>
+            </tr>
+            <tr>
+                <td>nombre</td>
+                <td>VARCHAR(100)</td>
+                <td>Nombre del servicio</td>
+                <td class="required">NOT NULL</td>
+            </tr>
+            <tr>
+                <td>descripcion</td>
+                <td>TEXT</td>
+                <td>Descripción detallada del servicio</td>
+                <td class="required">NOT NULL</td>
+            </tr>
+            <tr>
+                <td>precio</td>
+                <td>DECIMAL(10,2)</td>
+                <td>Precio actual del servicio</td>
+                <td class="required">NOT NULL</td>
+            </tr>
+            <tr>
+                <td>categoria_id</td>
+                <td>INT</td>
+                <td>Categoría a la que pertenece</td>
+                <td class="required">NOT NULL, <span class="fk">FOREIGN KEY (categorias_servicio.categoria_id)</span></td>
+            </tr>
+            <tr>
+                <td>imagen</td>
+                <td>VARCHAR(255)</td>
+                <td>Imagen ilustrativa del servicio</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>fecha_creacion</td>
+                <td>TIMESTAMP</td>
+                <td>Fecha de creación del registro</td>
+                <td class="default">DEFAULT CURRENT_TIMESTAMP</td>
+            </tr>
+        </table>
+
+        <!-- Tabla: estados_cotizacion -->
+        <h3>Tabla: estados_cotizacion</h3>
+        <table>
+            <tr>
+                <th>Campo</th>
+                <th>Tipo</th>
+                <th>Descripción</th>
+                <th>Restricciones</th>
+            </tr>
+            <tr>
+                <td class="pk">estado_id</td>
+                <td>VARCHAR(20)</td>
+                <td>Código del estado (pendiente, aprobada, etc.)</td>
+                <td>PRIMARY KEY</td>
+            </tr>
+            <tr>
+                <td>descripcion</td>
+                <td>VARCHAR(100)</td>
+                <td>Descripción del estado</td>
+                <td class="required">NOT NULL</td>
+            </tr>
+        </table>
+
+        <!-- Tabla: cotizaciones -->
+        <h3>Tabla: cotizaciones</h3>
+        <table>
+            <tr>
+                <th>Campo</th>
+                <th>Tipo</th>
+                <th>Descripción</th>
+                <th>Restricciones</th>
+            </tr>
+            <tr>
+                <td class="pk">cotizacion_id</td>
+                <td>INT</td>
+                <td>Identificador único de la cotización</td>
+                <td>PRIMARY KEY, AUTO_INCREMENT</td>
+            </tr>
+            <tr>
+                <td>usuario_id</td>
+                <td>INT</td>
+                <td>Cliente que solicita la cotización</td>
+                <td><span class="fk">FOREIGN KEY (usuarios.usuario_id)</span></td>
+            </tr>
+            <tr>
+                <td>vehiculo_id</td>
+                <td>INT</td>
+                <td>Vehículo asociado a la cotización</td>
+                <td><span class="fk">FOREIGN KEY (vehiculos.vehiculo_id)</span>, ON DELETE SET NULL</td>
+            </tr>
+            <tr>
+                <td>fecha_creacion</td>
+                <td>TIMESTAMP</td>
+                <td>Fecha y hora de creación</td>
+                <td class="default">DEFAULT CURRENT_TIMESTAMP</td>
+            </tr>
+            <tr>
+                <td>total</td>
+                <td>DECIMAL(10,2)</td>
+                <td>Suma total de los servicios</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>estado_id</td>
+                <td>VARCHAR(20)</td>
+                <td>Estado actual de la cotización</td>
+                <td class="default">DEFAULT 'pendiente', <span class="fk">FOREIGN KEY (estados_cotizacion.estado_id)</span></td>
+            </tr>
+        </table>
+
+        <!-- Tabla: cotizacion_servicio -->
+        <h3>Tabla: cotizacion_servicio</h3>
+        <table>
+            <tr>
+                <th>Campo</th>
+                <th>Tipo</th>
+                <th>Descripción</th>
+                <th>Restricciones</th>
+            </tr>
+            <tr>
+                <td class="pk">id</td>
+                <td>INT</td>
+                <td>Identificador único del registro</td>
+                <td>PRIMARY KEY, AUTO_INCREMENT</td>
+            </tr>
+            <tr>
+                <td>cotizacion_id</td>
+                <td>INT</td>
+                <td>Cotización a la que pertenece</td>
+                <td><span class="fk">FOREIGN KEY (cotizaciones.cotizacion_id)</span>, ON DELETE CASCADE</td>
+            </tr>
+            <tr>
+                <td>servicio_id</td>
+                <td>INT</td>
+                <td>Servicio incluido</td>
+                <td><span class="fk">FOREIGN KEY (servicios.servicio_id)</span></td>
+            </tr>
+            <tr>
+                <td>cantidad</td>
+                <td>INT</td>
+                <td>Cantidad de veces que se aplica el servicio</td>
+                <td class="default">DEFAULT 1</td>
+            </tr>
+            <tr>
+                <td>subtotal</td>
+                <td>DECIMAL(10,2)</td>
+                <td>Precio × cantidad</td>
+                <td></td>
+            </tr>
+        </table>
+
+        <!-- Tabla: estados_reserva -->
+        <h3>Tabla: estados_reserva</h3>
+        <table>
+            <tr>
+                <th>Campo</th>
+                <th>Tipo</th>
+                <th>Descripción</th>
+                <th>Restricciones</th>
+            </tr>
+            <tr>
+                <td class="pk">estado_id</td>
+                <td>VARCHAR(20)</td>
+                <td>Código del estado (pendiente, confirmada, etc.)</td>
+                <td>PRIMARY KEY</td>
+            </tr>
+            <tr>
+                <td>descripcion</td>
+                <td>VARCHAR(100)</td>
+                <td>Descripción del estado</td>
+                <td class="required">NOT NULL</td>
+            </tr>
+        </table>
+
+        <!-- Tabla: reservas -->
+        <h3>Tabla: reservas</h3>
+        <table>
+            <tr>
+                <th>Campo</th>
+                <th>Tipo</th>
+                <th>Descripción</th>
+                <th>Restricciones</th>
+            </tr>
+            <tr>
+                <td class="pk">reserva_id</td>
+                <td>INT</td>
+                <td>Identificador único de la reserva</td>
+                <td>PRIMARY KEY, AUTO_INCREMENT</td>
+            </tr>
+            <tr>
+                <td>cotizacion_id</td>
+                <td>INT</td>
+                <td>Cotización asociada (opcional)</td>
+                <td><span class="fk">FOREIGN KEY (cotizaciones.cotizacion_id)</span>, ON DELETE SET NULL</td>
+            </tr>
+            <tr>
+                <td>vehiculo_id</td>
+                <td>INT</td>
+                <td>Vehículo a trabajar</td>
+                <td class="required">NOT NULL, <span class="fk">FOREIGN KEY (vehiculos.vehiculo_id)</span></td>
+            </tr>
+            <tr>
+                <td>usuario_id</td>
+                <td>INT</td>
+                <td>Cliente que hace la reserva</td>
+                <td><span class="fk">FOREIGN KEY (usuarios.usuario_id)</span></td>
+            </tr>
+            <tr>
+                <td>fecha</td>
+                <td>DATE</td>
+                <td>Fecha programada para el servicio</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>hora</td>
+                <td>TIME</td>
+                <td>Hora programada</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>comentario</td>
+                <td>TEXT</td>
+                <td>Notas adicionales del cliente</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>total</td>
+                <td>DECIMAL(10,2)</td>
+                <td>Total a pagar</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>estado_id</td>
+                <td>VARCHAR(20)</td>
+                <td>Estado actual de la reserva</td>
+                <td class="default">DEFAULT 'pendiente', <span class="fk">FOREIGN KEY (estados_reserva.estado_id)</span></td>
+            </tr>
+            <tr>
+                <td>fecha_creacion</td>
+                <td>TIMESTAMP</td>
+                <td>Fecha de creación del registro</td>
+                <td class="default">DEFAULT CURRENT_TIMESTAMP</td>
+            </tr>
+            <tr>
+                <td>calificacion</td>
+                <td>INT</td>
+                <td>Puntuación del servicio (1-5)</td>
+                <td><span class="enum">CHECK (1-5 o NULL)</span></td>
+            </tr>
+            <tr>
+                <td>comentario_calificacion</td>
+                <td>TEXT</td>
+                <td>Comentario de satisfacción</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>motivo_cancelacion</td>
+                <td>VARCHAR(100)</td>
+                <td>Razón de cancelación</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>comentario_cancelacion</td>
+                <td>TEXT</td>
+                <td>Detalles de cancelación</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>fecha_actualizacion</td>
+                <td>TIMESTAMP</td>
+                <td>Última actualización</td>
+                <td class="default">DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP</td>
+            </tr>
+        </table>
+
+        <!-- Tabla: estados_proceso -->
+        <h3>Tabla: estados_proceso</h3>
+        <table>
+            <tr>
+                <th>Campo</th>
+                <th>Tipo</th>
+                <th>Descripción</th>
+                <th>Restricciones</th>
+            </tr>
+            <tr>
+                <td class="pk">estado_id</td>
+                <td>VARCHAR(20)</td>
+                <td>Código del estado (en_proceso, terminado, etc.)</td>
+                <td>PRIMARY KEY</td>
+            </tr>
+            <tr>
+                <td>descripcion</td>
+                <td>VARCHAR(100)</td>
+                <td>Descripción del estado</td>
+                <td class="required">NOT NULL</td>
+            </tr>
+        </table>
+
+        <!-- Tabla: procesos -->
+        <h3>Tabla: procesos</h3>
+        <table>
+            <tr>
+                <th>Campo</th>
+                <th>Tipo</th>
+                <th>Descripción</th>
+                <th>Restricciones</th>
+            </tr>
+            <tr>
+                <td class="pk">proceso_id</td>
+                <td>INT</td>
+                <td>Identificador único del proceso</td>
+                <td>PRIMARY KEY, AUTO_INCREMENT</td>
+            </tr>
+            <tr>
+                <td>reserva_id</td>
+                <td>INT</td>
+                <td>Reserva asociada</td>
+                <td><span class="fk">FOREIGN KEY (reservas.reserva_id)</span>, ON DELETE CASCADE</td>
+            </tr>
+            <tr>
+                <td>nombre</td>
+                <td>VARCHAR(100)</td>
+                <td>Nombre del proceso (Ej: Pintura, Pulido)</td>
+                <td class="required">NOT NULL</td>
+            </tr>
+            <tr>
+                <td>descripcion</td>
+                <td>TEXT</td>
+                <td>Detalles del trabajo realizado</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>fecha_inicio</td>
+                <td>DATETIME</td>
+                <td>Fecha y hora de inicio</td>
+                <td class="default">DEFAULT CURRENT_TIMESTAMP</td>
+            </tr>
+            <tr>
+                <td>fecha_fin</td>
+                <td>DATETIME</td>
+                <td>Fecha y hora de finalización</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>empleado_id</td>
+                <td>INT</td>
+                <td>Técnico responsable</td>
+                <td><span class="fk">FOREIGN KEY (usuarios.usuario_id)</span></td>
+            </tr>
+            <tr>
+                <td>estado_id</td>
+                <td>VARCHAR(20)</td>
+                <td>Estado actual del proceso</td>
+                <td class="default">DEFAULT 'en_espera', <span class="fk">FOREIGN KEY (estados_proceso.estado_id)</span></td>
+            </tr>
+        </table>
+
+        <!-- Tabla: tipos_reporte -->
+        <h3>Tabla: tipos_reporte</h3>
+        <table>
+            <tr>
+                <th>Campo</th>
+                <th>Tipo</th>
+                <th>Descripción</th>
+                <th>Restricciones</th>
+            </tr>
+            <tr>
+                <td class="pk">tipo_id</td>
+                <td>VARCHAR(20)</td>
+                <td>Código del tipo (daño, progreso, etc.)</td>
+                <td>PRIMARY KEY</td>
+            </tr>
+            <tr>
+                <td>descripcion</td>
+                <td>VARCHAR(100)</td>
+                <td>Descripción del tipo</td>
+                <td class="required">NOT NULL</td>
+            </tr>
+        </table>
+
+        <!-- Tabla: reportes -->
+        <h3>Tabla: reportes</h3>
+        <table>
+            <tr>
+                <th>Campo</th>
+                <th>Tipo</th>
+                <th>Descripción</th>
+                <th>Restricciones</th>
+            </tr>
+            <tr>
+                <td class="pk">reporte_id</td>
+                <td>INT</td>
+                <td>Identificador único del reporte</td>
+                <td>PRIMARY KEY, AUTO_INCREMENT</td>
+            </tr>
+            <tr>
+                <td>vehiculo_id</td>
+                <td>INT</td>
+                <td>Vehículo asociado</td>
+                <td><span class="fk">FOREIGN KEY (vehiculos.vehiculo_id)</span></td>
+            </tr>
+            <tr>
+                <td>proceso_id</td>
+                <td>INT</td>
+                <td>Proceso relacionado</td>
+                <td><span class="fk">FOREIGN KEY (procesos.proceso_id)</span>, ON DELETE SET NULL</td>
+            </tr>
+            <tr>
+                <td>usuario_id</td>
+                <td>INT</td>
+                <td>Empleado que genera el reporte</td>
+                <td><span class="fk">FOREIGN KEY (usuarios.usuario_id)</span></td>
+            </tr>
+            <tr>
+                <td>titulo</td>
+                <td>VARCHAR(100)</td>
+                <td>Título/resumen del reporte</td>
+                <td class="required">NOT NULL</td>
+            </tr>
+            <tr>
+                <td>descripcion</td>
+                <td>TEXT</td>
+                <td>Descripción detallada</td>
+                <td class="required">NOT NULL</td>
+            </tr>
+            <tr>
+                <td>fecha_reporte</td>
+                <td>TIMESTAMP</td>
+                <td>Fecha de creación</td>
+                <td class="default">DEFAULT CURRENT_TIMESTAMP</td>
+            </tr>
+            <tr>
+                <td>tipo_id</td>
+                <td>VARCHAR(20)</td>
+                <td>Tipo de reporte</td>
+                <td class="required">NOT NULL, <span class="fk">FOREIGN KEY (tipos_reporte.tipo_id)</span></td>
+            </tr>
+        </table>
+
+        <!-- Tabla: tipos_archivo -->
+        <h3>Tabla: tipos_archivo</h3>
+        <table>
+            <tr>
+                <th>Campo</th>
+                <th>Tipo</th>
+                <th>Descripción</th>
+                <th>Restricciones</th>
+            </tr>
+            <tr>
+                <td class="pk">tipo_id</td>
+                <td>VARCHAR(20)</td>
+                <td>Código del tipo (imagen, video, pdf)</td>
+                <td>PRIMARY KEY</td>
+            </tr>
+            <tr>
+                <td>descripcion</td>
+                <td>VARCHAR(100)</td>
+                <td>Descripción del tipo</td>
+                <td class="required">NOT NULL</td>
+            </tr>
+        </table>
+
+        <!-- Tabla: archivos_proceso -->
+        <h3>Tabla: archivos_proceso</h3>
+        <table>
+            <tr>
+                <th>Campo</th>
+                <th>Tipo</th>
+                <th>Descripción</th>
+                <th>Restricciones</th>
+            </tr>
+            <tr>
+                <td class="pk">archivo_id</td>
+                <td>INT</td>
+                <td>Identificador único del archivo</td>
+                <td>PRIMARY KEY, AUTO_INCREMENT</td>
+            </tr>
+            <tr>
+                <td>proceso_id</td>
+                <td>INT</td>
+                <td>Proceso asociado</td>
+                <td><span class="fk">FOREIGN KEY (procesos.proceso_id)</span>, ON DELETE CASCADE</td>
+            </tr>
+            <tr>
+                <td>reporte_id</td>
+                <td>INT</td>
+                <td>Reporte asociado (opcional)</td>
+                <td><span class="fk">FOREIGN KEY (reportes.reporte_id)</span>, ON DELETE CASCADE</td>
+            </tr>
+            <tr>
+                <td>tipo_id</td>
+                <td>VARCHAR(20)</td>
+                <td>Tipo de archivo</td>
+                <td class="required">NOT NULL, <span class="fk">FOREIGN KEY (tipos_archivo.tipo_id)</span></td>
+            </tr>
+            <tr>
+                <td>archivo_url</td>
+                <td>VARCHAR(255)</td>
+                <td>URL/ruta del archivo</td>
+                <td class="required">NOT NULL</td>
+            </tr>
+            <tr>
+                <td>descripcion</td>
+                <td>TEXT</td>
+                <td>Descripción del contenido</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>fecha_subida</td>
+                <td>TIMESTAMP</td>
+                <td>Fecha de carga</td>
+                <td class="default">DEFAULT CURRENT_TIMESTAMP</td>
+            </tr>
+        </table>
+
+        <!-- Tabla: tipos_mensaje -->
+        <h3>Tabla: tipos_mensaje</h3>
+        <table>
+            <tr>
+                <th>Campo</th>
+                <th>Tipo</th>
+                <th>Descripción</th>
+                <th>Restricciones</th>
+            </tr>
+            <tr>
+                <td class="pk">tipo_id</td>
+                <td>VARCHAR(20)</td>
+                <td>Código del tipo (texto, imagen, etc.)</td>
+                <td>PRIMARY KEY</td>
+            </tr>
+            <tr>
+                <td>descripcion</td>
+                <td>VARCHAR(100)</td>
+                <td>Descripción del tipo</td>
+                <td class="required">NOT NULL</td>
+            </tr>
+        </table>
+
+        <!-- Tabla: chat -->
+        <h3>Tabla: chat</h3>
+        <table>
+            <tr>
+                <th>Campo</th>
+                <th>Tipo</th>
+                <th>Descripción</th>
+                <th>Restricciones</th>
+            </tr>
+            <tr>
+                <td class="pk">mensaje_id</td>
+                <td>INT</td>
+                <td>Identificador único del mensaje</td>
+                <td>PRIMARY KEY, AUTO_INCREMENT</td>
+            </tr>
+            <tr>
+                <td>vehiculo_id</td>
+                <td>INT</td>
+                <td>Vehículo relacionado a la conversación</td>
+                <td><span class="fk">FOREIGN KEY (vehiculos.vehiculo_id)</span>, ON DELETE CASCADE</td>
+            </tr>
+            <tr>
+                <td>remitente_id</td>
+                <td>INT</td>
+                <td>Usuario que envía el mensaje</td>
+                <td><span class="fk">FOREIGN KEY (usuarios.usuario_id)</span></td>
+            </tr>
+            <tr>
+                <td>receptor_id</td>
+                <td>INT</td>
+                <td>Usuario que recibe el mensaje</td>
+                <td><span class="fk">FOREIGN KEY (usuarios.usuario_id)</span></td>
+            </tr>
+            <tr>
+                <td>mensaje</td>
+                <td>TEXT</td>
+                <td>Contenido del mensaje</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>tipo_id</td>
+                <td>VARCHAR(20)</td>
+                <td>Tipo de mensaje</td>
+                <td class="default">DEFAULT 'texto', <span class="fk">FOREIGN KEY (tipos_mensaje.tipo_id)</span></td>
+            </tr>
+            <tr>
+                <td>archivo_url</td>
+                <td>VARCHAR(255)</td>
+                <td>URL del archivo adjunto</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>leido</td>
+                <td>BOOLEAN</td>
+                <td>Indica si el mensaje fue leído</td>
+                <td class="default">DEFAULT FALSE</td>
+            </tr>
+            <tr>
+                <td>fecha_envio</td>
+                <td>TIMESTAMP</td>
+                <td>Fecha y hora de envío</td>
+                <td class="default">DEFAULT CURRENT_TIMESTAMP</td>
+            </tr>
+        </table>
+
+        <!-- Tabla: historial_servicios -->
+        <h3>Tabla: historial_servicios</h3>
+        <table>
+            <tr>
+                <th>Campo</th>
+                <th>Tipo</th>
+                <th>Descripción</th>
+                <th>Restricciones</th>
+            </tr>
+            <tr>
+                <td class="pk">historial_id</td>
+                <td>INT</td>
+                <td>Identificador único del registro</td>
+                <td>PRIMARY KEY, AUTO_INCREMENT</td>
+            </tr>
+            <tr>
+                <td>vehiculo_id</td>
+                <td>INT</td>
+                <td>Vehículo asociado</td>
+                <td><span class="fk">FOREIGN KEY (vehiculos.vehiculo_id)</span></td>
+            </tr>
+            <tr>
+                <td>reserva_id</td>
+                <td>INT</td>
+                <td>Reserva relacionada</td>
+                <td><span class="fk">FOREIGN KEY (reservas.reserva_id)</span>, ON DELETE SET NULL</td>
+            </tr>
+            <tr>
+                <td>descripcion</td>
+                <td>TEXT</td>
+                <td>Descripción del servicio realizado</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>fecha_inicio</td>
+                <td>DATE</td>
+                <td>Fecha de inicio del servicio</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>fecha_fin</td>
+                <td>DATE</td>
+                <td>Fecha de finalización</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>costo_total</td>
+                <td>DECIMAL(10,2)</td>
+                <td>Costo total del servicio</td>
+                <td></td>
+            </tr>
+        </table>
+
+        <!-- Tabla: bitacora -->
+        <h3>Tabla: bitacora</h3>
+        <table>
+            <tr>
+                <th>Campo</th>
+                <th>Tipo</th>
+                <th>Descripción</th>
+                <th>Restricciones</th>
+            </tr>
+            <tr>
+                <td class="pk">log_id</td>
+                <td>INT</td>
+                <td>Identificador único del registro</td>
+                <td>PRIMARY KEY, AUTO_INCREMENT</td>
+            </tr>
+            <tr>
+                <td>usuario_id</td>
+                <td>INT</td>
+                <td>Usuario que realizó la acción</td>
+                <td><span class="fk">FOREIGN KEY (usuarios.usuario_id)</span></td>
+            </tr>
+            <tr>
+                <td>accion</td>
+                <td>VARCHAR(255)</td>
+                <td>Descripción de la acción realizada</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>tabla_afectada</td>
+                <td>VARCHAR(50)</td>
+                <td>Tabla afectada por la acción</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>fecha</td>
+                <td>TIMESTAMP</td>
+                <td>Fecha y hora del registro</td>
+                <td class="default">DEFAULT CURRENT_TIMESTAMP</td>
+            </tr>
+        </table>
+
+        <!-- Tabla: carrito_temporal -->
+        <h3>Tabla: carrito_temporal</h3>
+        <table>
+            <tr>
+                <th>Campo</th>
+                <th>Tipo</th>
+                <th>Descripción</th>
+                <th>Restricciones</th>
+            </tr>
+            <tr>
+                <td class="pk">carrito_id</td>
+                <td>INT</td>
+                <td>Identificador único del ítem</td>
+                <td>PRIMARY KEY, AUTO_INCREMENT</td>
+            </tr>
+            <tr>
+                <td>usuario_id</td>
+                <td>INT</td>
+                <td>Usuario dueño del carrito</td>
+                <td class="required">NOT NULL, <span class="fk">FOREIGN KEY (usuarios.usuario_id)</span>, ON DELETE CASCADE, ON UPDATE CASCADE</td>
+            </tr>
+            <tr>
+                <td>servicio_id</td>
+                <td>INT</td>
+                <td>Servicio agregado al carrito</td>
+                <td class="required">NOT NULL, <span class="fk">FOREIGN KEY (servicios.servicio_id)</span>, ON DELETE CASCADE, ON UPDATE CASCADE</td>
+            </tr>
+            <tr>
+                <td>cantidad</td>
+                <td>INT</td>
+                <td>Cantidad del servicio</td>
+                <td class="required">NOT NULL, DEFAULT 1, <span class="enum">CHECK (cantidad > 0)</span></td>
+            </tr>
+            <tr>
+                <td>fecha_agregado</td>
+                <td>TIMESTAMP</td>
+                <td>Fecha de agregado al carrito</td>
+                <td class="default">DEFAULT CURRENT_TIMESTAMP</td>
+            </tr>
+        </table>
+
+        <!-- Tabla: calificaciones -->
+        <h3>Tabla: calificaciones</h3>
+        <table>
+            <tr>
+                <th>Campo</th>
+                <th>Tipo</th>
+                <th>Descripción</th>
+                <th>Restricciones</th>
+            </tr>
+            <tr>
+                <td class="pk">calificacion_id</td>
+                <td>INT</td>
+                <td>Identificador único de la calificación</td>
+                <td>PRIMARY KEY, AUTO_INCREMENT</td>
+            </tr>
+            <tr>
+                <td>reserva_id</td>
+                <td>INT</td>
+                <td>Reserva calificada</td>
+                <td class="required">NOT NULL, <span class="fk">FOREIGN KEY (reservas.reserva_id)</span>, ON DELETE CASCADE, ON UPDATE CASCADE</td>
+            </tr>
+            <tr>
+                <td>usuario_id</td>
+                <td>INT</td>
+                <td>Usuario que califica</td>
+                <td class="required">NOT NULL, <span class="fk">FOREIGN KEY (usuarios.usuario_id)</span>, ON DELETE CASCADE, ON UPDATE CASCADE</td>
+            </tr>
+            <tr>
+                <td>puntuacion</td>
+                <td>TINYINT</td>
+                <td>Valoración (1-5 estrellas)</td>
+                <td class="required">NOT NULL, <span class="enum">CHECK (1-5)</span></td>
+            </tr>
+            <tr>
+                <td>comentario</td>
+                <td>TEXT</td>
+                <td>Comentario sobre el servicio</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>fecha_calificacion</td>
+                <td>TIMESTAMP</td>
+                <td>Fecha de la calificación</td>
+                <td class="default">DEFAULT CURRENT_TIMESTAMP</td>
+            </tr>
+        </table>
+    </div>
+
+    <footer>
+        <p>Documentación generada el <span id="fecha"></span> | Sistema FULLPAINTT</p>
+    </footer>
+
+    <script>
+        document.getElementById('fecha').textContent = new Date().toLocaleDateString('es-ES', {
+            weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+        });
+    </script>
+</body>
+</html>
