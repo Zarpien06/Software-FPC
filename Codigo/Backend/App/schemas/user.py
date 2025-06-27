@@ -56,10 +56,17 @@ class UserUpdate(BaseModel):
             raise ValueError('El teléfono debe contener solo números, espacios, guiones y el símbolo +')
         return v
 
+class RoleOut(BaseModel):
+    id: int
+    nombre: str
+
+    class Config:
+        orm_mode = True
+
 class UserResponse(UserBase):
     usuario_id: int
     fecha_registro: datetime
-    role: Optional[dict] = None
+    role: Optional[RoleOut] = None 
     tipo_identificacion_info: Optional[dict] = None
     
     class Config:
