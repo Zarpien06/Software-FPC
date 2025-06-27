@@ -150,7 +150,7 @@ class AuthController:
                 "nombre_completo": user.nombre_completo,
                 "correo": user.correo,
                 "role": user.role.to_dict() if user.role else None,
-                "estado": user.estado.value if user.estado else None
+                "estado": user.estado if user.estado else None  # <-- Corregido aquí
             }
             
             return TokenResponse(
