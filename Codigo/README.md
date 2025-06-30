@@ -308,7 +308,7 @@ docker-compose down
 ### 🧑‍💻 Desarrolladores
 
 - **👨‍💻 Oscar Mauricio Cruz Figueroa** - *Fullstack Developer & Documentation*
-- **🧠 Maicol Steven Espitia** - *Backend Developer*
+- **🎨 Maicol Steven Espitia** - *Frontend Developer*
 - **🎨 Ronny Borda Ardila** - *Frontend Developer*
 
 ---
