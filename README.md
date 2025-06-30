@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![FPC Banner](https://github.com/Zarpien06/Software-FPC/blob/main/Codigo/Frontend/src/assets/logo.pngtext=🚗+FPC+-+Full+Paint+Cars+🚗)
+![FPC Banner](https://github.com/Zarpien06/Software-FPC/raw/main/Codigo/Frontend/src/assets/logo.png)
 
 [![React](https://img.shields.io/badge/React-18.2+-61DAFB.svg?style=for-the-badge&logo=react)](https://reactjs.org)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.104.1-009688.svg?style=for-the-badge&logo=FastAPI)](https://fastapi.tiangolo.com)
