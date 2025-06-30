@@ -28,6 +28,9 @@
 - ⚙️ **Procesos de Taller** - Seguimiento de reparaciones y mantenimientos
 - 📊 **Historial de Servicios** - Registro completo de intervenciones
 - 💰 **Gestión de Cotizaciones** - CRUD completo de cotizaciones y presupuestos
+- 💬 **Chat en Vivo** – Sistema de mensajería en tiempo real con WebSocket y Redis
+- 📎 **Compartir Archivos** – Envío de imágenes y documentos en el chat
+- 🔔 **Notificaciones Push** – Alertas en tiempo real a los usuarios conectados
 - 📱 **API RESTful** - Endpoints bien documentados y estandarizados
 - 🔍 **Documentación Interactiva** - Swagger UI y ReDoc integrados
 
@@ -321,6 +324,7 @@ fullpaint_backend/
 │   │   ├── 🚗 automovil.py            # Modelo Vehículos - Gestión autos
 │   │   ├── ⚙️ proceso.py              # Procesos taller - Reparaciones
 │   │   ├── 💰 cotizacion.py            # Modelo Cotizaciones - Gestión presupuestos
+│   │   ├── 💬 chat.py                 # Modelo Chat - Sistema mensajería tiempo real
 │   │   └── 📋 historial_servicio.py   # Historial servicios - Registro intervenciones
 │   │
 │   ├── 📁 schemas/                    # Validación Pydantic (Input/Output)
@@ -330,7 +334,8 @@ fullpaint_backend/
 │   │   ├── 📝 automovil.py            # Esquemas vehículos - CRUD autos
 │   │   ├── 📝 proceso.py              # Esquemas procesos - Workflow taller
 │   │   ├── 📝 cotizacion.py            # Esquemas cotizaciones - Validación presupuestos
-│   │   └── 📝 historial_servicio.py   # Esquemas historial - Servicios
+│   │   ├── 📝 historial_servicio.py   # Esquemas historial - Servicios
+│   │   └── 📝 chat.py                 # Esquemas chat - Validación mensajería tiempo real
 │   │
 │   ├── 📁 controllers/                # Lógica de Negocio
 │   │   ├── 🔐 auth_controller.py      # Lógica autenticación - Login/Register/JWT
@@ -339,19 +344,24 @@ fullpaint_backend/
 │   │   ├── 🚗 automovil_controller.py # Lógica vehículos - Gestión autos
 │   │   ├── ⚙️ proceso_controller.py   # Lógica procesos - Workflow taller
 │   │   ├── 💰 cotizacion_controller.py # Lógica cotizaciones - Gestión presupuestos
-│   │   └── 📋 historial_controller.py # Lógica historial - Servicios
+│   │   ├── 📋 historial_controller.py # Lógica historial - Servicios
+│   │   └── 💬 chat_controller.py      # Lógica chat - Sistema mensajería tiempo real
 │   │
 │   └── 📁 routes/                     # Endpoints API (FastAPI Routes)
-│   │ ├── 🛣️ auth_routes.py          # Rutas autenticación - /auth/*
+│   │   ├── 🛣️ auth_routes.py          # Rutas autenticación - /auth/*
 │   │   ├── 🛣️ user_routes.py          # Rutas usuarios - /users/*
 │   │   ├── 🛣️ role_routes.py          # Rutas roles - /roles/*
 │   │   ├── 🛣️ automovil_routes.py     # Rutas vehículos - /automoviles/*
 │   │   ├── 🛣️ proceso_routes.py       # Rutas procesos - /api/v1/procesos/*
 │   │   ├── 🛣️ cotizacion_routes.py     # Rutas cotizaciones - /api/v1/cotizaciones/*
-│   │   └── 🛣️ historial_routes.py     # Rutas historial - /api/v1/historial-servicios/*
+│   │   ├── 🛣️ historial_routes.py     # Rutas historial - /api/v1/historial-servicios/*
+│   │   └── 🛣️ chat_routes.py          # Rutas chat - /api/v1/chat/*
 │   │
 │   ├── 📁 services/                   # Servicios de Negocio
-│   │   └── 📧 notification_service.py # Servicio notificaciones - Emails/SMS
+│   │   ├── 📧 notification_service.py # Servicio notificaciones - Emails/SMS
+│   │   ├── 💬 chat_file_service.py    # Servicio archivos chat - Gestión multimedia
+│   │   └── 🔔 chat_notification_service.py # Servicio notificaciones chat - Tiempo real
+│   │   
 │   │
 │   ├── 📁 tasks/                      # Tareas Asíncronas
 │       └── 💰 cotizacion_tasks.py     # Tareas cotizaciones - Procesamiento background
@@ -367,17 +377,20 @@ fullpaint_backend/
 
 ### 📚 Descripción de Archivos Clave
 
-| Archivo | Propósito | Contenido Principal |
-|---------|-----------|-------------------|
-| `main.py` | Aplicación FastAPI | Configuración CORS, middleware, rutas principales |
-| `config.py` | Configuración | Settings con Pydantic, variables de entorno |
-| `database.py` | Base de datos | SQLAlchemy engine, sesiones, Base declarativa |
-| `auth_handler.py` | JWT | Generación/validación tokens, decoradores auth |
-| `password_handler.py` | Seguridad | Hash bcrypt, verificación contraseñas |
-| Modelos `*.py` | Tablas BD | Definición SQLAlchemy de tablas |
-| Esquemas `*.py` | Validación | Pydantic models para input/output |
-| Controladores `*.py` | Lógica | Funciones de negocio, interacción con BD |
-| Rutas `*.py` | Endpoints | FastAPI routes, decoradores HTTP |
+| Archivo                        | Propósito          | Contenido Principal                                          |
+| ------------------------------ | ------------------ | ------------------------------------------------------------ |
+| `main.py`                      | Aplicación FastAPI | Configuración CORS, middleware, WebSocket, rutas principales |
+| `config.py`                    | Configuración      | Settings con Pydantic, variables de entorno, Redis           |
+| `database.py`                  | Base de datos      | SQLAlchemy engine, sesiones, Base declarativa                |
+| `auth_handler.py`              | JWT                | Generación/validación tokens, decoradores auth               |
+| `password_handler.py`          | Seguridad          | Hash bcrypt, verificación contraseñas                        |
+| Modelos `*.py`                 | Tablas BD          | Definición SQLAlchemy de tablas, chat y mensajes             |
+| Esquemas `*.py`                | Validación         | Pydantic models para input/output, chat tiempo real          |
+| Controladores `*.py`           | Lógica             | Funciones de negocio, interacción con BD, chat WebSocket     |
+| Rutas `*.py`                   | Endpoints          | FastAPI routes, decoradores HTTP, WebSocket endpoints        |
+| `chat_file_service.py`         | Archivos Chat      | Gestión multimedia, validación imágenes                      |
+| `chat_notification_service.py` | Notificaciones     | Sistema notificaciones tiempo real                           |
+
 
 ---
 
@@ -481,6 +494,18 @@ six==1.17.0
 sniffio==1.3.1
 starlette==0.27.0
 typing-extensions==4.13.2
+# WebSocket y tiempo real
+websockets==11.0.3
+python-socketio==5.8.0
+redis==4.5.4
+aiofiles==23.1.0
+
+# Procesamiento de imágenes para chat
+Pillow==10.0.0
+
+# Notificaciones push (opcional)
+pyfcm==1.5.4
+
 ```
 
 ### 🔧 Instalación de Dependencias
@@ -596,6 +621,31 @@ pip install python-multipart==0.0.6
 | `PATCH` | `/api/v1/cotizaciones/{cotizacion_id}/estado` | Cambiar estado | ✅ |
 | `GET` | `/api/v1/cotizaciones/cliente/{cliente_id}` | Por cliente | ✅ |
 | `GET` | `/api/v1/cotizaciones/estadisticas/dashboard` | Estadísticas | ✅ |
+
+
+## 💬 Chat en Vivo
+| Método   | Endpoint                                          | Descripción           | Auth |
+| -------- | ------------------------------------------------- | --------------------- | ---- |
+| `POST`   | `/api/v1/chat/`                                   | Crear chat            | ✅    |
+| `GET`    | `/api/v1/chat/`                                   | Listar chats          | ✅    |
+| `GET`    | `/api/v1/chat/{chat_id}`                          | Obtener chat          | ✅    |
+| `PUT`    | `/api/v1/chat/{chat_id}`                          | Actualizar chat       | ✅    |
+| `DELETE` | `/api/v1/chat/{chat_id}`                          | Eliminar chat         | ✅    |
+| `POST`   | `/api/v1/chat/{chat_id}/mensajes`                 | Enviar mensaje        | ✅    |
+| `GET`    | `/api/v1/chat/{chat_id}/mensajes`                 | Listar mensajes       | ✅    |
+| `PUT`    | `/api/v1/chat/mensajes/{mensaje_id}`              | Actualizar mensaje    | ✅    |
+| `POST`   | `/api/v1/chat/mensajes/{mensaje_id}/marcar-leido` | Marcar leído          | ✅    |
+| `GET`    | `/api/v1/chat/estadisticas/generales`             | Estadísticas          | ✅    |
+| `GET`    | `/api/v1/chat/{chat_id}/participantes`            | Participantes activos | ✅    |
+
+## 🔌 WebSocket Endpoints
+| Endpoint                           | Descripción             | Protocolo |
+| ---------------------------------- | ----------------------- | --------- |
+| `/ws/chat/{chat_id}`               | Conexión WebSocket chat | WebSocket |
+| `/ws/chat/{chat_id}/typing`        | Indicador escribiendo   | WebSocket |
+| `/ws/chat/notifications/{user_id}` | Notificaciones usuario  | WebSocket |
+
+
 
 ---
 
@@ -757,7 +807,7 @@ curl -X GET "http://localhost:8000/api/v1/procesos/estadisticas/dashboard" \
 ```
 ### 💰 9. Crear Cotización
 
-```bash
+```
 curl -X POST "http://localhost:8000/api/v1/cotizaciones/" \
   -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
   -H "Content-Type: application/json" \
@@ -781,11 +831,85 @@ curl -X POST "http://localhost:8000/api/v1/cotizaciones/" \
   }'
 
 ---
+```
+### 10. Crear Chat
+```
+curl -X POST "http://localhost:8000/api/v1/chat/" \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "nombre": "Soporte Técnico - Toyota Corolla",
+    "tipo_chat": "SOPORTE",
+    "participantes": [
+      {
+        "usuario_id": 1,
+        "rol_chat": "ADMIN"
+      },
+      {
+        "usuario_id": 2,
+        "rol_chat": "PARTICIPANTE"
+      }
+    ],
+    "configuracion": {
+      "permite_archivos": true,
+      "max_participantes": 10,
+      "es_privado": false
+    }
+  }'
+```
+### 11. Enviar Mensaje
+```
+bash
+Copiar
+Editar
+curl -X POST "http://localhost:8000/api/v1/chat/1/mensajes" \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "contenido": "Hola, necesito ayuda con la reparación del motor",
+    "tipo_mensaje": "TEXTO",
+    "menciones": [],
+    "respuesta_a": null
+  }'
+```
+### 12. Conexión WebSocket (JavaScript)
+```
+javascript
+Copiar
+Editar
+const ws = new WebSocket('ws://localhost:8000/ws/chat/1?token=YOUR_ACCESS_TOKEN');
 
+ws.onmessage = function(event) {
+    const data = JSON.parse(event.data);
+    console.log('Nuevo mensaje:', data);
+};
+
+ws.send(JSON.stringify({
+    tipo: 'mensaje',
+    contenido: 'Hola desde WebSocket',
+    chat_id: 1
+}));
+
+ws.send(JSON.stringify({
+    tipo: 'typing',
+    chat_id: 1,
+    escribiendo: true
+}));
+```
+### 13. Obtener Estadísticas de Chat
+```
+bash
+Copiar
+Editar
+curl -X GET "http://localhost:8000/api/v1/chat/estadisticas/generales" \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+
+
+```
 ## 🛠️ Resolución de Problemas Comunes
 
 ### 🔍 Errores de Conexión a Base de Datos
-
+```
 #### Error: "Access denied for user"
 ```bash
 # Verificar usuario MySQL
@@ -1102,6 +1226,13 @@ sudo systemctl status fullpaint
 | **Swagger UI** | http://localhost:8000/docs | Docs interactiva local |
 | **ReDoc** | http://localhost:8000/redoc | Docs alternativa local |
 
+| Recurso           | URL                                                                    | Descripción              |
+| ----------------- | ---------------------------------------------------------------------- | ------------------------ |
+| **WebSocket API** | [https://websockets.readthedocs.io](https://websockets.readthedocs.io) | Documentación WebSocket  |
+| **Redis**         | [https://redis.io/docs](https://redis.io/docs)                         | Base de datos en memoria |
+| **Socket.IO**     | [https://socket.io/docs/](https://socket.io/docs/)                     | Comunicación tiempo real |
+
+
 ### 📖 Tutoriales Recomendados
 
 1. **FastAPI Fundamentals**
@@ -1276,6 +1407,12 @@ Al reportar un bug, incluir:
 - ✅ **Base de datos** optimizada
 - ✅ **Contenedores Docker** listos para producción
 - ✅ **Monitoreo** y logging integrado
+- ✅ Chat en tiempo real con WebSocket
+- ✅ Sistema de mensajería completo
+- ✅ Notificaciones push integradas
+- ✅ Compartir archivos en chat
+- ✅ Indicadores de escritura en tiempo real
+- ✅ Gestión de participantes avanzada
 
 ---
 
