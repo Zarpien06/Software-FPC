@@ -27,6 +27,7 @@
 - 🚗 **Gestión de Automóviles** - CRUD completo de vehículos
 - ⚙️ **Procesos de Taller** - Seguimiento de reparaciones y mantenimientos
 - 📊 **Historial de Servicios** - Registro completo de intervenciones
+- 💰 **Gestión de Cotizaciones** - CRUD completo de cotizaciones y presupuestos
 - 📱 **API RESTful** - Endpoints bien documentados y estandarizados
 - 🔍 **Documentación Interactiva** - Swagger UI y ReDoc integrados
 
@@ -319,6 +320,7 @@ fullpaint_backend/
 │   │   ├── 🆔 tipo_identificacion.py  # Tipos documento - CC, CE, TI, etc.
 │   │   ├── 🚗 automovil.py            # Modelo Vehículos - Gestión autos
 │   │   ├── ⚙️ proceso.py              # Procesos taller - Reparaciones
+│   │   ├── 💰 cotizacion.py            # Modelo Cotizaciones - Gestión presupuestos
 │   │   └── 📋 historial_servicio.py   # Historial servicios - Registro intervenciones
 │   │
 │   ├── 📁 schemas/                    # Validación Pydantic (Input/Output)
@@ -327,6 +329,7 @@ fullpaint_backend/
 │   │   ├── 📝 auth.py                 # Esquemas autenticación - Login/Register
 │   │   ├── 📝 automovil.py            # Esquemas vehículos - CRUD autos
 │   │   ├── 📝 proceso.py              # Esquemas procesos - Workflow taller
+│   │   ├── 📝 cotizacion.py            # Esquemas cotizaciones - Validación presupuestos
 │   │   └── 📝 historial_servicio.py   # Esquemas historial - Servicios
 │   │
 │   ├── 📁 controllers/                # Lógica de Negocio
@@ -335,15 +338,24 @@ fullpaint_backend/
 │   │   ├── 🛡️ role_controller.py      # Lógica roles - Asignación permisos
 │   │   ├── 🚗 automovil_controller.py # Lógica vehículos - Gestión autos
 │   │   ├── ⚙️ proceso_controller.py   # Lógica procesos - Workflow taller
+│   │   ├── 💰 cotizacion_controller.py # Lógica cotizaciones - Gestión presupuestos
 │   │   └── 📋 historial_controller.py # Lógica historial - Servicios
 │   │
 │   └── 📁 routes/                     # Endpoints API (FastAPI Routes)
-│       ├── 🛣️ auth_routes.py          # Rutas autenticación - /auth/*
-│       ├── 🛣️ user_routes.py          # Rutas usuarios - /users/*
-│       ├── 🛣️ role_routes.py          # Rutas roles - /roles/*
-│       ├── 🛣️ automovil_routes.py     # Rutas vehículos - /automoviles/*
-│       ├── 🛣️ proceso_routes.py       # Rutas procesos - /api/v1/procesos/*
-│       └── 🛣️ historial_routes.py     # Rutas historial - /api/v1/historial-servicios/*
+│   │ ├── 🛣️ auth_routes.py          # Rutas autenticación - /auth/*
+│   │   ├── 🛣️ user_routes.py          # Rutas usuarios - /users/*
+│   │   ├── 🛣️ role_routes.py          # Rutas roles - /roles/*
+│   │   ├── 🛣️ automovil_routes.py     # Rutas vehículos - /automoviles/*
+│   │   ├── 🛣️ proceso_routes.py       # Rutas procesos - /api/v1/procesos/*
+│   │   ├── 🛣️ cotizacion_routes.py     # Rutas cotizaciones - /api/v1/cotizaciones/*
+│   │   └── 🛣️ historial_routes.py     # Rutas historial - /api/v1/historial-servicios/*
+│   │
+│   ├── 📁 services/                   # Servicios de Negocio
+│   │   └── 📧 notification_service.py # Servicio notificaciones - Emails/SMS
+│   │
+│   ├── 📁 tasks/                      # Tareas Asíncronas
+│       └── 💰 cotizacion_tasks.py     # Tareas cotizaciones - Procesamiento background
+│   
 │
 ├── 📋 requirements.txt                # Dependencias Python
 ├── 🔐 .env                           # Variables de entorno (NO subir a Git)
@@ -572,6 +584,19 @@ pip install python-multipart==0.0.6
 | `GET` | `/api/v1/historial-servicios/automovil/{automovil_id}` | Por auto | ✅ |
 | `GET` | `/api/v1/historial-servicios/reportes/costos-por-periodo` | Reportes | ✅ |
 
+### 💰 Cotizaciones
+
+| Método | Endpoint | Descripción | Auth |
+|--------|----------|-------------|------|
+| `POST` | `/api/v1/cotizaciones/` | Crear cotización | ✅ |
+| `GET` | `/api/v1/cotizaciones/` | Listar cotizaciones | ✅ |
+| `GET` | `/api/v1/cotizaciones/{cotizacion_id}` | Cotización por ID | ✅ |
+| `PUT` | `/api/v1/cotizaciones/{cotizacion_id}` | Actualizar cotización | ✅ |
+| `DELETE` | `/api/v1/cotizaciones/{cotizacion_id}` | Eliminar cotización | ✅ |
+| `PATCH` | `/api/v1/cotizaciones/{cotizacion_id}/estado` | Cambiar estado | ✅ |
+| `GET` | `/api/v1/cotizaciones/cliente/{cliente_id}` | Por cliente | ✅ |
+| `GET` | `/api/v1/cotizaciones/estadisticas/dashboard` | Estadísticas | ✅ |
+
 ---
 
 ## 🧪 Ejemplos de Uso
@@ -730,6 +755,30 @@ curl -X GET "http://localhost:8000/api/v1/procesos/estadisticas/dashboard" \
   "promedio_tiempo_proceso": 3.5
 }
 ```
+### 💰 9. Crear Cotización
+
+```bash
+curl -X POST "http://localhost:8000/api/v1/cotizaciones/" \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "cliente_id": 1,
+    "automovil_id": 1,
+    "descripcion": "Cotización para reparación de motor",
+    "servicios": [
+      {
+        "descripcion": "Cambio de motor",
+        "cantidad": 1,
+        "precio_unitario": 2500000
+      },
+      {
+        "descripcion": "Mano de obra",
+        "cantidad": 8,
+        "precio_unitario": 50000
+      }
+    ],
+    "observaciones": "Incluye garantía de 6 meses"
+  }'
 
 ---
 
