@@ -4,8 +4,8 @@ from enum import Enum
 from datetime import datetime
 
 class EstadoUsuarioEnum(str, Enum):
-    ACTIVO = "activo"
-    INACTIVO = "inactivo"
+    ACTIVO = 'ACTIVO'
+    INACTIVO = 'INACTIVO'
 
 class TipoIdentificacionEnum(str, Enum):
     CC = "cc"

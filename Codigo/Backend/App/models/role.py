@@ -11,7 +11,7 @@ class Role(Base):
     activo = Column(Boolean, default=True, nullable=False)
 
     # Relación con usuarios
-    usuarios = relationship("User", back_populates="role")
+    usuarios = relationship("Usuario", back_populates="role")  # Usuario en lugar de User
 
     def __repr__(self):
         return f"<Role(id={self.id}, nombre='{self.nombre}')>"
