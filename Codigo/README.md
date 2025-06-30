@@ -1,15 +1,16 @@
-# 🚗 Full Paint Cars API
+# 🚗 Full Paint Cars (FPC)
 
 <div align="center">
 
+[![React](https://img.shields.io/badge/React-18.2+-61DAFB.svg?style=flat&logo=react)](https://reactjs.org)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.104.1-009688.svg?style=flat&logo=FastAPI)](https://fastapi.tiangolo.com)
-[![Python](https://img.shields.io/badge/Python-3.8+-3776AB.svg?style=flat&logo=python)](https://python.org)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-3178C6.svg?style=flat&logo=typescript)](https://typescriptlang.org)
 [![MySQL](https://img.shields.io/badge/MySQL-8.0+-4479A1.svg?style=flat&logo=mysql)](https://mysql.com)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 **Sistema integral de gestión para talleres de reparación y mantenimiento automotriz**
 
-[Características](#-características) • [Instalación](#-instalación) • [Configuración](#-configuración) • [API](#-api-endpoints) • [Docker](#-docker) • [Contribuir](#-contribuir)
+[Características](#-características-principales) • [Tecnologías](#-tecnologías) • [Inicio Rápido](#-inicio-rápido) • [Arquitectura](#-arquitectura) • [Documentación](#-documentación) • [Contribuir](#-contribuir)
 
 </div>
 
@@ -17,1277 +18,319 @@
 
 ## 📋 Descripción
 
-**Full Paint Cars API (FPC)** es una plataforma integral diseñada para el seguimiento y gestión de vehículos dentro de un taller de reparación y mantenimiento automotriz. Proporciona un sistema robusto de autenticación, gestión de usuarios y control de acceso basado en roles.
+**Full Paint Cars** es una plataforma completa desarrollada para la gestión integral de talleres automotrices. Combina un frontend moderno en React con un backend robusto en FastAPI, proporcionando una experiencia fluida para clientes, empleados y administradores.
 
-### 🎯 Funcionalidades Principales
+### 🎯 Características Principales
 
-- 🔐 **Autenticación JWT** - Sistema seguro de tokens con refresh automático
-- 👥 **Gestión de Usuarios** - Control completo de perfiles y estados
-- 🛡️ **Control de Roles** - Sistema granular de permisos (Admin, Empleado, Cliente)
-- 🚗 **Gestión de Automóviles** - CRUD completo de vehículos
+- 🔐 **Sistema de Autenticación** - JWT con refresh tokens y control de roles
+- 👥 **Gestión de Usuarios** - Perfiles diferenciados (Cliente, Empleado, Administrador)
+- 🚗 **Control de Vehículos** - Registro completo de automóviles y propietarios
 - ⚙️ **Procesos de Taller** - Seguimiento de reparaciones y mantenimientos
-- 📊 **Historial de Servicios** - Registro completo de intervenciones
-- 💰 **Gestión de Cotizaciones** - CRUD completo de cotizaciones y presupuestos
-- 📱 **API RESTful** - Endpoints bien documentados y estandarizados
-- 🔍 **Documentación Interactiva** - Swagger UI y ReDoc integrados
+- 💰 **Sistema de Cotizaciones** - Gestión completa de presupuestos
+- 📊 **Dashboard Administrativo** - Estadísticas y reportes en tiempo real
+- 📱 **Interfaz Responsiva** - Optimizada para desktop y móvil
+- 🔍 **API Documentada** - Swagger UI y ReDoc integrados
 
 ---
 
-## 🛠️ Requisitos del Sistema
+## 🛠️ Tecnologías
 
-### 📋 Herramientas Necesarias
+### Frontend
+- ⚛️ **React 18** + **TypeScript** - Interfaz de usuario moderna
+- ⚡ **Vite** - Herramienta de desarrollo ultrarrápida
+- 🎨 **CSS Modular** - Estilos organizados por componentes
+- 📱 **Responsive Design** - Adaptable a todos los dispositivos
 
-| Herramienta | Versión Mínima | Propósito |
-|-------------|----------------|-----------|
-| **Python** | 3.8+ | Lenguaje de programación principal |
-| **MySQL** | 8.0+ | Base de datos relacional |
-| **Git** | 2.0+ | Control de versiones |
-| **MySQL Workbench** | 8.0+ | *(Opcional)* Administración visual de BD |
+### Backend
+- 🚀 **FastAPI** - Framework web moderno para APIs
+- 🐍 **Python 3.8+** - Lenguaje de programación principal
+- 🗄️ **SQLAlchemy** - ORM para manejo de base de datos
+- 🔒 **JWT Authentication** - Autenticación segura con tokens
+- 📚 **Pydantic** - Validación de datos robusta
 
-### 🖥️ Sistemas Operativos Soportados
-
-- ✅ Windows 10/11
-- ✅ macOS 10.15+
-- ✅ Ubuntu 18.04+
-- ✅ CentOS 7+
-- ✅ Debian 10+
+### Base de Datos
+- 🗃️ **MySQL 8.0+** - Base de datos relacional optimizada
+- 🔄 **Migraciones** - Control de versiones de esquema
+- 📊 **Relaciones** - Estructura normalizada y eficiente
 
 ---
 
-## 🚀 Instalación
+## 🚀 Inicio Rápido
 
-### 📦 Opción 1: Clonar Repositorio (Recomendado)
-
-#### 1️⃣ Clonar el Proyecto
+### 📋 Prerrequisitos
 
 ```bash
-# Clonar el repositorio
-git clone https://github.com/tu-usuario/fullpaint-backend.git
-cd fullpaint-backend
+# Verificar versiones
+node --version    # >= 16.0.0
+python --version # >= 3.8.0
+mysql --version  # >= 8.0.0
 ```
 
-#### 2️⃣ Configurar Entorno Virtual
+### 🔧 Configuración del Proyecto
 
-**Windows (Git Bash/PowerShell):**
+#### 1️⃣ Clonar el Repositorio
+
 ```bash
+# Clonar proyecto completo
+git clone https://github.com/tu-usuario/full-paint-cars.git
+cd full-paint-cars
+```
+
+#### 2️⃣ Configurar Backend
+
+```bash
+# Navegar al backend
+cd backend
+
 # Crear entorno virtual
 python -m venv venv
+source venv/Scripts/activate  # Windows
+# source venv/bin/activate    # macOS/Linux
 
-# Activar entorno virtual
-# Git Bash:
-source venv/Scripts/activate
-# PowerShell:
-venv\Scripts\Activate.ps1
-# CMD:
-venv\Scripts\activate.bat
-```
-
-**macOS/Linux:**
-```bash
-# Crear entorno virtual
-python3 -m venv venv
-
-# Activar entorno virtual
-source venv/bin/activate
-```
-
-#### 3️⃣ Instalar Dependencias
-
-```bash
-# Instalar todas las dependencias
+# Instalar dependencias
 pip install -r requirements.txt
 
-# Verificar instalación
-pip list
+# Configurar variables de entorno
+cp .env.example .env
+# Editar .env con tus configuraciones
 ```
 
-### 🏗️ Opción 2: Crear Proyecto Desde Cero
-
-#### 1️⃣ Crear Estructura con Git Bash
+#### 3️⃣ Configurar Frontend
 
 ```bash
-# Crear directorio principal
-mkdir fullpaint_backend
-cd fullpaint_backend
+# Navegar al frontend (en nueva terminal)
+cd frontend
 
-# Inicializar Git
-git init
+# Instalar dependencias
+npm install
 
-# Crear estructura completa de carpetas
-mkdir -p app/{auth,models,schemas,controllers,routes}
-
-# Crear archivos __init__.py
-touch app/__init__.py
-touch app/{auth,models,schemas,controllers,routes}/__init__.py
-
-# Crear archivos principales
-touch app/main.py
-touch app/config.py
-touch app/database.py
-
-# Crear archivos de configuración
-touch requirements.txt
-touch .env
-touch .gitignore
-touch README.md
-touch Dockerfile
-touch docker-compose.yml
-
-# Crear archivos del módulo auth
-touch app/auth/auth_handler.py
-touch app/auth/password_handler.py
-
-# Crear archivos de modelos
-touch app/models/user.py
-touch app/models/role.py
-touch app/models/tipo_identificacion.py
-touch app/models/automovil.py
-touch app/models/proceso.py
-touch app/models/historial_servicio.py
-
-# Crear esquemas
-touch app/schemas/user.py
-touch app/schemas/role.py
-touch app/schemas/auth.py
-touch app/schemas/automovil.py
-touch app/schemas/proceso.py
-touch app/schemas/historial_servicio.py
-
-# Crear controladores
-touch app/controllers/auth_controller.py
-touch app/controllers/user_controller.py
-touch app/controllers/role_controller.py
-touch app/controllers/automovil_controller.py
-touch app/controllers/proceso_controller.py
-touch app/controllers/historial_controller.py
-
-# Crear rutas
-touch app/routes/auth_routes.py
-touch app/routes/user_routes.py
-touch app/routes/role_routes.py
-touch app/routes/automovil_routes.py
-touch app/routes/proceso_routes.py
-touch app/routes/historial_routes.py
-
-echo "✅ Estructura del proyecto creada exitosamente"
+# Configurar variables de entorno
+cp .env.example .env.local
+# Editar .env.local si es necesario
 ```
 
-#### 2️⃣ Configurar Entorno Virtual
-
-```bash
-# Crear y activar entorno virtual
-python -m venv venv
-source venv/Scripts/activate  # Git Bash en Windows
-# source venv/bin/activate    # macOS/Linux
-```
-
-#### 3️⃣ Instalar Dependencias Base
-
-```bash
-# Instalar FastAPI y dependencias principales
-pip install fastapi==0.104.1
-pip install uvicorn[standard]==0.24.0
-pip install sqlalchemy==2.0.23
-pip install pymysql==1.1.0
-pip install python-dotenv==1.0.0
-pip install pydantic[email]==2.5.0
-pip install pydantic-settings==2.1.0
-
-# Instalar dependencias de seguridad
-pip install passlib[bcrypt]==1.7.4
-pip install python-jose[cryptography]==3.3.0
-pip install python-multipart==0.0.6
-
-# Generar requirements.txt
-pip freeze > requirements.txt
-```
-
----
-
-## 🗄️ Configuración de Base de Datos
-
-### 🔧 MySQL - Configuración Inicial
-
-#### Con MySQL Workbench (Recomendado)
-
-1. **Abrir MySQL Workbench**
-2. **Conectar al servidor** (localhost:3306)
-3. **Ejecutar los siguientes comandos:**
+#### 4️⃣ Configurar Base de Datos
 
 ```sql
 -- Crear base de datos
-CREATE DATABASE FULLPAINTT 
-CHARACTER SET utf8mb4 
-COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE FULLPAINTT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
--- Crear usuario específico para la aplicación
-CREATE USER 'fullpaint_user'@'localhost' IDENTIFIED BY 'tu_password_seguro_123';
-
--- Otorgar permisos
+-- Crear usuario
+CREATE USER 'fullpaint_user'@'localhost' IDENTIFIED BY 'tu_password';
 GRANT ALL PRIVILEGES ON FULLPAINTT.* TO 'fullpaint_user'@'localhost';
 FLUSH PRIVILEGES;
-
--- Verificar la creación
-SHOW DATABASES;
-SELECT User, Host FROM mysql.user WHERE User = 'fullpaint_user';
 ```
 
-#### Sin MySQL Workbench (Línea de Comandos)
+### 🏃‍♂️ Ejecutar la Aplicación
 
+#### Backend (Puerto 8000)
 ```bash
-# Conectar a MySQL
-mysql -u root -p
-
-# Ejecutar comandos SQL (copiar los de arriba)
+cd backend
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-### 🔑 Configuración de Usuario MySQL
-
-**Si tu MySQL NO tiene contraseña root:**
-```sql
--- Usar root sin contraseña
-CREATE USER 'fullpaint_user'@'localhost' IDENTIFIED BY 'fullpaint_password_123';
-GRANT ALL PRIVILEGES ON FULLPAINTT.* TO 'fullpaint_user'@'localhost';
+#### Frontend (Puerto 5173)
+```bash
+cd frontend
+npm run dev
 ```
 
-**Si tu MySQL SÍ tiene contraseña root:**
-```sql
--- Usar las credenciales correspondientes
--- Modificar el .env con los datos correctos
-```
+### 🌐 Acceder a la Aplicación
+
+- **Frontend**: http://localhost:5173
+- **Backend API**: http://localhost:8000
+- **Documentación**: http://localhost:8000/docs
+- **ReDoc**: http://localhost:8000/redoc
 
 ---
 
-## ⚙️ Configuración de Variables de Entorno
+## 🏗️ Arquitectura
 
-### 📝 Crear archivo .env
-
-```bash
-# Crear archivo de variables de entorno
-touch .env
-```
-
-### 🔧 Contenido del archivo .env
-
-```env
-# 🗄️ Configuración de Base de Datos
-# OPCIÓN 1: Con usuario específico (Recomendado)
-DATABASE_URL=mysql+pymysql://fullpaint_user:fullpaint_password_123@localhost:3306/FULLPAINTT
-
-# OPCIÓN 2: Con usuario root sin contraseña
-# DATABASE_URL=mysql+pymysql://root:@localhost:3306/FULLPAINTT
-
-# OPCIÓN 3: Con usuario root con contraseña
-# DATABASE_URL=mysql+pymysql://root:tu_password_root@localhost:3306/FULLPAINTT
-
-# 🔐 Configuración JWT
-SECRET_KEY=tu_clave_super_secreta_de_al_menos_32_caracteres_cambiar_en_produccion
-ALGORITHM=HS256
-ACCESS_TOKEN_EXPIRE_MINUTES=30
-
-# 🚀 Configuración del Servidor
-SERVER_HOST=0.0.0.0
-SERVER_PORT=8000
-APP_NAME=Full Paint Cars API
-VERSION=1.0.0
-DEBUG=True
-
-# 📧 Configuración de Email (Opcional)
-SMTP_SERVER=smtp.gmail.com
-SMTP_PORT=587
-SMTP_USERNAME=tu_email@gmail.com
-SMTP_PASSWORD=tu_app_password
-```
-
----
-
-## 🏗️ Estructura del Proyecto
+### 📁 Estructura del Proyecto
 
 ```
-fullpaint_backend/
-├── 📁 app/
-│   ├── 🐍 main.py                     # Punto de entrada principal - Configuración FastAPI
-│   ├── ⚙️ config.py                   # Configuraciones centralizadas - Variables de entorno
-│   ├── 🗄️ database.py                 # Configuración SQLAlchemy - Conexión MySQL
-│   │
-│   ├── 📁 auth/                       # Módulo de Autenticación
-│   │   ├── 🔐 auth_handler.py         # Manejo JWT - Generación/validación tokens
-│   │   └── 🔒 password_handler.py     # Hash de contraseñas - bcrypt
-│   │
-│   ├── 📁 models/                     # Modelos SQLAlchemy (Tablas BD)
-│   │   ├── 👤 user.py                 # Modelo Usuario - Tabla usuarios
-│   │   ├── 🛡️ role.py                 # Modelo Roles - Tabla roles
-│   │   ├── 🆔 tipo_identificacion.py  # Tipos documento - CC, CE, TI, etc.
-│   │   ├── 🚗 automovil.py            # Modelo Vehículos - Gestión autos
-│   │   ├── ⚙️ proceso.py              # Procesos taller - Reparaciones
-│   │   ├── 💰 cotizacion.py            # Modelo Cotizaciones - Gestión presupuestos
-│   │   └── 📋 historial_servicio.py   # Historial servicios - Registro intervenciones
-│   │
-│   ├── 📁 schemas/                    # Validación Pydantic (Input/Output)
-│   │   ├── 📝 user.py                 # Esquemas usuario - Validación datos
-│   │   ├── 📝 role.py                 # Esquemas roles - Permisos
-│   │   ├── 📝 auth.py                 # Esquemas autenticación - Login/Register
-│   │   ├── 📝 automovil.py            # Esquemas vehículos - CRUD autos
-│   │   ├── 📝 proceso.py              # Esquemas procesos - Workflow taller
-│   │   ├── 📝 cotizacion.py            # Esquemas cotizaciones - Validación presupuestos
-│   │   └── 📝 historial_servicio.py   # Esquemas historial - Servicios
-│   │
-│   ├── 📁 controllers/                # Lógica de Negocio
-│   │   ├── 🔐 auth_controller.py      # Lógica autenticación - Login/Register/JWT
-│   │   ├── 👥 user_controller.py      # Lógica usuarios - CRUD/Perfiles
-│   │   ├── 🛡️ role_controller.py      # Lógica roles - Asignación permisos
-│   │   ├── 🚗 automovil_controller.py # Lógica vehículos - Gestión autos
-│   │   ├── ⚙️ proceso_controller.py   # Lógica procesos - Workflow taller
-│   │   ├── 💰 cotizacion_controller.py # Lógica cotizaciones - Gestión presupuestos
-│   │   └── 📋 historial_controller.py # Lógica historial - Servicios
-│   │
-│   └── 📁 routes/                     # Endpoints API (FastAPI Routes)
-│   │ ├── 🛣️ auth_routes.py          # Rutas autenticación - /auth/*
-│   │   ├── 🛣️ user_routes.py          # Rutas usuarios - /users/*
-│   │   ├── 🛣️ role_routes.py          # Rutas roles - /roles/*
-│   │   ├── 🛣️ automovil_routes.py     # Rutas vehículos - /automoviles/*
-│   │   ├── 🛣️ proceso_routes.py       # Rutas procesos - /api/v1/procesos/*
-│   │   ├── 🛣️ cotizacion_routes.py     # Rutas cotizaciones - /api/v1/cotizaciones/*
-│   │   └── 🛣️ historial_routes.py     # Rutas historial - /api/v1/historial-servicios/*
-│   │
-│   ├── 📁 services/                   # Servicios de Negocio
-│   │   └── 📧 notification_service.py # Servicio notificaciones - Emails/SMS
-│   │
-│   ├── 📁 tasks/                      # Tareas Asíncronas
-│       └── 💰 cotizacion_tasks.py     # Tareas cotizaciones - Procesamiento background
-│   
+Full-Paint-Cars/
+├── 📁 frontend/                    # React + TypeScript
+│   ├── src/
+│   │   ├── components/            # Componentes reutilizables
+│   │   ├── pages/                 # Páginas principales
+│   │   ├── assets/               # Recursos estáticos
+│   │   └── styles/               # Estilos CSS
+│   └── package.json
 │
-├── 📋 requirements.txt                # Dependencias Python
-├── 🔐 .env                           # Variables de entorno (NO subir a Git)
-├── 🚫 .gitignore                     # Archivos ignorados por Git
-├── 🐳 Dockerfile                     # Configuración Docker
-├── 🐳 docker-compose.yml             # Orquestación contenedores
-└── 📖 README.md                      # Documentación (este archivo)
+├── 📁 backend/                     # FastAPI + Python
+│   ├── app/
+│   │   ├── models/               # Modelos SQLAlchemy
+│   │   ├── schemas/              # Esquemas Pydantic
+│   │   ├── controllers/          # Lógica de negocio
+│   │   ├── routes/               # Endpoints API
+│   │   └── auth/                 # Autenticación JWT
+│   └── requirements.txt
+│
+├── 📁 docs/                       # Documentación adicional
+└── 📋 README.md                   # Este archivo
 ```
 
-### 📚 Descripción de Archivos Clave
+### 🔄 Flujo de Datos
 
-| Archivo | Propósito | Contenido Principal |
-|---------|-----------|-------------------|
-| `main.py` | Aplicación FastAPI | Configuración CORS, middleware, rutas principales |
-| `config.py` | Configuración | Settings con Pydantic, variables de entorno |
-| `database.py` | Base de datos | SQLAlchemy engine, sesiones, Base declarativa |
-| `auth_handler.py` | JWT | Generación/validación tokens, decoradores auth |
-| `password_handler.py` | Seguridad | Hash bcrypt, verificación contraseñas |
-| Modelos `*.py` | Tablas BD | Definición SQLAlchemy de tablas |
-| Esquemas `*.py` | Validación | Pydantic models para input/output |
-| Controladores `*.py` | Lógica | Funciones de negocio, interacción con BD |
-| Rutas `*.py` | Endpoints | FastAPI routes, decoradores HTTP |
-
----
-
-## 🚀 Ejecutar la Aplicación
-
-### 🔥 Inicio Rápido
-
-```bash
-# 1. Activar entorno virtual
-source venv/Scripts/activate  # Windows Git Bash
-# source venv/bin/activate    # macOS/Linux
-
-# 2. Ejecutar aplicación (desarrollo)
-uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
-```
-
-### 🌐 Comandos de Ejecución
-
-#### Desarrollo (Recomendado)
-```bash
-# Con recarga automática
-uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
-
-# Con logs detallados
-uvicorn app.main:app --reload --host 0.0.0.0 --port 8000 --log-level debug
-```
-
-#### Producción
-```bash
-# Múltiples workers
-uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers 4
-
-# Con configuración específica
-uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers 4 --log-level info
-```
-
-### 🎯 Verificar Funcionamiento
-
-#### URLs de Acceso
-- **API Principal:** http://localhost:8000
-- **Documentación Swagger:** http://localhost:8000/docs
-- **Documentación ReDoc:** http://localhost:8000/redoc
-- **Health Check:** http://localhost:8000/health
-- **OpenAPI JSON:** http://localhost:8000/openapi.json
-
-#### Health Check
-```bash
-# Verificar que la API funciona
-curl http://localhost:8000/health
-
-# Respuesta esperada:
-# {"status":"healthy","version":"1.0.0"}
+```mermaid
+graph LR
+    A[Frontend React] --> B[API FastAPI]
+    B --> C[MySQL Database]
+    B --> D[JWT Auth]
+    A --> E[User Interface]
 ```
 
 ---
 
-## 📋 Dependencias Completas
+## 👥 Roles del Sistema
 
-### 📦 requirements.txt
-
-```txt
-# FastAPI y servidor ASGI
-fastapi==0.104.1
-uvicorn[standard]==0.24.0
-
-# Base de datos y ORM
-SQLAlchemy==2.0.23
-PyMySQL==1.1.0
-
-# Validación de datos
-pydantic==2.5.0
-pydantic-core==2.14.1
-pydantic-settings==2.1.0
-email-validator==2.1.0
-
-# Seguridad y autenticación
-passlib[bcrypt]==1.7.4
-bcrypt==4.3.0
-python-jose[cryptography]==3.3.0
-cryptography==41.0.7
-
-# Utilidades y configuración
-python-dotenv==1.0.0
-python-multipart==0.0.6
-
-# Dependencias del sistema
-annotated-types==0.7.0
-anyio==3.7.1
-cffi==1.17.1
-click==8.2.1
-colorama==0.4.6
-dnspython==2.7.0
-ecdsa==0.19.1
-greenlet==3.2.2
-h11==0.16.0
-idna==3.10
-pyasn1==0.6.1
-pycparser==2.22
-rsa==4.9.1
-six==1.17.0
-sniffio==1.3.1
-starlette==0.27.0
-typing-extensions==4.13.2
-```
-
-### 🔧 Instalación de Dependencias
-
-```bash
-# Instalar todas las dependencias
-pip install -r requirements.txt
-
-# Verificar instalación
-pip list | grep -E "(fastapi|uvicorn|sqlalchemy|pymysql)"
-
-# Instalar dependencias una por una (si hay problemas)
-pip install fastapi==0.104.1
-pip install uvicorn[standard]==0.24.0
-pip install sqlalchemy==2.0.23
-pip install pymysql==1.1.0
-pip install python-dotenv==1.0.0
-pip install pydantic[email]==2.5.0
-pip install pydantic-settings==2.1.0
-pip install passlib[bcrypt]==1.7.4
-pip install python-jose[cryptography]==3.3.0
-pip install python-multipart==0.0.6
-```
-
----
-
-## 🔗 API Endpoints
-
-### 🔐 Autenticación
-
-| Método | Endpoint | Descripción | Auth | Body |
-|--------|----------|-------------|------|------|
-| `POST` | `/auth/register` | Registrar nuevo usuario | ❌ | `RegisterRequest` |
-| `POST` | `/auth/login` | Login (form-data) | ❌ | `username`, `password` |
-| `POST` | `/auth/login-json` | Login (JSON) | ❌ | `LoginRequest` |
-| `GET` | `/auth/me` | Info usuario actual | ✅ | - |
-| `POST` | `/auth/refresh` | Renovar token | ✅ | - |
-
-### 👥 Usuarios
-
-| Método | Endpoint | Descripción | Auth | Rol |
-|--------|----------|-------------|------|-----|
-| `GET` | `/users/` | Listar usuarios | ✅ | Admin |
-| `GET` | `/users/me` | Mi perfil | ✅ | Cualquiera |
-| `PUT` | `/users/me` | Actualizar mi perfil | ✅ | Cualquiera |
-| `GET` | `/users/{user_id}` | Usuario por ID | ✅ | Admin |
-| `PUT` | `/users/{user_id}` | Actualizar usuario | ✅ | Admin |
-| `DELETE` | `/users/{user_id}` | Eliminar usuario | ✅ | Admin |
-| `PATCH` | `/users/{user_id}/toggle-status` | Cambiar estado | ✅ | Admin |
-
-### 🛡️ Roles
-
-| Método | Endpoint | Descripción | Auth | Rol |
-|--------|----------|-------------|------|-----|
-| `GET` | `/roles/` | Listar roles | ✅ | Cualquiera |
-| `POST` | `/roles/` | Crear rol | ✅ | Admin |
-| `GET` | `/roles/{role_id}` | Rol por ID | ✅ | Cualquiera |
-| `PUT` | `/roles/{role_id}` | Actualizar rol | ✅ | Admin |
-| `DELETE` | `/roles/{role_id}` | Eliminar rol | ✅ | Admin |
-| `POST` | `/roles/assign/{user_id}` | Asignar rol | ✅ | Admin |
-
-### 🚗 Automóviles
-
-| Método | Endpoint | Descripción | Auth |
-|--------|----------|-------------|------|
-| `POST` | `/automoviles/` | Crear automóvil | ✅ |
-| `GET` | `/automoviles/` | Listar automóviles | ✅ |
-| `GET` | `/automoviles/{automovil_id}` | Automóvil por ID | ✅ |
-| `PUT` | `/automoviles/{automovil_id}` | Actualizar automóvil | ✅ |
-| `DELETE` | `/automoviles/{automovil_id}` | Eliminar automóvil | ✅ |
-| `PATCH` | `/automoviles/{automovil_id}/estado` | Cambiar estado | ✅ |
-| `PATCH` | `/automoviles/{automovil_id}/kilometraje` | Actualizar km | ✅ |
-| `GET` | `/automoviles/{automovil_id}/historial` | Historial | ✅ |
-| `GET` | `/automoviles/estadisticas/general` | Estadísticas | ✅ |
-| `GET` | `/automoviles/buscar/{termino}` | Buscar | ✅ |
-
-### ⚙️ Procesos
-
-| Método | Endpoint | Descripción | Auth |
-|--------|----------|-------------|------|
-| `POST` | `/api/v1/procesos/` | Crear proceso | ✅ |
-| `GET` | `/api/v1/procesos/` | Listar procesos | ✅ |
-| `GET` | `/api/v1/procesos/{proceso_id}` | Proceso por ID | ✅ |
-| `PUT` | `/api/v1/procesos/{proceso_id}` | Actualizar proceso | ✅ |
-| `DELETE` | `/api/v1/procesos/{proceso_id}` | Eliminar proceso | ✅ |
-| `GET` | `/api/v1/procesos/automovil/{automovil_id}` | Por automóvil | ✅ |
-| `GET` | `/api/v1/procesos/tecnico/{tecnico_id}` | Por técnico | ✅ |
-| `PATCH` | `/api/v1/procesos/{proceso_id}/estado` | Cambiar estado | ✅ |
-| `PATCH` | `/api/v1/procesos/{proceso_id}/asignar-tecnico` | Asignar técnico | ✅ |
-| `GET` | `/api/v1/procesos/estadisticas/dashboard` | Dashboard | ✅ |
-
-### 📋 Historial de Servicios
-
-| Método | Endpoint | Descripción | Auth |
-|--------|----------|-------------|------|
-| `POST` | `/api/v1/historial-servicios/` | Crear historial | ✅ |
-| `GET` | `/api/v1/historial-servicios/` | Listar historiales | ✅ |
-| `GET` | `/api/v1/historial-servicios/{historial_id}` | Por ID | ✅ |
-| `PUT` | `/api/v1/historial-servicios/{historial_id}` | Actualizar | ✅ |
-| `DELETE` | `/api/v1/historial-servicios/{historial_id}` | Eliminar | ✅ |
-| `GET` | `/api/v1/historial-servicios/automovil/{automovil_id}` | Por auto | ✅ |
-| `GET` | `/api/v1/historial-servicios/reportes/costos-por-periodo` | Reportes | ✅ |
-
-### 💰 Cotizaciones
-
-| Método | Endpoint | Descripción | Auth |
-|--------|----------|-------------|------|
-| `POST` | `/api/v1/cotizaciones/` | Crear cotización | ✅ |
-| `GET` | `/api/v1/cotizaciones/` | Listar cotizaciones | ✅ |
-| `GET` | `/api/v1/cotizaciones/{cotizacion_id}` | Cotización por ID | ✅ |
-| `PUT` | `/api/v1/cotizaciones/{cotizacion_id}` | Actualizar cotización | ✅ |
-| `DELETE` | `/api/v1/cotizaciones/{cotizacion_id}` | Eliminar cotización | ✅ |
-| `PATCH` | `/api/v1/cotizaciones/{cotizacion_id}/estado` | Cambiar estado | ✅ |
-| `GET` | `/api/v1/cotizaciones/cliente/{cliente_id}` | Por cliente | ✅ |
-| `GET` | `/api/v1/cotizaciones/estadisticas/dashboard` | Estadísticas | ✅ |
-
----
-
-## 🧪 Ejemplos de Uso
-
-### 🔑 Usuario Administrador por Defecto
-
-Al iniciar la aplicación por primera vez, se crea automáticamente:
+### 🔑 Credenciales por Defecto
 
 ```json
 {
   "correo": "admin@fullpaint.com",
-  "password": "Admin123!",
-  "rol": "Administrador"
+  "password": "Admin123!"
 }
 ```
 
-⚠️ **IMPORTANTE:** Cambiar la contraseña después del primer login.
+### 👤 Tipos de Usuario
 
-### 👤 1. Registro de Usuario
-
-```bash
-curl -X POST "http://localhost:8000/auth/register" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "nombre_completo": "Juan Pérez García",
-    "correo": "juan.perez@example.com",
-    "password": "MiPassword123!",
-    "telefono": "3001234567",
-    "tipo_identificacion": "CC",
-    "numero_identificacion": "1234567890"
-  }'
-```
-
-**Respuesta esperada:**
-```json
-{
-  "id": 2,
-  "correo": "juan.perez@example.com",
-  "nombre_completo": "Juan Pérez García",
-  "estado": "ACTIVO",
-  "created_at": "2024-01-15T10:30:00Z"
-}
-```
-
-### 🔓 2. Inicio de Sesión
-
-#### Opción A: JSON (Recomendado)
-```bash
-curl -X POST "http://localhost:8000/auth/login-json" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "correo": "juan.perez@example.com",
-    "password": "MiPassword123!"
-  }'
-```
-
-#### Opción B: Form Data
-```bash
-curl -X POST "http://localhost:8000/auth/login" \
-  -H "Content-Type: application/x-www-form-urlencoded" \
-  -d "username=juan.perez@example.com&password=MiPassword123!"
-```
-
-**Respuesta esperada:**
-```json
-{
-  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-  "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-  "token_type": "bearer",
-  "expires_in": 1800
-}
-```
-
-### 👥 3. Obtener Información del Usuario
-
-```bash
-curl -X GET "http://localhost:8000/auth/me" \
-  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
-```
-
-### 🚗 4. Crear Automóvil
-
-```bash
-curl -X POST "http://localhost:8000/automoviles/" \
-  -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "placa": "ABC123",
-    "marca": "Toyota",
-    "modelo": "Corolla",
-    "ano": 2020,
-    "color": "Blanco",
-    "tipo_combustible": "GASOLINA",
-    "tipo_transmision": "MANUAL",
-    "kilometraje": 50000,
-    "propietario": {
-      "nombre_completo": "María González",
-      "telefono": "3009876543",
-      "tipo_identificacion": "CC",
-      "numero_identificacion": "9876543210"
-    }
-  }'
-```
-
-### ⚙️ 5. Crear Proceso de Taller
-
-```bash
-curl -X POST "http://localhost:8000/api/v1/procesos/" \
-  -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "automovil_id": 1,
-    "tipo_proceso": "MANTENIMIENTO",
-    "descripcion": "Cambio de aceite y filtros",
-    "prioridad": "MEDIA",
-    "fecha_programada": "2024-01-20T09:00:00Z",
-    "costo_estimado": 150000
-  }'
-```
-
-### 👥 6. Listar Usuarios (Solo Admin)
-
-```bash
-curl -X GET "http://localhost:8000/users/" \
-  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
-```
-
-### 🛡️ 7. Asignar Rol a Usuario
-
-```bash
-curl -X POST "http://localhost:8000/roles/assign/2" \
-  -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "rol_id": 2
-  }'
-```
-
-### 📊 8. Obtener Estadísticas del Dashboard
-
-```bash
-curl -X GET "http://localhost:8000/api/v1/procesos/estadisticas/dashboard" \
-  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
-```
-
-**Respuesta esperada:**
-```json
-{
-  "total_procesos": 25,
-  "procesos_pendientes": 8,
-  "procesos_en_progreso": 12,
-  "procesos_completados": 5,
-  "automoviles_en_taller": 15,
-  "procesos_vencidos": 2,
-  "ingresos_mes_actual": 2500000,
-  "promedio_tiempo_proceso": 3.5
-}
-```
-### 💰 9. Crear Cotización
-
-```bash
-curl -X POST "http://localhost:8000/api/v1/cotizaciones/" \
-  -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "cliente_id": 1,
-    "automovil_id": 1,
-    "descripcion": "Cotización para reparación de motor",
-    "servicios": [
-      {
-        "descripcion": "Cambio de motor",
-        "cantidad": 1,
-        "precio_unitario": 2500000
-      },
-      {
-        "descripcion": "Mano de obra",
-        "cantidad": 8,
-        "precio_unitario": 50000
-      }
-    ],
-    "observaciones": "Incluye garantía de 6 meses"
-  }'
+| Rol | Permisos | Descripción |
+|-----|----------|-------------|
+| **Cliente** | Consultar servicios, ver historial | Usuario final del taller |
+| **Empleado** | Gestionar procesos, actualizar estados | Personal técnico |
+| **Administrador** | Control total del sistema | Acceso completo |
 
 ---
 
-## 🛠️ Resolución de Problemas Comunes
+## 🔗 API Endpoints Principales
 
-### 🔍 Errores de Conexión a Base de Datos
+### 🔐 Autenticación
+- `POST /auth/login` - Iniciar sesión
+- `POST /auth/register` - Registrar usuario
+- `GET /auth/me` - Información del usuario actual
 
-#### Error: "Access denied for user"
-```bash
-# Verificar usuario MySQL
-mysql -u fullpaint_user -p
-# Ingresar password: fullpaint_password_123
+### 🚗 Gestión de Vehículos
+- `GET /automoviles/` - Listar vehículos
+- `POST /automoviles/` - Crear vehículo
+- `PUT /automoviles/{id}` - Actualizar vehículo
 
-# Si falla, recrear usuario:
-mysql -u root -p
-CREATE USER 'fullpaint_user'@'localhost' IDENTIFIED BY 'fullpaint_password_123';
-GRANT ALL PRIVILEGES ON FULLPAINTT.* TO 'fullpaint_user'@'localhost';
-FLUSH PRIVILEGES;
-```
+### ⚙️ Procesos de Taller
+- `GET /api/v1/procesos/` - Listar procesos
+- `POST /api/v1/procesos/` - Crear proceso
+- `PATCH /api/v1/procesos/{id}/estado` - Cambiar estado
 
-#### Error: "Unknown database 'FULLPAINTT'"
-```bash
-# Crear base de datos
-mysql -u root -p
-CREATE DATABASE FULLPAINTT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-```
-
-#### Error: "Can't connect to MySQL server"
-```bash
-# Verificar servicio MySQL
-# Windows:
-net start mysql80
-
-# macOS:
-brew services start mysql
-
-# Linux (Ubuntu/Debian):
-sudo systemctl start mysql
-sudo systemctl enable mysql
-```
-
-### 🔧 Errores de Dependencias
-
-#### Error: "Microsoft Visual C++ 14.0 is required" (Windows)
-```bash
-# Instalar Build Tools para Visual Studio
-# Descargar desde: https://visualstudio.microsoft.com/visual-cpp-build-tools/
-
-# O instalar con chocolatey:
-choco install visualstudio2019buildtools
-```
-
-#### Error: "Failed building wheel for bcrypt"
-```bash
-# Instalar dependencias del sistema
-# Ubuntu/Debian:
-sudo apt-get update
-sudo apt-get install build-essential libssl-dev libffi-dev python3-dev
-
-# CentOS/RHEL:
-sudo yum groupinstall "Development Tools"
-sudo yum install openssl-devel libffi-devel python3-devel
-
-# macOS:
-xcode-select --install
-```
-
-### 🚀 Errores de Ejecución
-
-#### Error: "Port 8000 is already in use"
-```bash
-# Encontrar proceso usando el puerto
-# Windows:
-netstat -ano | findstr :8000
-taskkill /PID <PID> /F
-
-# macOS/Linux:
-lsof -ti:8000 | xargs kill -9
-
-# O usar otro puerto:
-uvicorn app.main:app --reload --host 0.0.0.0 --port 8001
-```
-
-#### Error: "ImportError: No module named 'app'"
-```bash
-# Verificar que estás en el directorio correcto
-pwd
-ls -la  # Debe mostrar la carpeta 'app'
-
-# Verificar entorno virtual activo
-which python
-pip list | grep fastapi
-```
-
-### 🔐 Errores de Autenticación
-
-#### Error: "Could not validate credentials"
-```bash
-# Verificar token válido
-curl -X GET "http://localhost:8000/auth/me" \
-  -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
-  -v
-
-# Renovar token si expiró
-curl -X POST "http://localhost:8000/auth/refresh" \
-  -H "Authorization: Bearer YOUR_REFRESH_TOKEN"
-```
+### 💰 Cotizaciones
+- `GET /api/v1/cotizaciones/` - Listar cotizaciones
+- `POST /api/v1/cotizaciones/` - Crear cotización
+- `GET /api/v1/cotizaciones/estadisticas/dashboard` - Dashboard
 
 ---
 
-## 📈 Monitoreo y Logs
+## 🐳 Docker (Opcional)
 
-### 📊 Verificar Estado de la Aplicación
-
-```bash
-# Health check básico
-curl http://localhost:8000/health
-
-# Información detallada de la API
-curl http://localhost:8000/
-
-# Verificar endpoints disponibles
-curl http://localhost:8000/openapi.json | jq '.paths | keys'
-```
-
-### 📝 Logs Detallados
+### 🚀 Ejecución con Docker Compose
 
 ```bash
-# Ejecutar con logs debug
-uvicorn app.main:app --reload --log-level debug
-
-# Logs en archivo
-uvicorn app.main:app --reload --log-config logging.conf > logs/app.log 2>&1 &
-```
-
-### 📊 Monitoreo de Base de Datos
-
-```sql
--- Verificar conexiones activas
-SHOW PROCESSLIST;
-
--- Verificar tamaño de base de datos
-SELECT 
-    table_schema AS "Database",
-    ROUND(SUM(data_length + index_length) / 1024 / 1024, 2) AS "Size (MB)"
-FROM information_schema.tables 
-WHERE table_schema = 'FULLPAINTT'
-GROUP BY table_schema;
-
--- Verificar tablas creadas
-USE FULLPAINTT;
-SHOW TABLES;
-```
-
----
-
-## 🚀 Despliegue en Producción
-
-### 🐳 Docker (Recomendado)
-
-#### Crear Dockerfile
-```dockerfile
-FROM python:3.11-slim
-
-WORKDIR /app
-
-# Instalar dependencias del sistema
-RUN apt-get update && apt-get install -y \
-    gcc \
-    default-libmysqlclient-dev \
-    pkg-config \
-    && rm -rf /var/lib/apt/lists/*
-
-# Copiar requirements y instalar dependencias Python
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copiar código fuente
-COPY app/ ./app/
-
-# Exponer puerto
-EXPOSE 8000
-
-# Comando para ejecutar la aplicación
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
-```
-
-#### Crear docker-compose.yml
-```yaml
-version: '3.8'
-
-services:
-  # Aplicación FastAPI
-  api:
-    build: .
-    ports:
-      - "8000:8000"
-    environment:
-      - DATABASE_URL=mysql+pymysql://fullpaint_user:fullpaint_password_123@db:3306/FULLPAINTT
-      - SECRET_KEY=tu_clave_super_secreta_produccion_2024
-      - DEBUG=False
-    depends_on:
-      - db
-    volumes:
-      - ./logs:/app/logs
-    restart: unless-stopped
-
-  # Base de datos MySQL
-  db:
-    image: mysql:8.0
-    environment:
-      - MYSQL_ROOT_PASSWORD=root_password_seguro
-      - MYSQL_DATABASE=FULLPAINTT
-      - MYSQL_USER=fullpaint_user
-      - MYSQL_PASSWORD=fullpaint_password_123
-    ports:
-      - "3306:3306"
-    volumes:
-      - mysql_data:/var/lib/mysql
-      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
-    restart: unless-stopped
-
-  # Adminer (Opcional - para administrar BD)
-  adminer:
-    image: adminer
-    restart: unless-stopped
-    ports:
-      - "8080:8080"
-    depends_on:
-      - db
-
-volumes:
-  mysql_data:
-```
-
-#### Ejecutar con Docker
-```bash
-# Construir y ejecutar
+# Construir y ejecutar todos los servicios
 docker-compose up --build -d
 
-# Verificar contenedores
+# Verificar servicios activos
 docker-compose ps
 
 # Ver logs
-docker-compose logs -f api
+docker-compose logs -f
 
 # Detener servicios
 docker-compose down
 ```
 
-### 🌐 Despliegue Tradicional
-
-#### Configuración de Producción
-```bash
-# Instalar servidor web (nginx)
-sudo apt-get install nginx
-
-# Configurar nginx como proxy reverso
-sudo nano /etc/nginx/sites-available/fullpaint
-```
-
-#### Configuración nginx
-```nginx
-server {
-    listen 80;
-    server_name tu-dominio.com;
-
-    location / {
-        proxy_pass http://127.0.0.1:8000;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }
-}
-```
-
-#### Servicio systemd
-```bash
-# Crear servicio
-sudo nano /etc/systemd/system/fullpaint.service
-```
-
-```ini
-[Unit]
-Description=Full Paint Cars API
-After=network.target
-
-[Service]
-User=www-data
-Group=www-data
-WorkingDirectory=/var/www/fullpaint
-Environment=PATH=/var/www/fullpaint/venv/bin
-ExecStart=/var/www/fullpaint/venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000 --workers 4
-Restart=always
-
-[Install]
-WantedBy=multi-user.target
-```
-
-```bash
-# Habilitar y ejecutar servicio
-sudo systemctl enable fullpaint
-sudo systemctl start fullpaint
-sudo systemctl status fullpaint
-```
-
 ---
 
-## 📚 Documentación Adicional
+## 📚 Documentación
 
-### 🔗 Enlaces Útiles
+### 🔗 Enlaces Importantes
 
 | Recurso | URL | Descripción |
 |---------|-----|-------------|
-| **Documentación FastAPI** | https://fastapi.tiangolo.com | Guía oficial de FastAPI |
-| **SQLAlchemy** | https://docs.sqlalchemy.org | ORM para Python |
-| **Pydantic** | https://docs.pydantic.dev | Validación de datos |
-| **MySQL** | https://dev.mysql.com/doc/ | Documentación MySQL |
-| **JWT.io** | https://jwt.io | Debugger de tokens JWT |
-| **Swagger UI** | http://localhost:8000/docs | Docs interactiva local |
-| **ReDoc** | http://localhost:8000/redoc | Docs alternativa local |
+| **API Docs** | http://localhost:8000/docs | Documentación interactiva |
+| **ReDoc** | http://localhost:8000/redoc | Documentación alternativa |
+| **Frontend** | http://localhost:5173 | Aplicación web |
+| **Health Check** | http://localhost:8000/health | Estado de la API |
 
-### 📖 Tutoriales Recomendados
+### 📖 Guías Adicionales
 
-1. **FastAPI Fundamentals**
-   - Crear API REST con FastAPI
-   - Autenticación JWT
-   - Manejo de bases de datos
-
-2. **SQLAlchemy ORM**
-   - Modelos y relaciones
-   - Migraciones
-   - Consultas avanzadas
-
-3. **MySQL Optimization**
-   - Índices y rendimiento
-   - Backup y recovery
-   - Configuración de producción
-
-### 🎓 Cursos y Certificaciones
-
-- **FastAPI Complete Course** (Udemy)
-- **Python Backend Development** (Coursera)
-- **MySQL Database Administration** (MySQL University)
-- **API Design Best Practices** (Pluralsight)
+- 📘 **[Guía de Instalación](docs/installation.md)** - Instalación detallada
+- 🔧 **[Configuración](docs/configuration.md)** - Variables de entorno
+- 🚀 **[Despliegue](docs/deployment.md)** - Producción
+- 🧪 **[Testing](docs/testing.md)** - Pruebas automatizadas
 
 ---
 
-## 🤝 Contribuir al Proyecto
+## 🤝 Contribuir
 
-### 📋 Guía de Contribución
+### 📋 Pasos para Contribuir
 
-1. **Fork del repositorio**
-2. **Crear rama feature**: `git checkout -b feature/nueva-funcionalidad`
-3. **Commits descriptivos**: `git commit -m "Add: nueva funcionalidad X"`
-4. **Push a la rama**: `git push origin feature/nueva-funcionalidad`
-5. **Crear Pull Request**
+1. **Fork** del repositorio
+2. **Crear rama**: `git checkout -b feature/nueva-funcionalidad`
+3. **Commits**: `git commit -m "Add: nueva funcionalidad"`
+4. **Push**: `git push origin feature/nueva-funcionalidad`
+5. **Pull Request** con descripción detallada
 
 ### 🎯 Estándares de Código
 
-```python
-# Ejemplo de función bien documentada
-def crear_usuario(
-    db: Session, 
-    user_data: UserCreate
-) -> UserResponse:
-    """
-    Crea un nuevo usuario en la base de datos.
-    
-    Args:
-        db (Session): Sesión de base de datos SQLAlchemy
-        user_data (UserCreate): Datos del usuario a crear
-        
-    Returns:
-        UserResponse: Usuario creado con información básica
-        
-    Raises:
-        HTTPException: Si el email ya existe o hay error de validación
-    """
-    # Implementación aquí
-    pass
-```
+- **Frontend**: ESLint + Prettier
+- **Backend**: Black + Flake8
+- **Commits**: Conventional Commits
+- **Testing**: Jest (Frontend) + Pytest (Backend)
 
-### 🧪 Testing
+---
 
-```bash
-# Instalar dependencias de testing
-pip install pytest pytest-asyncio httpx
+## 🐛 Soporte
 
-# Ejecutar tests
-pytest tests/ -v
+### 🆘 Problemas Comunes
 
-# Cobertura de código
-pytest --cov=app tests/
-```
+- **Puerto ocupado**: Usar `--port 8001` o `--port 5174`
+- **Base de datos**: Verificar MySQL activo y credenciales
+- **Dependencias**: Actualizar Node.js y Python a versiones mínimas
+
+### 📞 Contacto
+
+- **Email**: support@fullpaint.com
+- **Issues**: [GitHub Issues](https://github.com/tu-usuario/full-paint-cars/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/tu-usuario/full-paint-cars/discussions)
+
+---
+
+## 👨‍💻 Equipo de Desarrollo
+
+### 🧑‍💻 Desarrolladores
+
+- **👨‍💻 Oscar Mauricio Cruz Figueroa** - *Fullstack Developer & Documentation*
+- **🧠 Maicol Steven Espitia** - *Backend Developer*
+- **🎨 Ronny Borda Ardila** - *Frontend Developer*
 
 ---
 
 ## 📄 Licencia
 
-```
-MIT License
-
-Copyright (c) 2025 Full Paint Cars
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
-
----
-
-## 👥 Autores y Reconocimientos
-
-### 🧑‍💻 Desarrolladores
-
-- **Desarrollador Principal**: **Oscar Mauricio Cruz Figueroa**  
-  Encargado del desarrollo inicial, arquitectura general del sistema, documentación, diseños, y participación activa en backend y frontend.
-
-- **Equipo Backend**: **Maicol Steven Espitia**  
-  Responsable del desarrollo de la lógica del servidor, modelos de base de datos y estructuras API.
-
-- **Equipo Frontend**: **Ronny Borda Ardila**  
-  Responsable del desarrollo de la interfaz de usuario, diseño visual y experiencia del usuario.
-
-### 🙏 Agradecimientos
-
-- **FastAPI Community** – Por el framework extraordinario  
-- **SQLAlchemy Team** – Por el ORM robusto  
-- **MySQL** – Por la base de datos confiable  
-- **Pydantic** – Por la validación de datos elegante
-
----
-
-## 📞 Soporte y Contacto
-
-### 🆘 Obtener Ayuda
-
-1. **Documentación**: Revisar este README y la documentación de la API
-2. **Issues**: Crear issue en GitHub con detalles del problema
-3. **Discussions**: Participar en discusiones del repositorio
-4. **Email**: Contactar al equipo de desarrollo
-
-### 📧 Información de Contacto
-
-- **Email**: support@fullpaint.com
-- **GitHub**: https://github.com/tu-usuario/fullpaint-backend
-- **Documentación**: https://docs.fullpaint.com
-- **Website**: https://fullpaint.com
-
-### 🐛 Reportar Bugs
-
-Al reportar un bug, incluir:
-
-1. **Versión** de la aplicación
-2. **Sistema operativo** y versión
-3. **Pasos** para reproducir el error
-4. **Logs** relevantes
-5. **Comportamiento esperado** vs actual
-
----
-
-## 📊 Estadísticas del Proyecto
-
-### 📈 Métricas de Desarrollo
-
-- **Líneas de código**: ~2,500
-- **Endpoints**: 45+
-- **Modelos de datos**: 8
-- **Tests**: 100+ casos
-- **Cobertura**: 85%+
-
-### 🏆 Características Destacadas
-
-- ✅ **API RESTful** completa y documentada
-- ✅ **Autenticación JWT** segura
-- ✅ **Control de roles** granular
-- ✅ **Validación de datos** robusta
-- ✅ **Documentación interactiva** con Swagger
-- ✅ **Base de datos** optimizada
-- ✅ **Contenedores Docker** listos para producción
-- ✅ **Monitoreo** y logging integrado
+Este proyecto está bajo la **MIT License**. Ver [LICENSE](LICENSE) para más detalles.
 
 ---
 
 <div align="center">
 
-**🚗 Full Paint Cars API - Gestión Integral de Talleres Automotrices 🚗**
+**🚗 Full Paint Cars - Gestión Integral de Talleres Automotrices 🚗**
 
-[![Hecho con ❤️](https://img.shields.io/badge/Hecho%20con-❤️-red.svg)](https://github.com/tu-usuario/fullpaint-backend)
+[![Hecho con ❤️](https://img.shields.io/badge/Hecho%20con-❤️-red.svg)](https://github.com/tu-usuario/full-paint-cars)
 [![Powered by FastAPI](https://img.shields.io/badge/Powered%20by-FastAPI-009688.svg)](https://fastapi.tiangolo.com)
+[![Built with React](https://img.shields.io/badge/Built%20with-React-61DAFB.svg)](https://reactjs.org)
 
 ---
 
 *¿Encontraste útil este proyecto? ¡Dale una ⭐ en GitHub!*
+
+**[⬆ Volver al inicio](#-full-paint-cars-fpc)**
 
 </div>
