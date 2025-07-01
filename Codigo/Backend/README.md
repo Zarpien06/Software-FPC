@@ -29,6 +29,7 @@
 - 📊 **Historial de Servicios** - Registro completo de intervenciones
 - 💰 **Gestión de Cotizaciones** - CRUD completo de cotizaciones y presupuestos
 - 💬 **Chat en Vivo** – Sistema de mensajería en tiempo real con WebSocket y Redis
+- 📊 **Gestión de Reportes** – Sistema completo de reportes técnicos con workflow y firmas digitales
 - 📎 **Compartir Archivos** – Envío de imágenes y documentos en el chat
 - 🔔 **Notificaciones Push** – Alertas en tiempo real a los usuarios conectados
 - 📱 **API RESTful** - Endpoints bien documentados y estandarizados
@@ -323,8 +324,9 @@ fullpaint_backend/
 │   │   ├── 🆔 tipo_identificacion.py  # Tipos documento - CC, CE, TI, etc.
 │   │   ├── 🚗 automovil.py            # Modelo Vehículos - Gestión autos
 │   │   ├── ⚙️ proceso.py              # Procesos taller - Reparaciones
-│   │   ├── 💰 cotizacion.py            # Modelo Cotizaciones - Gestión presupuestos
+│   │   ├── 💰 cotizacion.py           # Modelo Cotizaciones - Gestión presupuestos
 │   │   ├── 💬 chat.py                 # Modelo Chat - Sistema mensajería tiempo real
+│   │   ├── 📊 reporte.py              # Modelo Reportes - Gestión reportes técnicos
 │   │   └── 📋 historial_servicio.py   # Historial servicios - Registro intervenciones
 │   │
 │   ├── 📁 schemas/                    # Validación Pydantic (Input/Output)
@@ -333,8 +335,9 @@ fullpaint_backend/
 │   │   ├── 📝 auth.py                 # Esquemas autenticación - Login/Register
 │   │   ├── 📝 automovil.py            # Esquemas vehículos - CRUD autos
 │   │   ├── 📝 proceso.py              # Esquemas procesos - Workflow taller
-│   │   ├── 📝 cotizacion.py            # Esquemas cotizaciones - Validación presupuestos
+│   │   ├── 📝 cotizacion.py           # Esquemas cotizaciones - Validación presupuestos
 │   │   ├── 📝 historial_servicio.py   # Esquemas historial - Servicios
+│   │   ├── 📝 reporte.py              # Esquemas reportes - Validación reportes técnicos
 │   │   └── 📝 chat.py                 # Esquemas chat - Validación mensajería tiempo real
 │   │
 │   ├── 📁 controllers/                # Lógica de Negocio
@@ -345,6 +348,7 @@ fullpaint_backend/
 │   │   ├── ⚙️ proceso_controller.py   # Lógica procesos - Workflow taller
 │   │   ├── 💰 cotizacion_controller.py # Lógica cotizaciones - Gestión presupuestos
 │   │   ├── 📋 historial_controller.py # Lógica historial - Servicios
+│   │   ├── 📊 reporte_controller.py   # Lógica reportes - Gestión reportes técnicos
 │   │   └── 💬 chat_controller.py      # Lógica chat - Sistema mensajería tiempo real
 │   │
 │   └── 📁 routes/                     # Endpoints API (FastAPI Routes)
@@ -353,9 +357,10 @@ fullpaint_backend/
 │   │   ├── 🛣️ role_routes.py          # Rutas roles - /roles/*
 │   │   ├── 🛣️ automovil_routes.py     # Rutas vehículos - /automoviles/*
 │   │   ├── 🛣️ proceso_routes.py       # Rutas procesos - /api/v1/procesos/*
-│   │   ├── 🛣️ cotizacion_routes.py     # Rutas cotizaciones - /api/v1/cotizaciones/*
+│   │   ├── 🛣️ cotizacion_routes.py    # Rutas cotizaciones - /api/v1/cotizaciones/*
 │   │   ├── 🛣️ historial_routes.py     # Rutas historial - /api/v1/historial-servicios/*
-│   │   └── 🛣️ chat_routes.py          # Rutas chat - /api/v1/chat/*
+│   │   ├── 🛣️ chat_routes.py          # Rutas chat - /api/v1/chat/*
+│   │   └── 🛣️ reporte_routes.py       # Rutas reportes - /api/v1/reportes/*
 │   │
 │   ├── 📁 services/                   # Servicios de Negocio
 │   │   ├── 📧 notification_service.py # Servicio notificaciones - Emails/SMS
@@ -390,6 +395,7 @@ fullpaint_backend/
 | Rutas `*.py`                   | Endpoints          | FastAPI routes, decoradores HTTP, WebSocket endpoints        |
 | `chat_file_service.py`         | Archivos Chat      | Gestión multimedia, validación imágenes                      |
 | `chat_notification_service.py` | Notificaciones     | Sistema notificaciones tiempo real                           |
+| `reporte_*.py`                 | Reportes           | Sistema completo gestión reportes técnicos, workflow        |
 
 
 ---
@@ -645,6 +651,28 @@ pip install python-multipart==0.0.6
 | `/ws/chat/{chat_id}/typing`        | Indicador escribiendo   | WebSocket |
 | `/ws/chat/notifications/{user_id}` | Notificaciones usuario  | WebSocket |
 
+### 📊 Reportes Técnicos
+
+| Método | Endpoint | Descripción | Auth |
+|--------|----------|-------------|------|
+| `POST` | `/api/v1/reportes/` | Crear reporte | ✅ |
+| `GET` | `/api/v1/reportes/` | Listar reportes | ✅ |
+| `GET` | `/api/v1/reportes/{reporte_id}` | Obtener reporte | ✅ |
+| `PUT` | `/api/v1/reportes/{reporte_id}` | Actualizar reporte | ✅ |
+| `DELETE` | `/api/v1/reportes/{reporte_id}` | Eliminar reporte | ✅ |
+| `PATCH` | `/api/v1/reportes/{reporte_id}/estado` | Cambiar estado | ✅ |
+| `POST` | `/api/v1/reportes/{reporte_id}/aprobacion-cliente` | Aprobación cliente | ✅ |
+| `POST` | `/api/v1/reportes/{reporte_id}/firmar` | Firmar reporte | ✅ |
+| `GET` | `/api/v1/reportes/estadisticas/resumen` | Estadísticas | ✅ |
+| `GET` | `/api/v1/reportes/automovil/{automovil_id}` | Por automóvil | ✅ |
+| `GET` | `/api/v1/reportes/plantillas/tipos` | Plantillas | ✅ |
+| `POST` | `/api/v1/reportes/{reporte_id}/adjuntos` | Subir adjunto | ✅ |
+| `GET` | `/api/v1/reportes/{reporte_id}/exportar` | Exportar reporte | ✅ |
+| `POST` | `/api/v1/reportes/{reporte_id}/duplicar` | Duplicar reporte | ✅ |
+| `GET` | `/api/v1/reportes/pendientes/revision` | Pendientes revisión | ✅ |
+| `POST` | `/api/v1/reportes/{reporte_id}/notificar-cliente` | Notificar cliente | ✅ |
+| `POST` | `/api/v1/reportes/{reporte_id}/comentarios` | Agregar comentario | ✅ |
+| `POST` | `/api/v1/reportes/{reporte_id}/etiquetas` | Gestionar etiquetas | ✅ |
 
 
 ---
@@ -904,8 +932,100 @@ Editar
 curl -X GET "http://localhost:8000/api/v1/chat/estadisticas/generales" \
   -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
 
+### 📊 14. Crear Reporte Técnico
 
+```bash
+curl -X POST "http://localhost:8000/api/v1/reportes/" \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "automovil_id": 1,
+    "proceso_id": 1,
+    "tipo_reporte": "DIAGNOSTICO",
+    "titulo": "Diagnóstico Motor Toyota Corolla",
+    "descripcion": "Revisión completa del sistema de motor",
+    "hallazgos": [
+      {
+        "componente": "Filtro de aire",
+        "estado": "MALO",
+        "descripcion": "Filtro sucio, requiere cambio inmediato",
+        "prioridad": "ALTA"
+      },
+      {
+        "componente": "Aceite motor",
+        "estado": "REGULAR",
+        "descripcion": "Aceite oscuro, cambio recomendado",
+        "prioridad": "MEDIA"
+      }
+    ],
+    "recomendaciones": [
+      "Cambiar filtro de aire inmediatamente",
+      "Programar cambio de aceite en máximo 1000 km"
+    ],
+    "costo_estimado": 180000,
+    "tiempo_estimado": 120
+  }'
 ```
+
+### 📋 15. Obtener Estadísticas de Reportes
+
+```bash
+curl -X GET "http://localhost:8000/api/v1/reportes/estadisticas/resumen" \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+```
+
+**Respuesta esperada:**
+```json
+{
+  "total_reportes": 45,
+  "reportes_por_estado": {
+    "BORRADOR": 5,
+    "EN_REVISION": 8,
+    "APROBADO": 15,
+    "FINALIZADO": 17
+  },
+  "reportes_por_tipo": {
+    "DIAGNOSTICO": 20,
+    "REPARACION": 15,
+    "MANTENIMIENTO": 10
+  },
+  "reportes_pendientes_firma": 8,
+  "reportes_mes_actual": 12,
+  "tiempo_promedio_revision": 2.5,
+  "costo_promedio": 245000
+}
+```
+
+### ✍️ 16. Firmar Reporte
+
+```bash
+curl -X POST "http://localhost:8000/api/v1/reportes/1/firmar" \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "tipo_firma": "TECNICO",
+    "comentario": "Diagnóstico completado satisfactoriamente"
+  }'
+```
+
+### 📎 17. Subir Adjunto a Reporte
+
+```bash
+curl -X POST "http://localhost:8000/api/v1/reportes/1/adjuntos" \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
+  -F "archivo=@diagnostico_motor.pdf" \
+  -F "descripcion=Fotos del diagnóstico del motor" \
+  -F "tipo_archivo=DOCUMENTO"
+```
+
+### 📄 18. Exportar Reporte
+
+```bash
+curl -X GET "http://localhost:8000/api/v1/reportes/1/exportar?formato=PDF" \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
+  --output reporte_diagnostico.pdf
+```
+
 ## 🛠️ Resolución de Problemas Comunes
 
 ### 🔍 Errores de Conexión a Base de Datos
@@ -1225,9 +1345,6 @@ sudo systemctl status fullpaint
 | **JWT.io** | https://jwt.io | Debugger de tokens JWT |
 | **Swagger UI** | http://localhost:8000/docs | Docs interactiva local |
 | **ReDoc** | http://localhost:8000/redoc | Docs alternativa local |
-
-| Recurso           | URL                                                                    | Descripción              |
-| ----------------- | ---------------------------------------------------------------------- | ------------------------ |
 | **WebSocket API** | [https://websockets.readthedocs.io](https://websockets.readthedocs.io) | Documentación WebSocket  |
 | **Redis**         | [https://redis.io/docs](https://redis.io/docs)                         | Base de datos en memoria |
 | **Socket.IO**     | [https://socket.io/docs/](https://socket.io/docs/)                     | Comunicación tiempo real |
@@ -1413,7 +1530,9 @@ Al reportar un bug, incluir:
 - ✅ Compartir archivos en chat
 - ✅ Indicadores de escritura en tiempo real
 - ✅ Gestión de participantes avanzada
-
+- ✅ **Gestión de Reportes** - Sistema completo de reportes técnicos con workflow de aprobación
+- ✅ **Firmas Digitales** - Sistema de firmas para reportes y aprobaciones
+- ✅ **Adjuntos y Exportación** - Subida de archivos y exportación en múltiples formatos
 ---
 
 <div align="center">
