@@ -10,14 +10,26 @@ from sqlalchemy import text
 # Importar configuración y base de datos
 from app.config import settings
 from app.database import engine, get_db
-from app.models import user, role, tipo_identificacion
+from app.models import user, role, tipo_identificacion, proceso, historial_servicio, automovil
+
 
 # Importar rutas
-from app.routes import auth_routes, user_routes, role_routes
+from app.routes import auth_routes, user_routes, role_routes, automovil_routes, proceso_routes, historial_servicio_routes, cotizacion_routes, chat_routes, reporte_routes
+from app.services.websocket_service import websocket_manager
 
 # Importar funciones de autenticación para crear el admin
 from app.auth.password_handler import get_password_hash
 
+
+# Configurar lifespan para inicializar/cerrar WebSocket
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Startup
+    await websocket_manager.initialize()
+    yield
+    # Shutdown
+    await websocket_manager.shutdown()
+    
 # Configurar logging
 logging.basicConfig(
     level=logging.INFO,
@@ -170,6 +182,12 @@ app.add_middleware(
 app.include_router(auth_routes.router)
 app.include_router(user_routes.router)
 app.include_router(role_routes.router)
+app.include_router(automovil_routes.router)
+app.include_router(proceso_routes.router)
+app.include_router(historial_servicio_routes.router)
+app.include_router(cotizacion_routes.router)
+app.include_router(chat_routes.router)
+app.include_router(reporte_routes.router)
 
 # Ruta de salud
 @app.get("/")
