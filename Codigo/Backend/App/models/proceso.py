@@ -107,6 +107,15 @@ class Proceso(Base):
         back_populates="proceso",
         cascade="all, delete-orphan"
     )
+    chats = relationship(
+        "Chat",
+        back_populates="proceso", 
+        cascade="all, delete-orphan"
+    )
+    reportes = relationship("Reporte", 
+        back_populates="proceso"
+    )
+
 
     def __repr__(self):
         return (

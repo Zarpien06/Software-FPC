@@ -5,6 +5,8 @@ from app.auth.password_handler import (
     get_current_active_user,
     get_password_hash,
     verify_password,
+    decode_token,
+    JWTBearer,
     auth_handler, 
     password_handler
 )
@@ -16,6 +18,8 @@ __all__ = [
     'get_current_active_user',
     'get_password_hash',
     'verify_password',
+    'decode_token',
     'auth_handler', 
+    'JWTBearer',
     'password_handler'
 ]

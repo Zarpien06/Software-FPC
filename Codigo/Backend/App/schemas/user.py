@@ -125,3 +125,14 @@ class PasswordChangeRequest(BaseModel):
                 "new_password": "MiNuevoPassword456!"
             }
         }
+
+class UserCurrent(BaseModel):
+    usuario_id: int
+    nombre_completo: str
+    correo: EmailStr
+    rol_id: Optional[int] = None
+    foto_perfil: Optional[str] = None
+
+    model_config = {
+        "from_attributes": True
+    }

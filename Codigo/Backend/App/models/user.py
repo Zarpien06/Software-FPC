@@ -1,4 +1,5 @@
 # app/models/user.py
+
 from enum import Enum as PyEnum
 from sqlalchemy import Column, Integer, String, ForeignKey, Enum, TIMESTAMP, func
 from sqlalchemy.orm import relationship
@@ -34,7 +35,7 @@ class Usuario(Base):
     tipo_identificacion_rel = relationship("TipoIdentificacion", back_populates="usuarios")
     automoviles = relationship("Automovil", back_populates="propietario", cascade="all, delete-orphan")
     cotizaciones = relationship("Cotizacion", back_populates="cliente", foreign_keys="Cotizacion.cliente_id")
-    
+
     # Relaciones con Proceso
     procesos_como_tecnico = relationship(
         "Proceso",
@@ -54,8 +55,20 @@ class Usuario(Base):
         back_populates="cliente"
     )
     
-    # *** RELACIONES FALTANTES AGREGADAS ***
-    # Relaciones con HistorialServicio
+    # Auditoría
+    procesos_creados = relationship(
+        "Proceso",
+        foreign_keys="Proceso.creado_por",
+        viewonly=True
+    )
+    
+    procesos_actualizados = relationship(
+        "Proceso",
+        foreign_keys="Proceso.actualizado_por",
+        viewonly=True
+    )
+
+    # Historial de servicios
     servicios_como_tecnico = relationship(
         "HistorialServicio",
         foreign_keys="HistorialServicio.tecnico_id",
@@ -67,19 +80,46 @@ class Usuario(Base):
         foreign_keys="HistorialServicio.cliente_id",
         back_populates="cliente"
     )
-    
-    # Relaciones adicionales para auditoría (sin back_populates para evitar conflictos)
-    procesos_creados = relationship(
-        "Proceso",
-        foreign_keys="Proceso.creado_por",
-        viewonly=True  # Solo lectura para evitar conflictos
+
+    # RELACIONES CON CHAT
+    chats_como_cliente = relationship(
+        "Chat",
+        foreign_keys="Chat.cliente_id",
+        back_populates="cliente"
     )
     
-    procesos_actualizados = relationship(
-        "Proceso",
-        foreign_keys="Proceso.actualizado_por",
-        viewonly=True  # Solo lectura para evitar conflictos
+    chats_como_mecanico = relationship(
+        "Chat",
+        foreign_keys="Chat.mecanico_id",
+        back_populates="mecanico"
     )
+    
+    mensajes_enviados = relationship(
+        "MensajeChat",
+        foreign_keys="MensajeChat.remitente_id",
+        back_populates="remitente"
+    )
+    
+    mensajes_recibidos = relationship(
+        "MensajeChat",
+        foreign_keys="MensajeChat.receptor_id",
+        back_populates="receptor"
+    )
+
+    conexiones_chat = relationship(
+        "ConexionChat",
+        back_populates="usuario"
+    )
+    reportes_creados = relationship(
+        "Reporte",
+         foreign_keys="Reporte.usuario_creador_id",
+         back_populates="usuario_creador"
+    )
+    reportes_asignados = relationship(
+        "Reporte",
+         foreign_keys="Reporte.tecnico_responsable_id",
+         back_populates="tecnico_responsable"
+    ) 
 
     def __repr__(self):
         rol_nombre = self.role.nombre if self.role else 'None'
@@ -110,27 +150,19 @@ class Usuario(Base):
     def is_active(self) -> bool:
         return self.estado == EstadoUsuario.ACTIVO
 
-    # Métodos de utilidad para trabajar con procesos
     def get_procesos_activos_como_tecnico(self):
-        """Obtiene los procesos activos donde este usuario es técnico responsable"""
         return [p for p in self.procesos_como_tecnico if p.activo and p.estado.name != 'COMPLETADO']
-    
+
     def get_procesos_pendientes_inspeccion(self):
-        """Obtiene los procesos pendientes de inspección donde este usuario es inspector"""
         return [p for p in self.procesos_como_inspector if p.requiere_inspeccion and not p.inspeccion_realizada]
-    
+
     def get_historial_procesos_como_cliente(self):
-        """Obtiene el historial de procesos donde este usuario es cliente"""
         return self.procesos_como_cliente
 
-    # *** MÉTODOS ADICIONALES PARA HISTORIAL DE SERVICIOS ***
     def get_servicios_como_tecnico(self):
-        """Obtiene todos los servicios donde este usuario es técnico"""
         return self.servicios_como_tecnico
-    
+
     def get_servicios_como_cliente(self):
-        """Obtiene todos los servicios donde este usuario es cliente"""
         return self.servicios_como_cliente
 
-# Alias para compatibilidad
 User = Usuario

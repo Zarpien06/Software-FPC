@@ -4,6 +4,8 @@ from jose import JWTError, jwt
 from passlib.context import CryptContext
 import re
 from fastapi import HTTPException, status, Depends
+from fastapi.security import HTTPBearer
+from fastapi import Request
 from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
 from app.config import settings
@@ -186,6 +188,39 @@ async def get_current_active_user(current_user = Depends(get_current_user)):
         )
     return current_user
 
+def decode_token(token: str) -> dict:
+    """
+    Decodifica un token JWT y retorna el payload.
+    Lanza una excepción HTTP 401 si el token es inválido.
+    """
+    return auth_handler.verify_token(token)
+
+class JWTBearer(HTTPBearer):
+    """
+    Dependencia personalizada que extiende HTTPBearer para validar tokens JWT automáticamente.
+    """
+    def __init__(self, auto_error: bool = True):
+        super(JWTBearer, self).__init__(auto_error=auto_error)
+
+    async def __call__(self, request: Request):
+        credentials = await super(JWTBearer, self).__call__(request)
+        if credentials:
+            if credentials.scheme != "Bearer":
+                raise HTTPException(
+                    status_code=status.HTTP_403_FORBIDDEN,
+                    detail="Esquema de autenticación inválido"
+                )
+            if not auth_handler.verify_token(credentials.credentials):
+                raise HTTPException(
+                    status_code=status.HTTP_403_FORBIDDEN,
+                    detail="Token inválido o expirado"
+                )
+            return credentials.credentials
+        else:
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail="No se proporcionó token"
+            )
 
 # Instancias globales para importar y usar en otros módulos
 auth_handler = AuthHandler()
