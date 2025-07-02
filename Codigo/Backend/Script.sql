@@ -131,7 +131,6 @@ INSERT INTO estados_vehiculo (estado_id, descripcion) VALUES
 ('en_servicio', 'Vehículo en proceso de servicio'),
 ('finalizado', 'Servicio finalizado, listo para entrega');
 
--- Tabla principal de vehículos
 CREATE TABLE vehiculos (
     vehiculo_id INT AUTO_INCREMENT PRIMARY KEY,
     usuario_id INT NOT NULL,
@@ -156,7 +155,6 @@ CREATE TABLE vehiculos (
     INDEX idx_estado (estado_id),
     
     -- Restricciones
-    CHECK (anio >= 1900 AND anio <= YEAR(CURDATE()) + 1),
     CHECK (kilometraje >= 0),
     
     -- Claves foráneas
@@ -166,6 +164,7 @@ CREATE TABLE vehiculos (
     FOREIGN KEY (tipo_id) REFERENCES tipos_vehiculo(tipo_id),
     FOREIGN KEY (estado_id) REFERENCES estados_vehiculo(estado_id)
 );
+
 
 -- ========================================
 -- 🛠️ GESTIÓN DE SERVICIOS
@@ -338,7 +337,6 @@ CREATE TABLE reservas (
     -- Restricciones
     CHECK (calificacion IS NULL OR calificacion BETWEEN 1 AND 5),
     CHECK (total >= 0),
-    CHECK (fecha >= CURDATE()),
     
     -- Claves foráneas
     FOREIGN KEY (cotizacion_id) REFERENCES cotizaciones(id) ON DELETE SET NULL,
