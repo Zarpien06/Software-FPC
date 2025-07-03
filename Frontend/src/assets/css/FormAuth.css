@@ -1,0 +1,127 @@
+.form-container {
+    margin: 10rem auto;
+    padding: 2.5rem;
+    background: rgba(28, 28, 29, 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 1.5rem;
+    width: 80%;
+    max-width: 800px;
+    color: #edf5ff;
+    box-shadow:
+        0 20px 25px -5px rgba(0, 0, 0, 0.3),
+        0 10px 10px -5px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.form-container h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+input,
+select {
+    padding: 1rem;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(51, 65, 85, 0.6);
+    color: #f1f5f9;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+}
+
+input::placeholder {
+    color: #94a3b8;
+    font-size: 0.95rem;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border: 1px solid #042355;
+    background-color: rgba(51, 65, 85, 0.8);
+    box-shadow: 0 0 0 2px #3b82f655;
+}
+
+button {
+    padding: 1rem;
+    border: none;
+    border-radius: 0.75rem;
+    background: linear-gradient(to right, #041844,#0c2875);
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background: linear-gradient(to right, #041844, #0c2875);
+    transform: scale(1.02);
+}
+
+.toggle-auth {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 0.95rem;
+    color: #cbd5e1;
+}
+
+.toggle-auth button {
+    background: none;
+    border: none;
+    color: #60a5fa;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: underline;
+    transition: color 0.2s ease;
+}
+
+.toggle-auth button:hover {
+    color: #3b82f6;
+}
+
+.toggle-auth {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 0.95rem;
+    color: #cbd5e1;
+  }
+  
+  .toggle-auth button {
+    background: none;
+    border: none;
+    color: #05124d;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: underline;
+    transition: color 0.2s ease;
+  }
+  
+  .toggle-auth button:hover {
+    color: #0a295a;
+  }
+  
+
+@media (max-width: 480px) {
+    .form-container {
+        padding: 2rem 1.5rem;
+    }
+
+    input,
+    select,
+    button {
+        font-size: 0.95rem;
+        padding: 0.85rem;
+    }
+}
