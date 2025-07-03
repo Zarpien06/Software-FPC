@@ -33,7 +33,10 @@ Frontend-FPC/
 │   ├── components/
 │   │   ├── Navbar.tsx
 │   │   ├── Footer.tsx
-│   │   └── ...otros componentes
+│   │   ├── Features.tsx
+│   │   ├── HeroStions.tsx
+│   │   ├── HowItWork.tsx
+│   │   └── Benefits.tsx
 │   ├── Pages/
 │   │   ├── Login.tsx
 │   │   └── Registro.tsx
