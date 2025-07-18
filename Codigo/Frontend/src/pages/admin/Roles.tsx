@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { apiService, Role, CreateRoleData } from '../../api/index';
+import '../../assets/css/Admin/Roles.css';
 
 const Roles: React.FC = () => {
   const [roles, setRoles] = useState<Role[]>([]);

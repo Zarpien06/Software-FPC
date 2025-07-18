@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { apiService, User, Role, UpdateUserData } from '../../api/index';
+import '../../assets/css/Admin/Usuarios.css';
 
 const Usuarios: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
@@ -116,17 +117,17 @@ const Usuarios: React.FC = () => {
 
   return (
     <div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+      <div className="header-usuarios">
         <h2>Gestión de Usuarios</h2>
         <div>
-          <span style={{ marginRight: '10px' }}>Total: {users.length}</span>
+          <span>Total: {users.length}</span>
         </div>
       </div>
 
       {showForm && (
-        <div style={{ backgroundColor: 'white', padding: '20px', borderRadius: '8px', marginBottom: '20px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
+        <div className="formulario-usuario">
           <h3>{editingUser ? 'Editar Usuario' : 'Nuevo Usuario'}</h3>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '15px' }}>
+          <div className="formulario-grid">
             <div>
               <label>Nombre Completo:</label>
               <input
@@ -134,10 +135,8 @@ const Usuarios: React.FC = () => {
                 value={formData.nombre_completo}
                 onChange={(e) => setFormData({...formData, nombre_completo: e.target.value})}
                 required
-                style={{ width: '100%', padding: '8px', border: '1px solid #ddd', borderRadius: '4px' }}
               />
             </div>
-            
             <div>
               <label>Correo:</label>
               <input
@@ -145,10 +144,8 @@ const Usuarios: React.FC = () => {
                 value={formData.correo}
                 onChange={(e) => setFormData({...formData, correo: e.target.value})}
                 required
-                style={{ width: '100%', padding: '8px', border: '1px solid #ddd', borderRadius: '4px' }}
               />
             </div>
-            
             <div>
               <label>Teléfono:</label>
               <input
@@ -156,23 +153,19 @@ const Usuarios: React.FC = () => {
                 value={formData.telefono}
                 onChange={(e) => setFormData({...formData, telefono: e.target.value})}
                 required
-                style={{ width: '100%', padding: '8px', border: '1px solid #ddd', borderRadius: '4px' }}
               />
             </div>
-            
             <div>
               <label>Tipo Identificación:</label>
               <select
                 value={formData.tipo_identificacion}
                 onChange={(e) => setFormData({...formData, tipo_identificacion: e.target.value})}
-                style={{ width: '100%', padding: '8px', border: '1px solid #ddd', borderRadius: '4px' }}
               >
                 <option value="cedula">Cédula</option>
                 <option value="pasaporte">Pasaporte</option>
                 <option value="tarjeta_identidad">Tarjeta de Identidad</option>
               </select>
             </div>
-            
             <div>
               <label>Número Identificación:</label>
               <input
@@ -180,47 +173,41 @@ const Usuarios: React.FC = () => {
                 value={formData.numero_identificacion}
                 onChange={(e) => setFormData({...formData, numero_identificacion: e.target.value})}
                 required
-                style={{ width: '100%', padding: '8px', border: '1px solid #ddd', borderRadius: '4px' }}
               />
             </div>
-            
             <div>
               <label>Estado:</label>
               <select
                 value={formData.estado}
                 onChange={(e) => setFormData({...formData, estado: e.target.value})}
-                style={{ width: '100%', padding: '8px', border: '1px solid #ddd', borderRadius: '4px' }}
               >
                 <option value="activo">Activo</option>
                 <option value="inactivo">Inactivo</option>
               </select>
             </div>
-            
             <div>
               <label>Rol:</label>
               <select
                 value={formData.rol_id}
                 onChange={(e) => setFormData({...formData, rol_id: parseInt(e.target.value)})}
-                style={{ width: '100%', padding: '8px', border: '1px solid #ddd', borderRadius: '4px' }}
               >
                 {roles.map(role => (
                   <option key={role.id} value={role.id}>{role.nombre}</option>
                 ))}
               </select>
             </div>
-            
-            <div style={{ gridColumn: 'span 2', display: 'flex', gap: '10px', justifyContent: 'flex-end' }}>
-              <button 
-                type="button" 
+            <div className="botones-formulario">
+              <button
+                type="button"
+                className="btn-cancelar"
                 onClick={() => { setShowForm(false); setEditingUser(null); resetForm(); }}
-                style={{ padding: '10px 20px', backgroundColor: '#95a5a6', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
               >
                 Cancelar
               </button>
-              <button 
-                type="button" 
+              <button
+                type="button"
+                className="btn-guardar"
                 onClick={(e) => { e.preventDefault(); handleSubmit(e as any); }}
-                style={{ padding: '10px 20px', backgroundColor: '#3498db', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
               >
                 {editingUser ? 'Actualizar' : 'Crear'}
               </button>
@@ -229,57 +216,36 @@ const Usuarios: React.FC = () => {
         </div>
       )}
 
-      <div style={{ backgroundColor: 'white', borderRadius: '8px', overflow: 'hidden', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
-        <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-          <thead style={{ backgroundColor: '#f8f9fa' }}>
+      <div className="tabla-usuarios">
+        <table>
+          <thead>
             <tr>
-              <th style={{ padding: '12px', textAlign: 'left', borderBottom: '1px solid #ddd' }}>ID</th>
-              <th style={{ padding: '12px', textAlign: 'left', borderBottom: '1px solid #ddd' }}>Nombre</th>
-              <th style={{ padding: '12px', textAlign: 'left', borderBottom: '1px solid #ddd' }}>Correo</th>
-              <th style={{ padding: '12px', textAlign: 'left', borderBottom: '1px solid #ddd' }}>Teléfono</th>
-              <th style={{ padding: '12px', textAlign: 'left', borderBottom: '1px solid #ddd' }}>Rol</th>
-              <th style={{ padding: '12px', textAlign: 'left', borderBottom: '1px solid #ddd' }}>Estado</th>
-              <th style={{ padding: '12px', textAlign: 'left', borderBottom: '1px solid #ddd' }}>Acciones</th>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Correo</th>
+              <th>Teléfono</th>
+              <th>Rol</th>
+              <th>Estado</th>
+              <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
             {users.map(user => (
               <tr key={user.usuario_id}>
-                <td style={{ padding: '12px', borderBottom: '1px solid #eee' }}>{user.usuario_id}</td>
-                <td style={{ padding: '12px', borderBottom: '1px solid #eee' }}>{user.nombre_completo}</td>
-                <td style={{ padding: '12px', borderBottom: '1px solid #eee' }}>{user.correo}</td>
-                <td style={{ padding: '12px', borderBottom: '1px solid #eee' }}>{user.telefono}</td>
-                <td style={{ padding: '12px', borderBottom: '1px solid #eee' }}>{user.role.nombre}</td>
-                <td style={{ padding: '12px', borderBottom: '1px solid #eee' }}>
-                  <span style={{ 
-                    padding: '4px 8px', 
-                    borderRadius: '4px', 
-                    backgroundColor: user.estado === 'activo' ? '#d4edda' : '#f8d7da',
-                    color: user.estado === 'activo' ? '#155724' : '#721c24',
-                    fontSize: '12px'
-                  }}>
+                <td>{user.usuario_id}</td>
+                <td>{user.nombre_completo}</td>
+                <td>{user.correo}</td>
+                <td>{user.telefono}</td>
+                <td>{user.role.nombre}</td>
+                <td className="estado">
+                  <span className={user.estado === 'activo' ? 'estado-activo' : 'estado-inactivo'}>
                     {user.estado}
                   </span>
                 </td>
-                <td style={{ padding: '12px', borderBottom: '1px solid #eee' }}>
-                  <button 
-                    onClick={() => handleEdit(user)}
-                    style={{ marginRight: '5px', padding: '5px 10px', backgroundColor: '#f39c12', color: 'white', border: 'none', borderRadius: '3px', cursor: 'pointer', fontSize: '12px' }}
-                  >
-                    Editar
-                  </button>
-                  <button 
-                    onClick={() => handleToggleStatus(user.usuario_id)}
-                    style={{ marginRight: '5px', padding: '5px 10px', backgroundColor: '#17a2b8', color: 'white', border: 'none', borderRadius: '3px', cursor: 'pointer', fontSize: '12px' }}
-                  >
-                    Toggle
-                  </button>
-                  <button 
-                    onClick={() => handleDelete(user.usuario_id)}
-                    style={{ padding: '5px 10px', backgroundColor: '#e74c3c', color: 'white', border: 'none', borderRadius: '3px', cursor: 'pointer', fontSize: '12px' }}
-                  >
-                    Eliminar
-                  </button>
+                <td>
+                  <button className="btn-editar" onClick={() => handleEdit(user)}>Editar</button>
+                  <button className="btn-toggle" onClick={() => handleToggleStatus(user.usuario_id)}>Toggle</button>
+                  <button className="btn-eliminar" onClick={() => handleDelete(user.usuario_id)}>Eliminar</button>
                 </td>
               </tr>
             ))}

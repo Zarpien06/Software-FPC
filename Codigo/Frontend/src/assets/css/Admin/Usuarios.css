@@ -1,0 +1,435 @@
+/* ===== MÓDULO USUARIOS - DISEÑO MODERNO Y PROFESIONAL ===== */
+
+/* Header del módulo */
+.header-usuarios {
+  background: rgba(15, 23, 42, 0.95);
+  padding: 2rem 2.5rem;
+  margin-bottom: 2rem;
+  border-radius: 16px;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #f8fafc;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.header-usuarios h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #f8fafc;
+  margin: 0;
+  letter-spacing: -0.025em;
+}
+
+.header-usuarios .btn-nuevo {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: #ffffff;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+}
+
+.header-usuarios .btn-nuevo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5);
+}
+
+/* Formulario moderno */
+.formulario-usuario {
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 16px;
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  color: #f8fafc;
+}
+
+.formulario-usuario h3 {
+  color: #f8fafc;
+  margin-bottom: 2rem;
+  font-size: 1.875rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.formulario-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.formulario-grid label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.formulario-grid input,
+.formulario-grid select {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  background: rgba(30, 41, 59, 0.5);
+  color: #f8fafc;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.formulario-grid input:focus,
+.formulario-grid select:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  background: rgba(30, 41, 59, 0.7);
+}
+
+.formulario-grid input::placeholder {
+  color: rgba(148, 163, 184, 0.6);
+}
+
+.formulario-grid select option {
+  background: #1e293b;
+  color: #f8fafc;
+}
+
+.botones-formulario {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.btn-guardar,
+.btn-cancelar {
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.btn-guardar {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+}
+
+.btn-guardar:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.5);
+}
+
+.btn-cancelar {
+  background: rgba(100, 116, 139, 0.2);
+  color: #e2e8f0;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+}
+
+.btn-cancelar:hover {
+  background: rgba(100, 116, 139, 0.3);
+}
+
+/* TABLA MODERNA Y GRANDE */
+.tabla-usuarios {
+  background: rgba(15, 23, 42, 0.95);
+  border-radius: 16px;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.tabla-usuarios table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #f8fafc;
+}
+
+.tabla-usuarios th {
+  background: rgba(30, 41, 59, 0.8);
+  padding: 1.5rem 2rem;
+  text-align: left;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #f8fafc;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid rgba(59, 130, 246, 0.3);
+}
+
+.tabla-usuarios td {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.tabla-usuarios tbody tr {
+  transition: all 0.3s ease;
+}
+
+.tabla-usuarios tbody tr:hover {
+  background: rgba(30, 41, 59, 0.3);
+}
+
+.tabla-usuarios tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Estados modernos */
+.estado span {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-block;
+  min-width: 80px;
+  text-align: center;
+}
+
+.estado-activo {
+  background: rgba(34, 197, 94, 0.2);
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.estado-inactivo {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+/* Botones de acción modernos */
+.acciones-tabla {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.btn-editar,
+.btn-eliminar,
+.btn-toggle {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.btn-editar {
+  background: rgba(59, 130, 246, 0.2);
+  color: #3b82f6;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.btn-editar:hover {
+  background: rgba(59, 130, 246, 0.3);
+  transform: translateY(-1px);
+}
+
+.btn-eliminar {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.btn-eliminar:hover {
+  background: rgba(239, 68, 68, 0.3);
+  transform: translateY(-1px);
+}
+
+.btn-toggle {
+  background: rgba(148, 163, 184, 0.2);
+  color: #94a3b8;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+}
+
+.btn-toggle:hover {
+  background: rgba(148, 163, 184, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Paginación moderna */
+.paginacion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba(15, 23, 42, 0.95);
+  border-radius: 12px;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.paginacion button {
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 6px;
+  background: rgba(30, 41, 59, 0.5);
+  color: #e2e8f0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  min-width: 40px;
+}
+
+.paginacion button:hover {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: #3b82f6;
+  color: #3b82f6;
+}
+
+.paginacion button.active {
+  background: #3b82f6;
+  border-color: #3b82f6;
+  color: #ffffff;
+}
+
+.paginacion button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.paginacion button:disabled:hover {
+  background: rgba(30, 41, 59, 0.5);
+  border-color: rgba(148, 163, 184, 0.3);
+  color: #e2e8f0;
+  transform: none;
+}
+
+/* Indicador de carga */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  color: #94a3b8;
+  font-size: 1.125rem;
+}
+
+.loading::before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(148, 163, 184, 0.3);
+  border-top: 2px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-right: 0.5rem;
+}
+
+/* Mensaje vacío */
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  color: #94a3b8;
+  font-size: 1.125rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header-usuarios {
+    padding: 1.5rem;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .header-usuarios h2 {
+    font-size: 2rem;
+  }
+  
+  .formulario-usuario {
+    padding: 1.5rem;
+  }
+  
+  .formulario-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .tabla-usuarios {
+    overflow-x: auto;
+  }
+  
+  .tabla-usuarios th,
+  .tabla-usuarios td {
+    padding: 1rem;
+    font-size: 0.875rem;
+  }
+  
+  .acciones-tabla {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .btn-editar,
+  .btn-eliminar,
+  .btn-toggle {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Animaciones */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.formulario-usuario {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Scrollbar personalizada */
+.tabla-usuarios::-webkit-scrollbar {
+  height: 8px;
+}
+
+.tabla-usuarios::-webkit-scrollbar-track {
+  background: rgba(30, 41, 59, 0.5);
+  border-radius: 4px;
+}
+
+.tabla-usuarios::-webkit-scrollbar-thumb {
+  background: rgba(59, 130, 246, 0.5);
+  border-radius: 4px;
+}
+
+.tabla-usuarios::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 130, 246, 0.7);
+}

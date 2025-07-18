@@ -20,21 +20,59 @@ const App: React.FC = () => {
   const [authLoading, setAuthLoading] = useState<boolean>(true);
   const location = useLocation();
 
-  // Función para verificar autenticación
+  // Función para verificar autenticación mejorada
   const checkAuthentication = React.useCallback(() => {
     const token = localStorage.getItem('access_token');
     const userInfo = localStorage.getItem('user_info');
     
+    console.log('=== VERIFICANDO AUTENTICACIÓN ===');
+    console.log('Token encontrado:', !!token);
+    console.log('User Info encontrado:', !!userInfo);
+    console.log('Token:', token);
+    console.log('User Info:', userInfo);
+    
     if (token && userInfo) {
       try {
         const parsedUserInfo = JSON.parse(userInfo);
-        setIsAuthenticated(true);
-        setUserRole(parsedUserInfo.role?.nombre || null);
+        console.log('Información del usuario parseada:', parsedUserInfo);
+        
+        // Verificar diferentes estructuras posibles del rol
+        let roleNombre = null;
+        
+        if (parsedUserInfo.role?.nombre) {
+          roleNombre = parsedUserInfo.role.nombre;
+        } else if (parsedUserInfo.role?.name) {
+          roleNombre = parsedUserInfo.role.name;
+        } else if (parsedUserInfo.role_name) {
+          roleNombre = parsedUserInfo.role_name;
+        } else if (parsedUserInfo.role) {
+          roleNombre = parsedUserInfo.role;
+        } else if (parsedUserInfo.tipo_usuario) {
+          roleNombre = parsedUserInfo.tipo_usuario;
+        }
+        
+        console.log('Rol detectado:', roleNombre);
+        
+        if (roleNombre) {
+          // Normalizar el rol a minúsculas y manejar variaciones
+          let normalizedRole = roleNombre.toLowerCase();
+          if (normalizedRole === 'administrador') {
+            normalizedRole = 'admin';
+          }
+          
+          setIsAuthenticated(true);
+          setUserRole(normalizedRole);
+          console.log('Autenticación exitosa con rol:', normalizedRole);
+        } else {
+          console.error('No se pudo determinar el rol del usuario');
+          handleLogout();
+        }
       } catch (error) {
         console.error('Error parsing user info:', error);
         handleLogout();
       }
     } else {
+      console.log('No se encontraron credenciales');
       setIsAuthenticated(false);
       setUserRole(null);
     }
@@ -57,12 +95,19 @@ const App: React.FC = () => {
   // Efecto para manejar cambios en localStorage
   useEffect(() => {
     const handleStorageChange = () => {
+      console.log('Cambio detectado en localStorage');
       checkAuthentication();
     };
 
     window.addEventListener('storage', handleStorageChange);
     return () => window.removeEventListener('storage', handleStorageChange);
   }, [checkAuthentication]);
+
+  // Efecto para verificar autenticación cuando cambia la ruta
+  useEffect(() => {
+    console.log('Ruta cambiada a:', location.pathname);
+    checkAuthentication();
+  }, [location.pathname, checkAuthentication]);
 
   // Efecto para scroll
   useEffect(() => {
@@ -92,24 +137,33 @@ const App: React.FC = () => {
 
   // Componente para redirección basada en rol
   const RoleBasedRedirect = () => {
+    console.log('RoleBasedRedirect - isAuthenticated:', isAuthenticated, 'userRole:', userRole);
+    
     if (!isAuthenticated) {
       return <Navigate to="/login" replace />;
     }
 
     switch (userRole) {
       case 'admin':
+      case 'administrador':
+        console.log('Redirigiendo a dashboard admin');
         return <Navigate to="/dashboard-admin" replace />;
       case 'empleado':
+        console.log('Redirigiendo a dashboard empleado');
         return <Navigate to="/dashboard-empleado" replace />;
       case 'cliente':
+        console.log('Redirigiendo a dashboard cliente');
         return <Navigate to="/dashboard-cliente" replace />;
       default:
-        return <Navigate to="/" replace />;
+        console.log('No role defined, redirecting to login. Role:', userRole);
+        return <Navigate to="/login" replace />;
     }
   };
 
   // Componente para rutas protegidas
   const ProtectedRoute = ({ children, allowedRoles }: { children: React.ReactNode; allowedRoles?: string[] }) => {
+    console.log('ProtectedRoute - Auth:', isAuthenticated, 'Role:', userRole, 'Allowed:', allowedRoles);
+    
     if (!isAuthenticated) {
       return <Navigate to="/login" replace />;
     }
@@ -120,8 +174,6 @@ const App: React.FC = () => {
 
     return <>{children}</>;
   };
-
-
 
   return (
     <div className="app">
@@ -176,7 +228,7 @@ const App: React.FC = () => {
         <Route 
           path="/dashboard-admin" 
           element={
-            <ProtectedRoute allowedRoles={['admin']}>
+            <ProtectedRoute allowedRoles={['admin', 'administrador']}>
               <DashboardAdmin />
             </ProtectedRoute>
           } 

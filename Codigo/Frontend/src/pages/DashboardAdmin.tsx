@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { apiService } from '../api/index';
-import Usuarios from './admin/Usuarios';
-import Roles from './admin/Roles';
-import Automoviles from './admin/Automoviles';
+import { Users, Settings, Car, Home, LogOut, BarChart3, Shield, UserCheck } from 'lucide-react';
+import Usuarios from '../pages/admin/Usuarios';
+import Roles from '../pages/admin/Roles';
+import Automoviles from '../pages/admin/Automoviles';
+import { apiService } from '../api';
+import '../assets/css/Admin/DashboardAdmin.css';
 
-const DashboardAdmin: React.FC = () => {
-  const [activeModule, setActiveModule] = useState('home');
-  const [userInfo, setUserInfo] = useState<any>(null);
+const DashboardAdmin = () => {
+  const [moduloActual, setModuloActual] = useState('home');
+  const [userInfo, setUserInfo] = useState(null);
 
   useEffect(() => {
     const user = apiService.getCurrentUserInfo();
@@ -14,7 +16,7 @@ const DashboardAdmin: React.FC = () => {
   }, []);
 
   const renderModule = () => {
-    switch (activeModule) {
+    switch (moduloActual) {
       case 'usuarios':
         return <Usuarios />;
       case 'roles':
@@ -26,108 +28,73 @@ const DashboardAdmin: React.FC = () => {
     }
   };
 
+  const menuItems = [
+    { id: 'home', label: 'Inicio', icon: Home },
+    { id: 'usuarios', label: 'Usuarios', icon: Users },
+    { id: 'roles', label: 'Roles', icon: Shield },
+    { id: 'automoviles', label: 'Automóviles', icon: Car },
+  ];
+
   return (
-    <div style={{ display: 'flex', minHeight: '100vh' }}>
-      {/* Sidebar */}
-      <div style={{ width: '250px', backgroundColor: '#2c3e50', color: 'white', padding: '20px' }}>
-        <h2>Panel Admin</h2>
-        <div style={{ marginBottom: '20px' }}>
-          <p>Bienvenido: {userInfo?.nombre_completo}</p>
-          <p>Rol: {userInfo?.role?.nombre}</p>
+    <div className="dashboard-container">
+      <aside className="dashboard-sidebar">
+        <div className="sidebar-header">
+          <div className="logo">
+            <BarChart3 size={32} />
+            <span>AdminPanel</span>
+          </div>
         </div>
-        
-        <nav>
-          <button 
-            onClick={() => setActiveModule('home')}
-            style={{ 
-              width: '100%', 
-              padding: '10px', 
-              margin: '5px 0', 
-              backgroundColor: activeModule === 'home' ? '#3498db' : 'transparent',
-              color: 'white',
-              border: '1px solid #34495e',
-              cursor: 'pointer'
-            }}
-          >
-            Inicio
-          </button>
-          
-          <button 
-            onClick={() => setActiveModule('usuarios')}
-            style={{ 
-              width: '100%', 
-              padding: '10px', 
-              margin: '5px 0', 
-              backgroundColor: activeModule === 'usuarios' ? '#3498db' : 'transparent',
-              color: 'white',
-              border: '1px solid #34495e',
-              cursor: 'pointer'
-            }}
-          >
-            Gestión Usuarios
-          </button>
-          
-          <button 
-            onClick={() => setActiveModule('roles')}
-            style={{ 
-              width: '100%', 
-              padding: '10px', 
-              margin: '5px 0', 
-              backgroundColor: activeModule === 'roles' ? '#3498db' : 'transparent',
-              color: 'white',
-              border: '1px solid #34495e',
-              cursor: 'pointer'
-            }}
-          >
-            Gestión Roles
-          </button>
-          
-          <button 
-            onClick={() => setActiveModule('automoviles')}
-            style={{ 
-              width: '100%', 
-              padding: '10px', 
-              margin: '5px 0', 
-              backgroundColor: activeModule === 'automoviles' ? '#3498db' : 'transparent',
-              color: 'white',
-              border: '1px solid #34495e',
-              cursor: 'pointer'
-            }}
-          >
-            Gestión Automóviles
-          </button>
+
+        <div className="user-profile">
+          <div className="user-avatar">
+            <UserCheck size={24} />
+          </div>
+          <div className="user-details">
+            <h3>{userInfo?.nombre_completo}</h3>
+            <p>{userInfo?.role?.nombre}</p>
+          </div>
+        </div>
+
+        <nav className="sidebar-nav">
+          {menuItems.map((item) => {
+            const Icon = item.icon;
+            return (
+              <button
+                key={item.id}
+                onClick={() => setModuloActual(item.id)}
+                className={`nav-item ${moduloActual === item.id ? 'active' : ''}`}
+              >
+                <Icon size={20} />
+                <span>{item.label}</span>
+              </button>
+            );
+          })}
         </nav>
-        
-        <button 
+
+        <button
           onClick={() => {
             apiService.logout();
             window.location.href = '/login';
           }}
-          style={{ 
-            width: '100%', 
-            padding: '10px', 
-            marginTop: '20px',
-            backgroundColor: '#e74c3c',
-            color: 'white',
-            border: 'none',
-            cursor: 'pointer'
-          }}
+          className="logout-btn"
         >
-          Cerrar Sesión
+          <LogOut size={20} />
+          <span>Cerrar Sesión</span>
         </button>
-      </div>
-      
-      {/* Content Area */}
-      <div style={{ flex: 1, padding: '20px', backgroundColor: '#ecf0f1' }}>
-        {renderModule()}
-      </div>
+      </aside>
+
+      <main className="dashboard-content">
+        
+        <div className="content-wrapper">
+          {renderModule()}
+        </div>
+      </main>
     </div>
   );
 };
 
-// Módulo Home (dentro del mismo archivo por simplicidad)
-const HomeModule: React.FC = () => {
-  const [stats, setStats] = useState<any>(null);
+const HomeModule = () => {
+  const [stats, setStats] = useState(null);
 
   useEffect(() => {
     const loadStats = async () => {
@@ -135,56 +102,88 @@ const HomeModule: React.FC = () => {
         const [usersResponse, rolesResponse, autoStats] = await Promise.all([
           apiService.getAllUsers(0, 1),
           apiService.getAllRoles(),
-          apiService.getAutomovilEstadisticas()
+          apiService.getAutomovilEstadisticas(),
         ]);
-        
+
         setStats({
           totalUsers: usersResponse.total,
           totalRoles: rolesResponse.total,
-          totalAutomoviles: autoStats.total_automoviles
+          totalAutomoviles: autoStats.total_automoviles,
         });
       } catch (error) {
-        console.error('Error loading stats:', error);
+        console.error('Error al cargar estadísticas:', error);
       }
     };
-    
+
     loadStats();
   }, []);
 
+  const statCards = [
+    {
+      title: 'Total Usuarios',
+      value: stats?.totalUsers || 0,
+      icon: Users,
+      color: 'blue',
+      trend: '+12%'
+    },
+    {
+      title: 'Total Roles',
+      value: stats?.totalRoles || 0,
+      icon: Shield,
+      color: 'green',
+      trend: '+5%'
+    },
+    {
+      title: 'Total Automóviles',
+      value: stats?.totalAutomoviles || 0,
+      icon: Car,
+      color: 'orange',
+      trend: '+8%'
+    }
+  ];
+
   return (
-    <div>
-      <h1>Dashboard Administrador</h1>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px', marginTop: '20px' }}>
-        <div style={{ backgroundColor: 'white', padding: '20px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
-          <h3>Total Usuarios</h3>
-          <p style={{ fontSize: '24px', fontWeight: 'bold', color: '#3498db' }}>{stats?.totalUsers || 0}</p>
-        </div>
-        
-        <div style={{ backgroundColor: 'white', padding: '20px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
-          <h3>Total Roles</h3>
-          <p style={{ fontSize: '24px', fontWeight: 'bold', color: '#27ae60' }}>{stats?.totalRoles || 0}</p>
-        </div>
-        
-        <div style={{ backgroundColor: 'white', padding: '20px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
-          <h3>Total Automóviles</h3>
-          <p style={{ fontSize: '24px', fontWeight: 'bold', color: '#f39c12' }}>{stats?.totalAutomoviles || 0}</p>
-        </div>
+    <div className="home-module">
+      <div className="welcome-section">
+        <h2>Bienvenido al Dashboard</h2>
+        <p>Gestiona eficientemente todos los aspectos de tu sistema</p>
       </div>
-      
-      <div style={{ marginTop: '40px' }}>
+
+      <div className="stats-grid">
+        {statCards.map((card, index) => {
+          const Icon = card.icon;
+          return (
+            <div key={index} className={`stat-card ${card.color}`}>
+              <div className="stat-icon">
+                <Icon size={24} />
+              </div>
+              <div className="stat-content">
+                <h3>{card.title}</h3>
+                <div className="stat-value">{card.value}</div>
+                <div className="stat-trend">{card.trend}</div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      <div className="quick-actions">
         <h3>Acciones Rápidas</h3>
-        <div style={{ display: 'flex', gap: '15px', marginTop: '15px' }}>
-          <div style={{ backgroundColor: 'white', padding: '15px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
-            <h4>Usuarios</h4>
-            <p>Gestiona todos los usuarios del sistema</p>
+        <div className="actions-grid">
+          <div className="action-card" onClick={() => setModuloActual('usuarios')}>
+            <Users size={32} />
+            <h4>Gestionar Usuarios</h4>
+            <p>Administra perfiles y permisos de usuarios</p>
           </div>
-          <div style={{ backgroundColor: 'white', padding: '15px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
-            <h4>Roles</h4>
-            <p>Administra roles y permisos</p>
+          <div className="action-card" onClick={() => setModuloActual('roles')}>
+            <Shield size={32} />
+            <h4>Configurar Roles</h4>
+            <p>Define y asigna roles del sistema</p>
           </div>
-          <div style={{ backgroundColor: 'white', padding: '15px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
-            <h4>Automóviles</h4>
-            <p>Control total de la flota vehicular</p>
+          <div className="action-card" onClick={() => setModuloActual('automoviles')}>
+            <Car size={32} />
+            <h4>Control de Flota</h4>
+            <p>Supervisa y mantiene la flota vehicular</p>
           </div>
         </div>
       </div>
