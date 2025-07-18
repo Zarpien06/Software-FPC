@@ -1078,3 +1078,60 @@ FROM information_schema.ROUTINES WHERE ROUTINE_SCHEMA = 'FULLPAINTT' AND ROUTINE
 -- ========================================
 -- 📚 FIN DEL SCRIPT
 -- ========================================
+
+select * from usuarios;
+
+ALTER TABLE cotizaciones
+ADD COLUMN numero_cotizacion VARCHAR(20) AFTER id;
+ALTER TABLE cotizaciones ADD COLUMN cliente_id INT;
+ALTER TABLE cotizaciones
+ADD CONSTRAINT fk_cliente_id FOREIGN KEY (cliente_id) REFERENCES usuarios(id);
+
+
+-- Insertar marcas
+INSERT INTO marcas (id, nombre) VALUES
+(1, 'Toyota'),
+(2, 'Chevrolet'),
+(3, 'Mazda');
+
+-- Insertar colores
+INSERT INTO colores (id, nombre) VALUES
+(1, 'Rojo'),
+(2, 'Negro'),
+(3, 'Blanco');
+
+-- Insertar tipos
+INSERT INTO tipos (id, nombre) VALUES
+(1, 'Sedán'),
+(2, 'SUV'),
+(3, 'Pickup');
+
+
+-- Crear tabla de marcas
+CREATE TABLE marcas (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  nombre VARCHAR(100) NOT NULL
+);
+
+-- Crear tabla de colores
+CREATE TABLE colores (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  nombre VARCHAR(100) NOT NULL
+);
+
+-- Crear tabla de tipos
+CREATE TABLE tipos (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  nombre VARCHAR(100) NOT NULL
+);
+
+
+INSERT INTO colores (nombre) VALUES
+('Rojo'), ('Negro'), ('Blanco'), ('Gris'), ('Azul'), ('Verde'), ('Blanco Perlado'), ('Plateado');
+SELECT * FROM colores;
+
+UPDATE usuarios SET rol_id = 2 WHERE usuario_id = 10;
+
+-- ========================================
+-- 📚 FIN DEL SCRIPT
+-- ========================================
