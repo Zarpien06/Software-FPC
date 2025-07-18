@@ -22,5 +22,6 @@ class Settings:
     
     # Seguridad
     BCRYPT_ROUNDS: int = int(os.getenv("BCRYPT_ROUNDS", "12"))
+    MEDIA_DIR = "media"
 
 settings = Settings()

@@ -145,7 +145,11 @@ class Usuario(Base):
         return user_dict
 
     def is_admin(self) -> bool:
-        return self.role and self.role.nombre.lower() == "admin"
+       return (
+        (self.role and self.role.nombre.lower() in ["admin", "administrador"]) or
+        (self.rol_id in [1, 4])  # opcional, si quieres asegurar
+    )
+
 
     def is_active(self) -> bool:
         return self.estado == EstadoUsuario.ACTIVO

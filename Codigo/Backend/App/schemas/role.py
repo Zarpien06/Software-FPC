@@ -35,7 +35,7 @@ class RoleResponse(RoleBase):
     id: int = Field(..., description="ID único del rol")
     
     class Config:
-        from_orm = True
+        from_attributes = True
         json_schema_extra = {
             "example": {
                 "id": 1,

@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 import logging
+from fastapi.staticfiles import StaticFiles
 import sys
 from contextlib import asynccontextmanager
 from sqlalchemy.orm import Session
@@ -19,6 +20,8 @@ from app.services.websocket_service import websocket_manager
 
 # Importar funciones de autenticación para crear el admin
 from app.auth.password_handler import get_password_hash
+
+
 
 
 # Configurar lifespan para inicializar/cerrar WebSocket
@@ -169,14 +172,30 @@ app = FastAPI(
     lifespan=lifespan
 )
 
-# Configurar CORS
+# Configurar CORS (CAMBIO PRINCIPAL)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # En producción, especificar dominios específicos
+    allow_origins=[
+        "http://localhost:5173",  # Puerto de Vite
+        "http://127.0.0.1:5173",
+        "http://localhost:3000",  # Por si usas otro puerto
+        "https://tu-dominio.com"  # Para producción
+    ],
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     allow_headers=["*"],
 )
+
+# También agrega este middleware para manejar preflight requests
+@app.middleware("http")
+async def cors_handler(request, call_next):
+    response = await call_next(request)
+    response.headers["Access-Control-Allow-Origin"] = "http://localhost:5173"
+    response.headers["Access-Control-Allow-Credentials"] = "true"
+    response.headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, PATCH, OPTIONS"
+    response.headers["Access-Control-Allow-Headers"] = "Authorization, Content-Type"
+    return response
+
 
 # Incluir rutas
 app.include_router(auth_routes.router)
@@ -188,6 +207,7 @@ app.include_router(historial_servicio_routes.router)
 app.include_router(cotizacion_routes.router)
 app.include_router(chat_routes.router)
 app.include_router(reporte_routes.router)
+app.mount("/media", StaticFiles(directory="media"), name="media")
 
 # Ruta de salud
 @app.get("/")
